@@ -3,6 +3,10 @@
 Portal institucional estático (HTML5, CSS3 e JavaScript puro), sem frameworks e sem etapa de build.
 Identidade visual a partir do logotipo oficial do CEIAS: **azul-marinho** das letras, **amarelo** das estrelas e **vermelho** das faixas,
 com o lema *"Educando para a Comunidade"*.
+
+O design segue uma linha limpa e contemporânea: superfícies claras com linhas finas em vez de sombras pesadas,
+cantos suaves, tipografia com hierarquia marcada, acentos discretos em degradê e uma malha sutil nas seções escuras.
+Toda a aparência é controlada pelas variáveis CSS no topo de `assets/css/style.css`.
 Basta abrir `index.html` no navegador ou publicar a pasta em qualquer hospedagem estática (GitHub Pages, Netlify, Vercel, servidor da escola).
 
 ## Logo
