@@ -52,7 +52,24 @@ publicado a partir de outra branch. O painel tem `noindex` e está bloqueado no 
 - Galeria com lightbox (teclado e toque), vídeos do YouTube em modal, infraestrutura com ampliação.
 - Documentos com filtros e busca; Área do Aluno com abas; formulário de contato com validação e máscara de telefone.
 - Loader de abertura com o brasão, barra de progresso de leitura, transição entre páginas, botão voltar ao topo, aviso de privacidade (LGPD), toasts.
+- Botão **Voltar**, Início, Compartilhar e Imprimir no topo de todas as páginas internas, e botão Voltar flutuante ao rolar.
 - SEO: metadados, Open Graph, schema.org, `sitemap.xml`, `robots.txt`, `manifest.json`, página `404.html`.
+
+## Fotos dos Jogos Escolares e eventos (enviadas pela comunidade)
+
+1. Estudantes e famílias usam a página **Enviar fotos** (`enviar-fotos.html`). Ela mostra os canais configurados em
+   `assets/js/config.js` → `photoUpload` (formulário Google Forms com upload, pasta compartilhada, WhatsApp, e-mail) e
+   reduz as fotos no próprio celular antes do envio.
+2. A secretaria ou um professor abre o painel `admin.html` → aba **Fotos da galeria**, escolhe as fotos, legenda,
+   categoria e crédito e clica em **Publicar**. As imagens são reduzidas (até 1600 px) e enviadas para
+   `assets/images/galeria/`; o registro fica em `assets/data/galeria.json`.
+3. As fotos aparecem na Galeria, na página Jogos Escolares (categoria Esportes) e na página inicial em 1–2 minutos.
+
+## Dados de contato
+
+Telefone `(41) 3398-8768` e página do Facebook vieram de cadastros públicos da escola/APMF. O e-mail
+`sjpambrosiasabatovich@escola.pr.gov.br` segue o padrão institucional da SEED/PR e **deve ser confirmado** com a secretaria.
+Tudo é editável em `assets/js/config.js` → `contact`, `social` e `details`.
 
 ## Estrutura
 
@@ -75,6 +92,16 @@ eventos.html               Próximo evento, lista e calendário mensal
 galeria.html               Galeria com lightbox e seção de vídeos
 documentos.html            Documentos para visualizar/baixar
 avisos.html                Mural de avisos e recados (filtros, busca, datas importantes)
+secretaria.html            Serviços da secretaria, passo a passo de matrícula
+faq.html                   Perguntas frequentes (acordeão com busca e filtros)
+transporte.html            Linhas e horários do transporte escolar
+alimentacao.html           Cardápio da semana
+horarios.html              Grade horária por turma (?turma=)
+jogos-escolares.html       Modalidades, resultados, agenda, avisos e fotos dos jogos
+enviar-fotos.html          Canais de envio de fotos + redução de tamanho no navegador
+comunidade-escolar.html    APMF, Conselho Escolar, Grêmio, Vereadores Mirins
+links-uteis.html           Portais oficiais
+mapa-do-site.html          Todas as páginas
 admin.html                 Painel restrito para publicar avisos (direção/secretaria)
 area-do-aluno.html         Avisos, links, materiais e calendário (preparada para login futuro)
 contato.html               Formulário, contatos, mapa e redes sociais
@@ -101,6 +128,9 @@ assets/documents/          PDFs publicados na página de documentos
 | Links da Área do Aluno | `assets/js/config.js` → `studentLinks` |
 | Números e distribuição de estudantes | `assets/js/config.js` → `stats` |
 | Avisos e recados | Painel `admin.html` (ou edite `assets/data/avisos.json` diretamente) |
+| Fotos da galeria enviadas pela comunidade | Painel `admin.html` → aba Fotos (ou `assets/data/galeria.json`) |
+| Transporte, horários, cardápio, FAQ, Jogos Escolares, comunidade, links úteis | `assets/js/data.js` → `transport`, `schedule`, `menu`, `faq`, `games`, `community`, `usefulLinks` |
+| Canais de envio de fotos | `assets/js/config.js` → `photoUpload` |
 | Notícias, eventos, projetos, professores, galeria, vídeos, documentos, depoimentos | `assets/js/data.js` (copie um bloco existente e edite) |
 | Cores, fontes, espaçamentos | `assets/css/style.css` → `:root` |
 | Fotos | Salve em `assets/images/` e troque o caminho em `data.js` ou no HTML |

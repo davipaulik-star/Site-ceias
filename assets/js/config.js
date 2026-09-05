@@ -27,16 +27,21 @@ window.CEIAS_CONFIG = {
   },
 
   contact: {
-    phone: "",            // Ex.: "(41) 3000-0000" — deixe vazio se ainda não houver
-    email: "",            // Ex.: "contato@ceias.pr.gov.br"
+    phone: "(41) 3398-8768",   // Telefone do colégio (fonte: cadastros públicos da APMF/escola). Confirme na secretaria.
+    phone2: "",                // Segundo telefone, se houver (ex.: "(41) 3382-7068" aparece em um cadastro antigo)
+    email: "sjpambrosiasabatovich@escola.pr.gov.br", // Padrão de e-mail institucional da SEED/PR — CONFIRME com a secretaria
     whatsapp: "",         // Somente números com DDI/DDD. Ex.: "5541999999999". Vazio = botão oculto.
     whatsappMessage: "Olá! Gostaria de mais informações sobre o CEIAS.",
     hours: "Segunda a sexta-feira, das 7h30 às 17h30",
+    secretaryHours: "Segunda a sexta-feira, das 8h às 12h e das 13h às 17h",
+    director: "",              // Nome do(a) diretor(a) — preencha quando autorizado
+    viceDirector: "",
+    pedagogues: "",
   },
 
   social: {
     instagram: "",        // Ex.: "https://instagram.com/ceias"
-    facebook: "",
+    facebook: "https://www.facebook.com/pages/Col%C3%A9gio-Estadual-Do-Campo-Irm%C3%A3-Ambr%C3%B3sia-Sabatovich/913380898686655",
     youtube: "",
     tiktok: "",
   },
@@ -50,6 +55,28 @@ window.CEIAS_CONFIG = {
     branch: "main",                 // branch publicada (GitHub Pages)
     file: "assets/data/avisos.json",
     maxUrgent: 3,
+  },
+
+  // Envio de fotos pela comunidade (Jogos Escolares, eventos). Preencha UM ou mais canais:
+  photoUpload: {
+    formUrl: "",            // Link de um Google Forms com "Upload de arquivo" (recomendado) — ex.: "https://forms.gle/xxxx"
+    driveUrl: "",           // Link de uma pasta compartilhada do Google Drive/OneDrive com permissão de envio
+    whatsapp: "",           // Número (ex.: "5541999999999") de um professor/secretaria que recebe as fotos
+    email: "",              // E-mail que recebe as fotos (vazio = usa contact.email)
+    maxSizeMb: 10,
+  },
+
+  // Dados institucionais adicionais
+  details: {
+    nre: "NRE Área Metropolitana Sul",
+    dependency: "Estadual — Secretaria de Estado da Educação do Paraná (SEED/PR)",
+    location: "Zona rural — Colônia Marcelino",
+    stages: "Ensino Fundamental (Anos Finais), Ensino Médio, EJA e Classe Especial",
+    shifts: "Manhã, tarde e noite",
+    apmfCnpj: "03.233.821/0001-66",
+    apmfName: "APMF — Associação de Pais, Mestres e Funcionários do Colégio Estadual do Campo Irmã Ambrósia Sabatovich",
+    codigoSeed: "1890",
+    municipioSeed: "2570",
   },
 
   // Endpoint para envio do formulário de contato (ex.: Formspree, Getform, Web3Forms).

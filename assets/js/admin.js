@@ -52,6 +52,7 @@
       state.user = user;
       store.set(state.token, persist);
       await loadData();
+      await loadGallery();
       showPanel();
     } catch (e) {
       state.token = null; store.clear();
@@ -101,6 +102,8 @@
     $("#adminUser").innerHTML = `<img src="${state.user.avatar_url}" alt=""><span>${esc(state.user.name || state.user.login)}<br><small>${esc(ADMIN.owner)}/${esc(ADMIN.repo)} · ${esc(state.branch)}</small></span>`;
     renderList();
     resetForm();
+    renderGallery();
+    const pf = $("#photoForm"); if (pf) pf.elements.date.value = today();
   }
 
   function renderList() {
@@ -184,6 +187,65 @@
     const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "avisos-backup.json"; a.click();
   }
 
+  /* ---------------- Fotos (galeria) ---------------- */
+  const GAL_FILE = "assets/data/galeria.json", GAL_DIR = "assets/images/galeria";
+  const GAL_CATS = { esportes: "Esportes / Jogos Escolares", eventos: "Eventos", alunos: "Alunos", projetos: "Projetos", cultura: "Cultura", colegio: "Colégio", professores: "Professores" };
+  const gal = { sha: null, data: { updatedAt: "", items: [] } };
+  async function loadGallery() {
+    try { const f = await gh(`/repos/${ADMIN.owner}/${ADMIN.repo}/contents/${GAL_FILE}?ref=${encodeURIComponent(state.branch)}`); gal.sha = f.sha; gal.data = JSON.parse(b64decode(f.content)); if (!Array.isArray(gal.data.items)) gal.data.items = []; }
+    catch (e) { if (e.status === 404) { gal.sha = null; gal.data = { updatedAt: today(), items: [] }; } else throw e; }
+  }
+  async function saveGallery(message) {
+    gal.data.updatedAt = today();
+    const body = { message: `[galeria] ${message} (por ${state.user.login})`, content: b64encode(JSON.stringify(gal.data, null, 2) + "\n"), branch: state.branch };
+    if (gal.sha) body.sha = gal.sha;
+    const r = await gh(`/repos/${ADMIN.owner}/${ADMIN.repo}/contents/${GAL_FILE}`, { method: "PUT", body: JSON.stringify(body) });
+    gal.sha = r.content.sha;
+  }
+  function renderGallery() {
+    const w = $("#photoList"); if (!w) return;
+    const items = [...gal.data.items].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+    $("#photoCount").textContent = `${items.length} foto(s) publicada(s) pelo painel`;
+    w.innerHTML = items.length ? items.map(i => `<div class="photo-admin"><img src="${i.src}" alt=""><div><strong>${esc(i.caption)}</strong><br>${esc(GAL_CATS[i.category] || i.category)} · ${fmt(i.date)}${i.author ? " · " + esc(i.author) : ""}</div><button type="button" data-delphoto="${esc(i.src)}">Excluir</button></div>`).join("") : `<div class="empty-state">Nenhuma foto publicada pelo painel ainda.</div>`;
+  }
+  const resizeImage = file => new Promise(res => {
+    const img = new Image(); const url = URL.createObjectURL(file);
+    img.onload = () => { const max = 1600; const sc = Math.min(1, max / Math.max(img.width, img.height)); const cv = document.createElement("canvas"); cv.width = Math.round(img.width * sc); cv.height = Math.round(img.height * sc); cv.getContext("2d").drawImage(img, 0, 0, cv.width, cv.height); URL.revokeObjectURL(url); res(cv.toDataURL("image/jpeg", 0.82).split(",")[1]); };
+    img.onerror = () => res(null); img.src = url;
+  });
+  async function uploadPhotos(e) {
+    e.preventDefault();
+    const f = e.target; const files = Array.from(f.elements.files.files || []);
+    if (!files.length) { setStatus("Selecione pelo menos uma foto.", "error"); return; }
+    const category = f.elements.category.value, caption = f.elements.caption.value.trim(), author = f.elements.author.value.trim(), date = f.elements.date.value || today();
+    const btn = $("#photoBtn"); btn.disabled = true; const bar = $("#uploadBar");
+    let done = 0;
+    try {
+      for (const file of files) {
+        const b64 = await resizeImage(file);
+        if (!b64) { done++; continue; }
+        const name = `${date}-${slug(caption || file.name)}-${Math.random().toString(36).slice(2, 7)}.jpg`;
+        const path = `${GAL_DIR}/${name}`;
+        await gh(`/repos/${ADMIN.owner}/${ADMIN.repo}/contents/${path}`, { method: "PUT", body: JSON.stringify({ message: `[galeria] Nova foto: ${caption || file.name} (por ${state.user.login})`, content: b64, branch: state.branch }) });
+        gal.data.items.unshift({ src: path, caption: caption || file.name.replace(/\.[^.]+$/, ""), category, date, author });
+        done++; bar.style.width = Math.round(done / files.length * 100) + "%";
+      }
+      await saveGallery(`${done} foto(s) publicada(s): ${caption || category}`);
+      renderGallery(); f.reset(); f.elements.date.value = today(); bar.style.width = "0";
+      setStatus(`${done} foto(s) publicada(s) na galeria! O site atualiza em 1–2 minutos.`);
+    } catch (err) { setStatus("Erro ao publicar fotos: " + err.message, "error"); }
+    finally { btn.disabled = false; }
+  }
+  async function deletePhoto(src) {
+    const item = gal.data.items.find(i => i.src === src); if (!item) return;
+    if (!confirm(`Excluir a foto "${item.caption}" do site?`)) return;
+    try {
+      try { const f = await gh(`/repos/${ADMIN.owner}/${ADMIN.repo}/contents/${src}?ref=${encodeURIComponent(state.branch)}`); await gh(`/repos/${ADMIN.owner}/${ADMIN.repo}/contents/${src}`, { method: "DELETE", body: JSON.stringify({ message: `[galeria] Remove foto: ${item.caption} (por ${state.user.login})`, sha: f.sha, branch: state.branch }) }); } catch (e) { if (e.status !== 404) throw e; }
+      gal.data.items = gal.data.items.filter(i => i !== item);
+      await saveGallery(`Remove foto: ${item.caption}`); renderGallery(); setStatus("Foto removida.");
+    } catch (err) { setStatus("Erro ao remover: " + err.message, "error"); }
+  }
+
   /* ---------------- Init ---------------- */
   document.addEventListener("DOMContentLoaded", () => {
     if (!ADMIN.owner || !ADMIN.repo) { $("#loginError").textContent = "Configure owner/repo em assets/js/config.js (bloco admin)."; $("#loginError").style.display = "block"; }
@@ -213,6 +275,9 @@
       if (b.dataset.toggle) { item.published = !item.published; await publish(`${item.published ? "Publica" : "Oculta"} aviso: ${item.title}`); }
       if (b.dataset.del && confirm(`Excluir o aviso "${item.title}"? Esta ação não pode ser desfeita.`)) { state.data.items = state.data.items.filter(x => x !== item); await publish(`Remove aviso: ${item.title}`); }
     });
+    $("#photoForm")?.addEventListener("submit", uploadPhotos);
+    $("#photoList")?.addEventListener("click", e => { const b = e.target.closest("[data-delphoto]"); b && deletePhoto(b.dataset.delphoto); });
+    $$(".admin__tabs .tab").forEach(t => t.addEventListener("click", () => { $$(".admin__tabs .tab").forEach(x => x.classList.toggle("is-active", x === t)); $$(".admin__panel").forEach(p => p.hidden = p.id !== t.dataset.panel); }));
     $$("[data-icon]").forEach(el => { const svg = ICONS[el.dataset.icon]; if (svg) el.innerHTML = svg; });
   });
 })();

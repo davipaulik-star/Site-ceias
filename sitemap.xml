@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Substitua os caminhos relativos pela URL final do site (ex.: https://ceias.com.br/index.html) -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>alimentacao.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>area-do-aluno.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>avisos.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>comunidade-escolar.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>contato.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>cultura.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>documentos.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -11,14 +13,22 @@
   <url><loc>ensino-eja.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>ensino-medio.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>ensino.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>enviar-fotos.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>equipe.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>eventos.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>galeria.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>faq.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>galeria.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>historia.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>horarios.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>index.html</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>infraestrutura.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>jogos-escolares.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>links-uteis.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>mapa-do-site.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>noticias.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>o-colegio.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>projetos.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>secretaria.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>transporte.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>vida-escolar.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

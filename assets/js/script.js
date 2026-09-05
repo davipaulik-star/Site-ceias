@@ -783,8 +783,8 @@
       </button>`;
   }
 
-  function initGallery() {
-    const all = DATA.gallery || [];
+  async function initGallery() {
+    const all = await loadGalleryAll();
     const home = $("#galleryHome");
     if (home) {
       const items = all.filter(g => g.type === "image").slice(0, 9);
@@ -806,6 +806,7 @@
         if (f === "all") $$(".gallery-item", grid).forEach((b, i) => { b.dataset.index = i; });
       }, "Todas");
     }
+    initReveal();
   }
 
   /* ------------------------------------------------------------------
@@ -931,7 +932,9 @@
 
     targets.forEach(wrap => {
       const limit = parseInt(wrap.dataset.limit || "0", 10);
-      const items = limit ? list.slice(0, limit) : list;
+      const cat = wrap.dataset.category;
+      const base = cat ? list.filter(a => a.category === cat) : list;
+      const items = limit ? base.slice(0, limit) : base;
       if (wrap.id === "noticesList") {
         wrap.innerHTML = items.map(a => `
           <article class="notice notice--${a.priority === "urgente" ? "urgent" : a.priority === "importante" ? "info" : "default"}">
@@ -1009,6 +1012,8 @@
       else if (key === "phone") el.innerHTML = c.phone ? `<a href="tel:${c.phone.replace(/\D/g, "")}">${escapeHtml(c.phone)}</a>` : "<em>Telefone em atualização</em>";
       else if (key === "email") el.innerHTML = c.email ? `<a href="mailto:${c.email}">${escapeHtml(c.email)}</a>` : "<em>E-mail em atualização</em>";
       else if (key === "hours") el.textContent = c.hours || "";
+      else if (key === "secretaryHours") el.textContent = c.secretaryHours || c.hours || "";
+      else if (key === "phone2") el.innerHTML = c.phone2 ? `<a href="tel:${c.phone2.replace(/\D/g, "")}">${escapeHtml(c.phone2)}</a>` : "";
       else if (key === "inep") el.textContent = CONFIG.school.inep;
       else if (key === "motto") el.textContent = "“" + (CONFIG.school.motto || "") + "”";
     });
@@ -1116,7 +1121,8 @@
     window.addEventListener("pageshow", () => document.body.classList.remove("is-leaving"));
 
     // Deslocamento de âncoras por causa do cabeçalho fixo
-    if (location.hash) setTimeout(() => { const t = $(location.hash); t && window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 90 }); }, 50);
+    const hash = location.hash;
+    if (/^#[\w-]+$/.test(hash)) setTimeout(() => { const t = document.getElementById(hash.slice(1)); t && window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 90 }); }, 50);
   }
 
 
@@ -1181,6 +1187,9 @@
   ];
   function buildSearchIndex() {
     const idx = STATIC_PAGES.map(([t, u, d]) => ({ type: "Página", icon: "school", title: t, url: u, desc: d }));
+    NAV_TREE.forEach(([t, u, sub]) => sub.forEach(([st, su]) => { if (!idx.some(i => i.url === su)) idx.push({ type: "Página", icon: "school", title: st, url: su, desc: t }); }));
+    (DATA.faq || []).forEach(f => idx.push({ type: "Pergunta frequente", icon: "lightbulb", title: f.q, url: "faq.html", desc: labelize(f.cat, FAQ_CATS), text: f.a }));
+    (DATA.games ? DATA.games.modalities : []).forEach(m => idx.push({ type: "Jogos Escolares", icon: "trophy", title: m.name, url: "jogos-escolares.html", desc: m.categories }));
     (DATA.news || []).forEach(n => idx.push({ type: "Notícia", icon: "news", title: n.title, url: `noticia.html?id=${n.id}`, desc: `${formatDate(n.date, "short")} · ${labelize(n.category, NEWS_CATS)}`, text: n.summary }));
     (DATA.projects || []).forEach(p => idx.push({ type: "Projeto", icon: "lightbulb", title: p.title, url: `projeto.html?id=${p.id}`, desc: labelize(p.category, PROJECT_CATS), text: p.summary }));
     (DATA.events || []).forEach(e => idx.push({ type: "Evento", icon: "calendar", title: e.title, url: `eventos.html?evento=${e.id}`, desc: `${formatDate(e.date, "short")} · ${e.location || ""}`, text: e.description }));
@@ -1263,6 +1272,183 @@
     });
   }
 
+
+  /* ------------------------------------------------------------------
+     Estrutura de navegação (usada no mapa do site e na busca)
+     ------------------------------------------------------------------ */
+  const NAV_TREE = [
+    ["Início", "index.html", []],
+    ["O Colégio", "o-colegio.html", [["Sobre o colégio", "o-colegio.html"], ["Nossa história — Irmã Ambrósia", "historia.html"], ["Educação do Campo", "educacao-do-campo.html"], ["Infraestrutura", "infraestrutura.html"], ["Nossa equipe", "equipe.html"], ["Nossa cultura", "cultura.html"], ["Comunidade escolar", "comunidade-escolar.html"]]],
+    ["Ensino", "ensino.html", [["Visão geral", "ensino.html"], ["Anos Finais — 6º ao 9º ano", "ensino-anos-finais.html"], ["Ensino Médio", "ensino-medio.html"], ["EJA / Classe Especial", "ensino-eja.html"], ["Horários das turmas", "horarios.html"]]],
+    ["Vida Escolar", "vida-escolar.html", [["Informações para famílias", "vida-escolar.html"], ["Mural de avisos e recados", "avisos.html"], ["Secretaria e documentos", "secretaria.html"], ["Transporte escolar", "transporte.html"], ["Alimentação escolar", "alimentacao.html"], ["Uniforme", "vida-escolar.html#uniforme"], ["Perguntas frequentes", "faq.html"], ["Documentos", "documentos.html"], ["Área do aluno", "area-do-aluno.html"]]],
+    ["Projetos", "projetos.html", [["Projetos que transformam", "projetos.html"], ["Jogos Escolares", "jogos-escolares.html"]]],
+    ["Notícias", "noticias.html", []],
+    ["Eventos", "eventos.html", [["Calendário de eventos", "eventos.html"], ["Calendário escolar", "eventos.html#calendario"]]],
+    ["Galeria", "galeria.html", [["Fotos e vídeos", "galeria.html"], ["Enviar fotos", "enviar-fotos.html"], ["Fotos dos Jogos Escolares", "jogos-escolares.html"]]],
+    ["Contato", "contato.html", [["Fale conosco", "contato.html"], ["Links úteis", "links-uteis.html"], ["Mapa do site", "mapa-do-site.html"]]],
+  ];
+
+  /* ------------------------------------------------------------------
+     Botão Voltar e ferramentas da página (todas as páginas internas)
+     ------------------------------------------------------------------ */
+  function goBack() {
+    const sameOrigin = document.referrer && document.referrer.indexOf(location.origin) === 0;
+    if (history.length > 1 && sameOrigin) history.back(); else location.href = "index.html";
+  }
+  function initBackButtons() {
+    const page = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+    if (page === "index.html" || page === "") return;
+    const hero = $(".page-hero .container");
+    if (hero) {
+      const tools = document.createElement("div"); tools.className = "page-tools";
+      tools.innerHTML = `<button type="button" class="back-btn" data-back>${ICONS.arrowLeft} Voltar</button><a class="back-btn" href="index.html">${ICONS.school} Início</a><button type="button" class="tool-btn" data-share>${ICONS.share} Compartilhar</button><button type="button" class="tool-btn" data-print>${ICONS.file} Imprimir</button>`;
+      hero.insertAdjacentElement("afterbegin", tools);
+    }
+    const fl = document.createElement("button"); fl.type = "button"; fl.className = "back-float"; fl.setAttribute("aria-label", "Voltar para a página anterior");
+    fl.innerHTML = `${ICONS.arrowLeft}<span>Voltar</span>`; fl.dataset.back = "";
+    document.body.appendChild(fl);
+    const upd = () => fl.classList.toggle("is-visible", window.scrollY > 320); window.addEventListener("scroll", upd, { passive: true }); upd();
+    document.addEventListener("click", e => {
+      if (e.target.closest("[data-back]")) goBack();
+      if (e.target.closest("[data-print]")) window.print();
+      const sh = e.target.closest("[data-share]");
+      if (sh) {
+        const data = { title: document.title, url: location.href };
+        if (navigator.share) navigator.share(data).catch(() => {}); else navigator.clipboard?.writeText(location.href).then(() => toast("Link copiado!"));
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     Perguntas frequentes (acordeão)
+     ------------------------------------------------------------------ */
+  const FAQ_CATS = { matricula: "Matrícula", documentos: "Documentos", rotina: "Rotina escolar", transporte: "Transporte", ensino: "Ensino", tecnologia: "Sistemas e site" };
+  function initFaq() {
+    const list = $("#faqList");
+    if (!list || !DATA.faq) return;
+    list.innerHTML = DATA.faq.map((f, i) => `
+      <div class="faq__item filter-item" data-category="${f.cat}" data-search="${escapeHtml(norm(f.q + " " + f.a))}">
+        <button type="button" class="faq__q" aria-expanded="false" aria-controls="faq-${i}"><span>${escapeHtml(f.q)}</span>${ICONS.chevron}</button>
+        <div class="faq__a" id="faq-${i}"><div><p>${escapeHtml(f.a)}</p></div></div>
+      </div>`).join("");
+    list.addEventListener("click", e => {
+      const q = e.target.closest(".faq__q"); if (!q) return;
+      const item = q.parentElement; const open = item.classList.toggle("is-open"); q.setAttribute("aria-expanded", String(open));
+    });
+    let f = "all", q = "";
+    buildFilters($("#faqFilters"), FAQ_CATS, x => { f = x; applyFilter(list, f, q); }, "Todas");
+    const inp = $("#faqSearch");
+    inp && inp.addEventListener("input", () => { q = norm(inp.value.trim()); applyFilter(list, f, q); if (q) $$(".faq__item:not(.is-hidden)", list).forEach(i => i.classList.add("is-open")); });
+  }
+
+  /* ------------------------------------------------------------------
+     Transporte, horários, cardápio, comunidade, links, mapa do site
+     ------------------------------------------------------------------ */
+  function initTransport() {
+    const t = $("#transportTable"); if (!t || !DATA.transport) return;
+    t.innerHTML = `<thead><tr><th>Linha</th><th>Rota</th><th>Manhã (ida / volta)</th><th>Tarde (ida / volta)</th><th>Noite (ida / volta)</th></tr></thead><tbody>` +
+      DATA.transport.map(l => `<tr><td data-label="Linha"><strong>${escapeHtml(l.line)}</strong></td><td data-label="Rota">${escapeHtml(l.route)}</td><td data-label="Manhã">${escapeHtml(l.morning)}</td><td data-label="Tarde">${escapeHtml(l.afternoon)}</td><td data-label="Noite">${escapeHtml(l.night)}</td></tr>`).join("") + `</tbody>`;
+  }
+  function initSchedule() {
+    const tabs = $("#scheduleTabs"), table = $("#scheduleTable"); if (!tabs || !table || !DATA.schedule) return;
+    const cls = DATA.schedule.classes, periods = DATA.schedule.periods;
+    const SHIFT = { manha: "Manhã", tarde: "Tarde", noite: "Noite" };
+    tabs.innerHTML = cls.map((c, i) => `<button type="button" class="filter-btn${i === 0 ? " is-active" : ""}" role="tab" aria-selected="${i === 0}" data-i="${i}">${escapeHtml(c.turma)}</button>`).join("");
+    const render = i => {
+      const c = cls[i]; const days = Object.keys(c.days); const p = periods[c.shift] || [];
+      table.innerHTML = `<caption style="caption-side:top;text-align:left;padding:.6rem 1rem;font-weight:700;color:var(--blue-900)">${escapeHtml(c.turma)} · ${SHIFT[c.shift] || c.shift}</caption><thead><tr><th>Horário</th>${days.map(d => `<th>${d}</th>`).join("")}</tr></thead><tbody>` +
+        p.map((h, r) => `<tr><td><strong>${h}</strong></td>${days.map(d => `<td>${escapeHtml((c.days[d] || [])[r] || "—")}</td>`).join("")}</tr>`).join("") + `</tbody>`;
+      $$(".filter-btn", tabs).forEach(b => { const on = +b.dataset.i === i; b.classList.toggle("is-active", on); b.setAttribute("aria-selected", String(on)); });
+    };
+    tabs.addEventListener("click", e => { const b = e.target.closest("[data-i]"); b && render(+b.dataset.i); });
+    const want = getParam("turma"); const idx = cls.findIndex(c => norm(c.turma) === norm(want || "")); render(idx >= 0 ? idx : 0);
+  }
+  function initMenu() {
+    const w = $("#menuWeek"); if (!w || !DATA.menu) return;
+    const todayName = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"][new Date().getDay()];
+    w.innerHTML = DATA.menu.map(m => `<div class="menu-day"${m.day === todayName ? ' style="border-top-color:var(--red-500)"' : ""}><h3>${escapeHtml(m.day)}${m.day === todayName ? ' <span class="tag tag--red" style="font-size:.55rem">Hoje</span>' : ""}</h3><p>${escapeHtml(m.meal)}</p><small>${escapeHtml(m.extra || "")}</small></div>`).join("");
+  }
+  function initCommunity() {
+    const w = $("#communityBoards");
+    if (w && DATA.community) w.innerHTML = DATA.community.map(c => `<div class="value-card"><span data-icon="${c.icon}"></span><h3>${escapeHtml(c.name)}</h3><p style="color:var(--blue-700);font-weight:600;margin-bottom:.4rem">${escapeHtml(c.full)}</p><p>${escapeHtml(c.desc)}</p><p class="mt-1"><strong>Como participar:</strong> ${escapeHtml(c.how)}</p></div>`).join("");
+    const l = $("#usefulLinks");
+    if (l && DATA.usefulLinks) l.innerHTML = DATA.usefulLinks.map(x => `<a class="link-card" href="${x.url}" target="_blank" rel="noopener">${ICONS.globe}<div><strong>${escapeHtml(x.title)}</strong><span>${escapeHtml(x.desc)}</span></div></a>`).join("");
+    $$("[data-detail]").forEach(el => { const v = (CONFIG.details || {})[el.dataset.detail]; if (v) el.textContent = v; });
+  }
+  function initSiteMap() {
+    const w = $("#siteMap"); if (!w) return;
+    const extra = [["Outras páginas", "", [["Mural de avisos", "avisos.html"], ["Comunidade escolar", "comunidade-escolar.html"], ["Horários das turmas", "horarios.html"], ["Secretaria", "secretaria.html"], ["Transporte escolar", "transporte.html"], ["Alimentação escolar", "alimentacao.html"], ["Perguntas frequentes", "faq.html"], ["Jogos Escolares", "jogos-escolares.html"], ["Enviar fotos", "enviar-fotos.html"], ["Links úteis", "links-uteis.html"], ["Acesso restrito (direção/secretaria)", "admin.html"]]]];
+    w.innerHTML = [...NAV_TREE, ...extra].map(([t, u, sub]) => `<div class="sitemap__group"><h2>${u ? `<a href="${u}">${t}</a>` : t}</h2><ul>${(sub.length ? sub : [[t, u]]).map(([st, su]) => `<li><a href="${su}">${escapeHtml(st)}</a></li>`).join("")}</ul></div>`).join("");
+  }
+
+  /* ------------------------------------------------------------------
+     Jogos Escolares
+     ------------------------------------------------------------------ */
+  async function initGames() {
+    const g = DATA.games; if (!g || !$("#gamesModalities")) return;
+    $("#gamesSeason") && ($("#gamesSeason").textContent = g.season);
+    $("#gamesModalities").innerHTML = g.modalities.map(m => `<div class="modality"><span class="modality__icon">${ICONS[m.icon] || ICONS.trophy}</span><h3>${escapeHtml(m.name)}</h3><p>${escapeHtml(m.categories)}</p><p class="mt-1"><strong>${escapeHtml(m.coach)}</strong></p></div>`).join("");
+    const res = [...g.results].sort(sortByDateDesc);
+    $("#gamesResults").innerHTML = res.map(r => `<div class="result result--${r.outcome || ""}"><span class="result__team">${escapeHtml(r.home)}</span><span class="result__score">${escapeHtml(r.score)}</span><span class="result__team">${escapeHtml(r.away)}</span><div class="result__meta"><span>${ICONS.trophy} ${escapeHtml(r.modality)}</span><span>${ICONS.calendar} ${formatDate(r.date, "short")}</span><span>${ICONS.pin} ${escapeHtml(r.place)}</span><span>${escapeHtml(r.phase)}</span></div></div>`).join("") || `<div class="empty-state">Nenhum resultado cadastrado.</div>`;
+    const t = todayMidnight();
+    const sched = [...g.schedule].filter(x => parseDate(x.date) >= t).sort(sortByDateAsc);
+    $("#gamesSchedule").innerHTML = sched.map(x => { const d = parseDate(x.date); return `<article class="event-card"><div class="event-card__date"><strong>${d.getDate()}</strong><span>${MONTHS_SHORT[d.getMonth()]}/${String(d.getFullYear()).slice(2)}</span></div><div class="event-card__body"><span class="tag tag--gold">${escapeHtml(x.phase)}</span><h3>${escapeHtml(x.modality)} × ${escapeHtml(x.opponent)}</h3><div class="card__meta"><span>${ICONS.clock}${escapeHtml(x.time)}</span><span>${ICONS.pin}${escapeHtml(x.place)}</span></div></div></article>`; }).join("") || `<p class="muted">Nenhum jogo agendado. Acompanhe o mural de avisos.</p>`;
+    $("#gamesRules").innerHTML = g.rules.map(r => `<li>${ICONS.check}<span>${escapeHtml(r)}</span></li>`).join("");
+    const photos = (await loadGalleryAll()).filter(x => x.category === "esportes" && x.type !== "video").slice(0, 8);
+    const gp = $("#gamesPhotos");
+    gp.innerHTML = photos.map((x, i) => galleryItem(x, i, "gamesPhotos")).join("") || `<div class="empty-state">Ainda não há fotos publicadas. Seja o primeiro a <a href="enviar-fotos.html">enviar</a>!</div>`;
+    registerLightboxGroup("gamesPhotos", photos);
+    initReveal();
+  }
+
+  /* ------------------------------------------------------------------
+     Galeria extra (assets/data/galeria.json — publicada pelo painel)
+     ------------------------------------------------------------------ */
+  let GALLERY_EXTRA = null;
+  async function loadGalleryExtra() {
+    if (GALLERY_EXTRA) return GALLERY_EXTRA;
+    try { const r = await fetch("assets/data/galeria.json", { cache: "no-store" }); if (!r.ok) throw 0; const j = await r.json(); GALLERY_EXTRA = (j.items || []).map(i => ({ type: "image", ...i })); }
+    catch (e) { GALLERY_EXTRA = []; }
+    return GALLERY_EXTRA;
+  }
+  async function loadGalleryAll() { const extra = await loadGalleryExtra(); return [...extra, ...(DATA.gallery || [])]; }
+
+  /* ------------------------------------------------------------------
+     Envio de fotos (canais + redução no navegador)
+     ------------------------------------------------------------------ */
+  function initUpload() {
+    const ch = $("#uploadChannels"); if (!ch) return;
+    const u = CONFIG.photoUpload || {}; const c = CONFIG.contact || {};
+    const wa = u.whatsapp || c.whatsapp; const mail = u.email || c.email;
+    const msg = encodeURIComponent("Olá! Estou enviando fotos para a galeria do site do CEIAS. Evento: ____ · Data: ____ · Quem aparece: ____");
+    const cards = [
+      { on: !!u.formUrl, icon: "file", title: "Formulário de envio", text: u.formUrl ? "Preencha o formulário e anexe as fotos. É o jeito mais fácil." : "Formulário ainda não configurado pela escola.", btn: u.formUrl ? `<a class="btn btn--primary btn--sm" href="${u.formUrl}" target="_blank" rel="noopener">Abrir formulário</a>` : "" },
+      { on: !!wa, icon: "whatsapp", title: "WhatsApp", text: wa ? "Envie as fotos com o nome do evento e a data." : "Número de WhatsApp ainda não configurado.", btn: wa ? `<a class="btn btn--primary btn--sm" href="https://wa.me/${wa}?text=${msg}" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>` : "" },
+      { on: !!mail, icon: "mail", title: "E-mail", text: mail ? `Envie para ${mail} com o assunto “Fotos para o site”.` : "E-mail ainda não configurado.", btn: mail ? `<a class="btn btn--primary btn--sm" href="mailto:${mail}?subject=${encodeURIComponent("Fotos para o site do CEIAS")}&body=${msg}">Enviar por e-mail</a>` : "" },
+      { on: !!u.driveUrl, icon: "download", title: "Pasta compartilhada", text: u.driveUrl ? "Solte as fotos na pasta do colégio." : "Pasta compartilhada ainda não configurada.", btn: u.driveUrl ? `<a class="btn btn--primary btn--sm" href="${u.driveUrl}" target="_blank" rel="noopener">Abrir pasta</a>` : "" },
+      { on: true, icon: "users", title: "Entregar na escola", text: "Leve as fotos em um pendrive ou mostre no celular para o professor de Educação Física ou para a secretaria.", btn: `<a class="btn btn--outline btn--sm" href="secretaria.html">Horários da secretaria</a>` },
+    ];
+    ch.innerHTML = cards.map(k => `<div class="upload-channel${k.on ? "" : " upload-channel--off"}">${ICONS[k.icon]}<h3>${k.title}</h3><p>${escapeHtml(k.text)}</p>${k.btn}</div>`).join("");
+
+    const dz = $("#dropzone"), input = $("#fileInput"), prev = $("#previews"), dl = $("#downloadAll");
+    if (!dz) return;
+    const files = [];
+    const resize = file => new Promise(res => {
+      const img = new Image(); const url = URL.createObjectURL(file);
+      img.onload = () => { const max = 1600; const sc = Math.min(1, max / Math.max(img.width, img.height)); const cv = document.createElement("canvas"); cv.width = Math.round(img.width * sc); cv.height = Math.round(img.height * sc); cv.getContext("2d").drawImage(img, 0, 0, cv.width, cv.height); cv.toBlob(b => { URL.revokeObjectURL(url); res({ blob: b, name: file.name.replace(/\.[^.]+$/, "") + ".jpg", url: URL.createObjectURL(b), orig: file.size }); }, "image/jpeg", 0.82); };
+      img.onerror = () => res(null); img.src = url;
+    });
+    const paint = () => { prev.innerHTML = files.map((f, i) => `<div class="preview"><img src="${f.url}" alt=""><span>${escapeHtml(f.name)} · ${(f.blob.size / 1024).toFixed(0)} KB (antes ${(f.orig / 1024 / 1024).toFixed(1)} MB)</span><button type="button" data-rm="${i}" aria-label="Remover">×</button></div>`).join(""); dl.hidden = !files.length; };
+    const add = async list => { for (const f of Array.from(list)) { if (!f.type.startsWith("image/")) continue; const r = await resize(f); r && files.push(r); } paint(); toast(`${files.length} foto(s) pronta(s)`); };
+    input.addEventListener("change", () => add(input.files));
+    ["dragenter", "dragover"].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add("is-over"); }));
+    ["dragleave", "drop"].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove("is-over"); }));
+    dz.addEventListener("drop", e => add(e.dataTransfer.files));
+    prev.addEventListener("click", e => { const b = e.target.closest("[data-rm]"); if (b) { files.splice(+b.dataset.rm, 1); paint(); } });
+    $("#downloadBtn").addEventListener("click", () => { files.forEach((f, i) => setTimeout(() => { const a = document.createElement("a"); a.href = f.url; a.download = f.name; a.click(); }, i * 300)); });
+    $("#clearBtn").addEventListener("click", () => { files.length = 0; paint(); });
+  }
+
   /* ------------------------------------------------------------------
      Inicialização
      ------------------------------------------------------------------ */
@@ -1275,6 +1461,15 @@
     initLgpd();
     initCopy();
     initProgress();
+    initBackButtons();
+    initFaq();
+    initTransport();
+    initSchedule();
+    initMenu();
+    initCommunity();
+    initSiteMap();
+    initGames();
+    initUpload();
     initHeroSlider();
     initLightbox();
     initNewsHome();

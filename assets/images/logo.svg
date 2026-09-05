@@ -4,12 +4,12 @@
     <path id="swL" d="M12 226 Q 100 254 198 322"/>
     <path id="swR" d="M222 322 Q 320 254 408 226"/>
     <style>
-      .l { font-family: "Arial Black", "Arial Narrow", Impact, Arial, Helvetica, sans-serif; font-weight: 900; font-style: italic; fill: #1b1c56; }
-      .s { font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-style: italic; fill: #1b1c56; font-size: 11px; }
-      .m { font-family: "Arial Narrow", Arial, Helvetica, sans-serif; font-weight: 700; fill: #1b1c56; font-size: 27px; letter-spacing: -0.5px; }
+      .l { font-family: "Arial Black", "Arial Narrow", Impact, Arial, Helvetica, sans-serif; font-weight: 900; font-style: italic; fill: #3336a8; }
+      .s { font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-style: italic; fill: #3336a8; font-size: 11px; }
+      .m { font-family: "Arial Narrow", Arial, Helvetica, sans-serif; font-weight: 700; fill: #3336a8; font-size: 27px; letter-spacing: -0.5px; }
     </style>
   </defs>
-  <g fill="#f2c318">
+  <g fill="#f5d022">
     <path transform="translate(66 78) scale(1.2)" d="M0-11 3.2-3.6 11.3-3.4 4.9 1.7 7.1 9.5 0 5.2-7.1 9.5-4.9 1.7-11.3-3.4-3.2-3.6Z"/>
     <path transform="translate(124 60) scale(1.2)" d="M0-11 3.2-3.6 11.3-3.4 4.9 1.7 7.1 9.5 0 5.2-7.1 9.5-4.9 1.7-11.3-3.4-3.2-3.6Z"/>
     <path transform="translate(182 50) scale(1.2)" d="M0-11 3.2-3.6 11.3-3.4 4.9 1.7 7.1 9.5 0 5.2-7.1 9.5-4.9 1.7-11.3-3.4-3.2-3.6Z"/>
@@ -17,10 +17,10 @@
     <path transform="translate(296 60) scale(1.2)" d="M0-11 3.2-3.6 11.3-3.4 4.9 1.7 7.1 9.5 0 5.2-7.1 9.5-4.9 1.7-11.3-3.4-3.2-3.6Z"/>
     <path transform="translate(354 78) scale(1.2)" d="M0-11 3.2-3.6 11.3-3.4 4.9 1.7 7.1 9.5 0 5.2-7.1 9.5-4.9 1.7-11.3-3.4-3.2-3.6Z"/>
   </g>
-  <path fill="#b3202b" transform="translate(210 26) scale(1.7)" d="M0-11 3.2-3.6 11.3-3.4 4.9 1.7 7.1 9.5 0 5.2-7.1 9.5-4.9 1.7-11.3-3.4-3.2-3.6Z"/>
+  <path fill="#d43a3a" transform="translate(210 26) scale(1.7)" d="M0-11 3.2-3.6 11.3-3.4 4.9 1.7 7.1 9.5 0 5.2-7.1 9.5-4.9 1.7-11.3-3.4-3.2-3.6Z"/>
   <text class="l" font-size="158" textLength="404" lengthAdjust="spacingAndGlyphs"><textPath href="#arc" startOffset="50%" text-anchor="middle">C.E.I.A.S.</textPath></text>
-  <path d="M8 236 Q 100 258 192 326 L 200 318 Q 110 248 12 224 Z" fill="#b3202b"/>
-  <path d="M412 236 Q 320 258 228 326 L 220 318 Q 310 248 408 224 Z" fill="#b3202b"/>
+  <path d="M8 236 Q 100 258 192 326 L 200 318 Q 110 248 12 224 Z" fill="#d43a3a"/>
+  <path d="M412 236 Q 320 258 228 326 L 220 318 Q 310 248 408 224 Z" fill="#d43a3a"/>
   <text class="s" textLength="212" lengthAdjust="spacingAndGlyphs"><textPath href="#swL" startOffset="2%">Col. Est. do Campo Ir. Ambrósia Sabatovich</textPath></text>
   <text class="s" textLength="170" lengthAdjust="spacingAndGlyphs"><textPath href="#swR" startOffset="12%">Ensino Fundamental e Médio</textPath></text>
   <text class="m" x="210" y="352" text-anchor="middle">“Educando para a Comunidade”</text>

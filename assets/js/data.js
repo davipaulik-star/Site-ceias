@@ -429,5 +429,118 @@ window.CEIAS_DATA = {
     { text: "O colégio é parte da vida da Colônia. Meus filhos estudam aqui e sinto que a escola conhece e respeita a nossa realidade.", author: "Família da comunidade", role: "Responsável por estudante do 7º ano" },
     { text: "Aprender sobre a Irmã Ambrósia e sobre a história da nossa comunidade me fez ter mais orgulho de onde eu venho.", author: "Estudante", role: "3º ano do Ensino Médio" },
     { text: "Trabalhar em uma Escola do Campo é ensinar a partir do que os estudantes vivem. Aqui o conhecimento tem raiz.", author: "Professor(a)", role: "Equipe docente" }
+  ],
+
+  /* ------------------------------------------------------------------
+     TRANSPORTE ESCOLAR — linhas e horários (MODELO: substitua pelos dados oficiais)
+     ------------------------------------------------------------------ */
+  transport: [
+    { line: "Linha 01 — Colônia Marcelino Centro", route: "Igreja → Capela São Josafat → Estrada Moletta → CEIAS", morning: "6h50 / 12h05", afternoon: "12h20 / 17h35", night: "18h05 / 22h10", contact: "Prefeitura de SJP — Transporte Escolar" },
+    { line: "Linha 02 — Contenda / Roseira", route: "Roseira → Contenda → Estrada Moletta → CEIAS", morning: "6h40 / 12h10", afternoon: "12h15 / 17h40", night: "—", contact: "Prefeitura de SJP — Transporte Escolar" },
+    { line: "Linha 03 — Marcelino Alto", route: "Marcelino Alto → Colônia Murici → CEIAS", morning: "6h45 / 12h00", afternoon: "12h25 / 17h30", night: "18h00 / 22h15", contact: "Prefeitura de SJP — Transporte Escolar" },
+    { line: "Linha 04 — Campo Largo da Roseira", route: "Campo Largo da Roseira → Estrada Moletta → CEIAS", morning: "6h35 / 12h15", afternoon: "12h10 / 17h45", night: "—", contact: "Prefeitura de SJP — Transporte Escolar" }
+  ],
+
+  /* ------------------------------------------------------------------
+     HORÁRIOS DAS TURMAS (MODELO — edite conforme a grade oficial)
+     Cada turma tem 5 dias com as aulas na ordem dos períodos.
+     ------------------------------------------------------------------ */
+  schedule: {
+    periods: { manha: ["7h30–8h20", "8h20–9h10", "9h10–10h00", "10h20–11h10", "11h10–11h50"], tarde: ["13h00–13h50", "13h50–14h40", "14h40–15h30", "15h50–16h40", "16h40–17h20"], noite: ["18h30–19h15", "19h15–20h00", "20h00–20h45", "21h00–21h35", "21h35–22h00"] },
+    classes: [
+      { turma: "6º ano A", shift: "manha", days: { Segunda: ["Português", "Português", "Matemática", "Ciências", "Arte"], Terça: ["Matemática", "Matemática", "História", "Geografia", "Inglês"], Quarta: ["Ciências", "Ciências", "Português", "Ed. Física", "Ed. Física"], Quinta: ["Geografia", "História", "Matemática", "Português", "Ens. Religioso"], Sexta: ["Inglês", "Arte", "Matemática", "Ciências", "Português"] } },
+      { turma: "7º ano A", shift: "manha", days: { Segunda: ["Matemática", "Matemática", "Português", "História", "Inglês"], Terça: ["Português", "Português", "Ciências", "Arte", "Geografia"], Quarta: ["História", "Geografia", "Matemática", "Ed. Física", "Ed. Física"], Quinta: ["Ciências", "Ciências", "Português", "Matemática", "Ens. Religioso"], Sexta: ["Arte", "Inglês", "Ciências", "Português", "Matemática"] } },
+      { turma: "8º ano A", shift: "tarde", days: { Segunda: ["Português", "Matemática", "Matemática", "História", "Arte"], Terça: ["Ciências", "Ciências", "Português", "Geografia", "Inglês"], Quarta: ["Matemática", "Português", "História", "Ed. Física", "Ed. Física"], Quinta: ["Geografia", "Inglês", "Ciências", "Matemática", "Ens. Religioso"], Sexta: ["Português", "Português", "Arte", "Ciências", "Matemática"] } },
+      { turma: "9º ano A", shift: "tarde", days: { Segunda: ["Matemática", "Matemática", "Português", "Ciências", "História"], Terça: ["Português", "Português", "Geografia", "Inglês", "Arte"], Quarta: ["Ciências", "História", "Matemática", "Ed. Física", "Ed. Física"], Quinta: ["Inglês", "Geografia", "Português", "Ciências", "Ens. Religioso"], Sexta: ["Arte", "Matemática", "Português", "Ciências", "Geografia"] } },
+      { turma: "1º ano EM", shift: "manha", days: { Segunda: ["Matemática", "Matemática", "Português", "Física", "Projeto de Vida"], Terça: ["Química", "Biologia", "História", "Geografia", "Inglês"], Quarta: ["Português", "Português", "Sociologia", "Ed. Física", "Ed. Física"], Quinta: ["Física", "Química", "Matemática", "Filosofia", "Arte"], Sexta: ["Biologia", "Geografia", "História", "Português", "Itinerário formativo"] } },
+      { turma: "2º ano EM", shift: "manha", days: { Segunda: ["Português", "Português", "Matemática", "Química", "Inglês"], Terça: ["Física", "Biologia", "Geografia", "História", "Projeto de Vida"], Quarta: ["Matemática", "Matemática", "Filosofia", "Ed. Física", "Ed. Física"], Quinta: ["Química", "Física", "Português", "Sociologia", "Arte"], Sexta: ["Biologia", "História", "Geografia", "Matemática", "Itinerário formativo"] } },
+      { turma: "3º ano EM", shift: "manha", days: { Segunda: ["Matemática", "Física", "Português", "Português", "Projeto de Vida"], Terça: ["Química", "Química", "Biologia", "História", "Geografia"], Quarta: ["Português", "Matemática", "Inglês", "Ed. Física", "Ed. Física"], Quinta: ["Física", "Biologia", "Sociologia", "Filosofia", "Arte"], Sexta: ["Matemática", "Geografia", "História", "Português", "Itinerário formativo"] } },
+      { turma: "EJA — Fundamental", shift: "noite", days: { Segunda: ["Português", "Português", "Matemática", "Matemática", "Ciências"], Terça: ["História", "Geografia", "Português", "Arte", "Inglês"], Quarta: ["Matemática", "Ciências", "Português", "Geografia", "Ed. Física"], Quinta: ["Português", "Matemática", "História", "Ciências", "Inglês"], Sexta: ["Arte", "Matemática", "Português", "Geografia", "História"] } }
+    ]
+  },
+
+  /* ------------------------------------------------------------------
+     CARDÁPIO DA SEMANA (MODELO — atualize conforme o cardápio da nutricionista)
+     ------------------------------------------------------------------ */
+  menu: [
+    { day: "Segunda", meal: "Arroz, feijão, frango ensopado, salada de alface e tomate", extra: "Suco de fruta" },
+    { day: "Terça", meal: "Macarrão à bolonhesa, salada de repolho", extra: "Fruta da época" },
+    { day: "Quarta", meal: "Arroz, feijão, carne moída com legumes, salada de beterraba", extra: "Suco de fruta" },
+    { day: "Quinta", meal: "Sopa de legumes com carne e macarrão, pão", extra: "Fruta da época" },
+    { day: "Sexta", meal: "Arroz, feijão, omelete, salada de cenoura e pepino", extra: "Suco de fruta" }
+  ],
+
+  /* ------------------------------------------------------------------
+     PERGUNTAS FREQUENTES — categorias: matricula | documentos | rotina | transporte | ensino | tecnologia
+     ------------------------------------------------------------------ */
+  faq: [
+    { cat: "matricula", q: "Como faço a matrícula ou rematrícula?", a: "A matrícula e a rematrícula são feitas na secretaria do colégio, no período definido pelo calendário da SEED/PR (normalmente entre outubro e dezembro para o ano seguinte). Traga RG ou certidão de nascimento do estudante, comprovante de residência atualizado, documento do responsável e, para estudantes novos, o histórico escolar ou declaração de transferência." },
+    { cat: "matricula", q: "Quais documentos são necessários para transferência?", a: "Solicite na escola de origem a declaração de transferência e o histórico escolar. Depois, procure a secretaria do CEIAS com esses documentos, RG ou certidão do estudante, comprovante de residência e documento do responsável." },
+    { cat: "documentos", q: "Como solicitar uma declaração de matrícula ou histórico escolar?", a: "Faça o pedido na secretaria, pessoalmente ou pelo telefone do colégio, informando o nome completo do estudante e a turma. As declarações ficam prontas em até 3 dias úteis; históricos podem levar mais tempo." },
+    { cat: "documentos", q: "Como justificar uma falta?", a: "Entregue a justificativa por escrito, assinada pelo responsável (ou o atestado médico), na secretaria ou ao professor regente, em até 3 dias após o retorno às aulas." },
+    { cat: "rotina", q: "Quais são os horários de aula?", a: "Manhã: 7h30 às 11h50. Tarde: 13h às 17h20. Noite (EJA): 18h30 às 22h. Confira a grade completa da sua turma na página Horários das turmas." },
+    { cat: "rotina", q: "O uso do uniforme é obrigatório?", a: "O uniforme (camiseta azul-claro com o logotipo do colégio e calça azul-marinho) é recomendado para a identificação e a segurança dos estudantes. Veja a página Vida Escolar para detalhes e onde adquirir." },
+    { cat: "rotina", q: "A escola oferece alimentação?", a: "Sim. O refeitório serve refeições diárias com cardápio elaborado por nutricionista, com produtos da agricultura familiar (PNAE). Veja o cardápio da semana na página Alimentação escolar." },
+    { cat: "transporte", q: "Como funciona o transporte escolar?", a: "O transporte escolar rural é oferecido em parceria com a Prefeitura de São José dos Pinhais. Faça o cadastro na secretaria e consulte as linhas e horários na página Transporte escolar." },
+    { cat: "ensino", q: "Quais etapas de ensino o colégio oferece?", a: "Anos Finais do Ensino Fundamental (6º ao 9º ano), Ensino Médio (1º ao 3º ano), Educação de Jovens e Adultos (EJA) e Classe Especial." },
+    { cat: "ensino", q: "O que significa ser uma Escola do Campo?", a: "Significa que o projeto pedagógico parte da realidade rural da Colônia Marcelino, valorizando a cultura, o trabalho e os saberes das famílias agricultoras. Saiba mais na página Educação do Campo." },
+    { cat: "tecnologia", q: "Como acesso o boletim e a frequência do estudante?", a: "Pelo aplicativo/portal Escola Digital Paraná ou pela Área do Aluno da SEED/PR. Os links estão na Área do Aluno deste site. Em caso de dúvida, a secretaria ajuda com o primeiro acesso." },
+    { cat: "tecnologia", q: "Como envio fotos dos Jogos Escolares para o site?", a: "Use a página Enviar fotos: você pode mandar pelo formulário, por WhatsApp ou por e-mail. A equipe do colégio revisa e publica na galeria." }
+  ],
+
+  /* ------------------------------------------------------------------
+     JOGOS ESCOLARES — modalidades, equipes e resultados (edite livremente)
+     ------------------------------------------------------------------ */
+  games: {
+    season: "Jogos Escolares do Paraná 2026",
+    modalities: [
+      { name: "Futsal", icon: "trophy", categories: "Masculino e feminino · 12 a 14 e 15 a 17 anos", coach: "Prof. de Educação Física" },
+      { name: "Voleibol", icon: "trophy", categories: "Masculino e feminino · 15 a 17 anos", coach: "Prof. de Educação Física" },
+      { name: "Handebol", icon: "trophy", categories: "Misto · 12 a 14 anos", coach: "Prof. de Educação Física" },
+      { name: "Atletismo", icon: "sun", categories: "Provas de pista e campo · todas as idades", coach: "Prof. de Educação Física" },
+      { name: "Xadrez", icon: "lightbulb", categories: "Individual · todas as idades", coach: "Prof. de Matemática" },
+      { name: "Tênis de mesa", icon: "star", categories: "Individual e duplas", coach: "Prof. de Educação Física" }
+    ],
+    results: [
+      { date: "2026-08-14", modality: "Futsal masculino", home: "CEIAS", away: "C.E. Costa Viana", score: "4 × 2", place: "Ginásio Municipal — SJP", phase: "Fase municipal", outcome: "win" },
+      { date: "2026-08-14", modality: "Vôlei feminino", home: "CEIAS", away: "C.E. Silveira da Motta", score: "2 × 1", place: "Ginásio Municipal — SJP", phase: "Fase municipal", outcome: "win" },
+      { date: "2026-08-15", modality: "Futsal feminino", home: "CEIAS", away: "C.E. Eunice Borges", score: "1 × 3", place: "Ginásio Municipal — SJP", phase: "Fase municipal", outcome: "loss" },
+      { date: "2026-08-15", modality: "Atletismo — 100 m", home: "CEIAS", away: "Final municipal", score: "2º lugar", place: "Pista de atletismo — SJP", phase: "Fase municipal", outcome: "win" }
+    ],
+    schedule: [
+      { date: "2026-09-22", time: "8h", modality: "Futsal masculino", opponent: "A definir", place: "Ginásio Municipal — SJP", phase: "Fase regional" },
+      { date: "2026-09-22", time: "10h", modality: "Vôlei feminino", opponent: "A definir", place: "Ginásio Municipal — SJP", phase: "Fase regional" },
+      { date: "2026-09-23", time: "9h", modality: "Atletismo", opponent: "Provas finais", place: "Pista de atletismo — SJP", phase: "Fase regional" }
+    ],
+    rules: [
+      "Para participar, o estudante deve estar matriculado, com frequência regular e autorização assinada pelo responsável.",
+      "Os treinos acontecem no contraturno, na quadra coberta, conforme cronograma do professor de Educação Física.",
+      "Nos dias de competição, o transporte é organizado pela escola; a saída é do pátio do colégio no horário informado no mural.",
+      "Uniforme de jogo: camiseta oficial do colégio e calção/legging azul-marinho. Leve garrafa de água e documento com foto."
+    ]
+  },
+
+  /* ------------------------------------------------------------------
+     COMUNIDADE ESCOLAR — órgãos colegiados e representação
+     ------------------------------------------------------------------ */
+  community: [
+    { name: "APMF", full: "Associação de Pais, Mestres e Funcionários", desc: "Entidade que reúne famílias, professores e funcionários para apoiar a escola, administrar recursos de programas e organizar festas e melhorias. CNPJ 03.233.821/0001-66.", icon: "users", how: "Reuniões abertas à comunidade. Participe: procure a direção para saber as datas." },
+    { name: "Conselho Escolar", full: "Órgão colegiado de gestão democrática", desc: "Composto por direção, professores, funcionários, estudantes e famílias. Delibera sobre o projeto pedagógico, o calendário e a aplicação de recursos.", icon: "handshake", how: "Eleições periódicas conforme regulamento da SEED/PR." },
+    { name: "Grêmio Estudantil", full: "Representação dos estudantes", desc: "Organiza a voz dos estudantes: campeonatos, eventos culturais, campanhas e diálogo com a direção.", icon: "star", how: "Chapas formadas pelos próprios estudantes, com eleição anual." },
+    { name: "Vereadores Mirins", full: "Programa da Câmara Municipal de SJP", desc: "Estudantes do colégio já foram eleitos vereadores mirins, participando de sessões na Câmara Municipal e aprendendo sobre cidadania e política.", icon: "school", how: "Seleção por meio de projeto pedagógico com as turmas dos Anos Finais." }
+  ],
+
+  /* ------------------------------------------------------------------
+     LINKS ÚTEIS — portais oficiais
+     ------------------------------------------------------------------ */
+  usefulLinks: [
+    { title: "Secretaria de Estado da Educação (SEED/PR)", url: "https://www.educacao.pr.gov.br/", desc: "Portal oficial da rede estadual" },
+    { title: "Escola Digital Paraná", url: "https://www.escoladigital.pr.gov.br/", desc: "Portal e aplicativo do estudante" },
+    { title: "Área do Aluno SEED", url: "https://www.areadoaluno.seed.pr.gov.br/", desc: "Boletim e frequência" },
+    { title: "NRE Área Metropolitana Sul", url: "https://nreams.educacao.pr.gov.br/", desc: "Núcleo Regional de Educação" },
+    { title: "Prefeitura de São José dos Pinhais", url: "https://www.sjp.pr.gov.br/", desc: "Transporte escolar e serviços municipais" },
+    { title: "Jogos Escolares do Paraná", url: "https://www.jogosescolares.pr.gov.br/", desc: "Regulamentos e resultados oficiais" },
+    { title: "ENEM — INEP", url: "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem", desc: "Inscrições e provas" },
+    { title: "Consulta Escolas — SEED", url: "https://www.consultaescolas.pr.gov.br/", desc: "Dados oficiais da escola" }
   ]
 };
