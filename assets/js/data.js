@@ -361,6 +361,8 @@ window.CEIAS_DATA = {
                esportes | projetos | cultura. type: "image" | "video"
      ------------------------------------------------------------------ */
   gallery: [
+    { type: "image", category: "alunos", src: "assets/images/uniforme.jpg", caption: "Uniforme oficial do CEIAS: camiseta azul-claro e calça azul-marinho" },
+    { type: "image", category: "colegio", src: "assets/images/logo-uniforme.jpg", caption: "Logotipo do C.E.I.A.S. estampado no uniforme" },
     { type: "image", category: "colegio", src: "assets/images/placeholders/colegio-fachada.svg", caption: "Fachada do Colégio Estadual do Campo Irmã Ambrósia Sabatovich" },
     { type: "image", category: "colegio", src: "assets/images/placeholders/colegio-patio.svg", caption: "Pátio central do colégio" },
     { type: "image", category: "colegio", src: "assets/images/placeholders/quadra.svg", caption: "Quadra coberta" },

@@ -1266,3 +1266,20 @@ body.has-alert .notfound { padding-top: 3rem; }
 .admin__help ol { padding-left: 1.1rem; }
 @media (max-width: 1000px) { .admin__layout { grid-template-columns: 1fr; } .admin__form { position: static; } .admin__form .form-grid { grid-template-columns: 1fr; } }
 [hidden] { display: none !important; }
+
+/* ---------- Uniforme escolar ---------- */
+:root { --uniform: #5faee8; --uniform-100: #e4f2fc; }
+.uniform { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.uniform__photo { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border-bottom: 6px solid var(--uniform); }
+.uniform__photo img { width: 100%; aspect-ratio: 4 / 4.4; object-fit: cover; }
+.uniform__photo figcaption { position: absolute; left: 1rem; bottom: 1rem; background: rgba(27,28,86,0.9); color: var(--white); padding: 0.4rem 0.9rem; border-radius: var(--radius-pill); font-size: var(--fs-xs); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; }
+.uniform__items { list-style: none; padding: 0; margin: 1.2rem 0; display: grid; gap: 0.8rem; }
+.uniform__items li { display: grid; grid-template-columns: 44px 1fr; gap: 0.9rem; align-items: start; background: var(--white); border-radius: var(--radius); padding: 0.9rem 1rem; box-shadow: var(--shadow-sm); }
+.uniform__swatch { width: 44px; height: 44px; border-radius: 12px; border: 3px solid var(--white); box-shadow: 0 0 0 1px var(--gray-300); }
+.uniform__items strong { display: block; font-family: var(--font-heading); font-size: var(--fs-sm); color: var(--blue-800); }
+.uniform__items span { font-size: var(--fs-sm); color: var(--text-muted); }
+.logo-print { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: center; margin-top: 1rem; }
+.logo-print img { border-radius: 50%; box-shadow: var(--shadow); width: 100%; aspect-ratio: 1; object-fit: cover; }
+.logo-print small { display: block; text-align: center; margin-top: 0.5rem; color: var(--text-muted); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em; }
+.brand-card img.brand-card__print { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow-sm); }
+@media (max-width: 900px) { .uniform { grid-template-columns: 1fr; } }
