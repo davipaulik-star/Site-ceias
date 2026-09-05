@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="Notícia 5">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f3d2e"/><stop offset="1" stop-color="#2e8b57"/></linearGradient></defs>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b2a4a"/><stop offset="1" stop-color="#2470c8"/></linearGradient></defs>
 <rect width="1200" height="800" fill="url(#g)"/><circle cx="400" cy="730" r="99" fill="#ffffff" opacity="0.06"/><circle cx="593" cy="259" r="191" fill="#ffffff" opacity="0.06"/><circle cx="133" cy="402" r="195" fill="#ffffff" opacity="0.06"/><circle cx="156" cy="369" r="332" fill="#ffffff" opacity="0.06"/><circle cx="876" cy="773" r="166" fill="#ffffff" opacity="0.06"/><circle cx="98" cy="287" r="122" fill="#ffffff" opacity="0.06"/><path d="M0 624 C 240 496, 420 720, 660 592 S 1020 528, 1200 640 L 1200 800 L 0 800 Z" fill="#000" opacity="0.12"/>
 <g font-family="Montserrat, Arial, sans-serif" text-anchor="end" fill="#ffffff">
 <text x="1164" y="752" font-size="21" font-weight="700" opacity="0.55">Notícia 5</text>

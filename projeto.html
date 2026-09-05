@@ -7,7 +7,7 @@
   <meta name="description" content="Detalhes do projeto desenvolvido no Colégio Estadual do Campo Irmã Ambrósia Sabatovich.">
   <meta name="keywords" content="CEIAS, Colégio Estadual do Campo Irmã Ambrósia Sabatovich, Colônia Marcelino, São José dos Pinhais, escola do campo, ensino fundamental, ensino médio, EJA, Irmã Ambrósia, educação do campo, Paraná">
   <meta name="author" content="Colégio Estadual do Campo Irmã Ambrósia Sabatovich">
-  <meta name="theme-color" content="#0f3d2e">
+  <meta name="theme-color" content="#0b2a4a">
   <link rel="canonical" href="projeto.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CEIAS — Colégio Estadual do Campo Irmã Ambrósia Sabatovich">
@@ -19,6 +19,9 @@
   <meta name="twitter:title" content="Projeto | CEIAS">
   <meta name="twitter:description" content="Detalhes do projeto desenvolvido no Colégio Estadual do Campo Irmã Ambrósia Sabatovich.">
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/images/logo.svg">
+  <link rel="manifest" href="manifest.json">
+  <script>try{var f=localStorage.getItem("ceias-font");if(f)document.documentElement.classList.add(f);}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -45,13 +48,33 @@
 <body class="">
   <a class="skip-link" href="#main">Ir para o conteúdo principal</a>
 
+  <div class="loader" id="loader" aria-hidden="true">
+    <img src="assets/images/logo-white.svg" alt="">
+    <span>CEIAS</span>
+    <div class="loader__bar"></div>
+  </div>
+
   <header class="header" id="header">
+    <div class="header__top">
+      <div class="container">
+        <div class="topbar__info" id="topbarInfo"></div>
+        <div class="topbar__tools" role="group" aria-label="Ferramentas de acessibilidade">
+          <button type="button" class="topbar__btn" data-a11y="font-down" aria-label="Diminuir tamanho da fonte" title="Diminuir fonte">A-</button>
+          <button type="button" class="topbar__btn" data-a11y="font-up" aria-label="Aumentar tamanho da fonte" title="Aumentar fonte">A+</button>
+          <button type="button" class="topbar__btn" data-a11y="contrast" aria-pressed="false" aria-label="Alternar alto contraste" title="Alto contraste"><span data-icon="eye"></span>Contraste</button>
+          <button type="button" class="topbar__btn" data-a11y="libras" aria-label="Acessar tradutor de Libras" title="Libras (VLibras)"><span data-icon="accessibility"></span>Libras</button>
+          <span class="topbar__sep" aria-hidden="true"></span>
+          <div class="social-links" data-social-links></div>
+        </div>
+      </div>
+    </div>
     <div class="container header__inner">
       <a class="brand" href="index.html" aria-label="CEIAS — Página inicial">
-        <img class="brand__logo" src="assets/images/logo.svg" alt="" width="52" height="52">
+        <img class="brand__logo" src="assets/images/logo.svg" alt="Brasão do Colégio Estadual do Campo Irmã Ambrósia Sabatovich" width="62" height="72">
         <span class="brand__text">
           <span class="brand__sigla">CEIAS</span>
-          <span class="brand__name">Colégio Estadual do Campo Irmã Ambrósia Sabatovich</span>
+          <span class="brand__name">Colégio Estadual do Campo<br>Irmã Ambrósia Sabatovich</span>
+          <span class="brand__tag">Escola do Campo · Colônia Marcelino</span>
         </span>
       </a>
       <nav class="nav" id="nav" aria-label="Navegação principal">
@@ -67,8 +90,15 @@
           <li class="nav__item"><a class="nav__link" href="contato.html">CONTATO</a></li>
         </ul>
         <a class="btn btn--gold nav__mobile-cta" href="area-do-aluno.html">Área do Aluno</a>
+        <div class="topbar__tools nav__mobile-tools" role="group" aria-label="Acessibilidade" style="margin-top:1rem;justify-content:center">
+          <button type="button" class="topbar__btn" data-a11y="font-down" aria-label="Diminuir fonte">A-</button>
+          <button type="button" class="topbar__btn" data-a11y="font-up" aria-label="Aumentar fonte">A+</button>
+          <button type="button" class="topbar__btn" data-a11y="contrast" aria-pressed="false">Contraste</button>
+          <button type="button" class="topbar__btn" data-a11y="libras">Libras</button>
+        </div>
       </nav>
       <div class="header__cta">
+        <button type="button" class="header__search" data-search-open aria-label="Buscar no site" title="Buscar (Ctrl+K)"><span data-icon="search"></span></button>
         <a class="btn btn--gold btn--sm" href="area-do-aluno.html"><span data-icon="user"></span>Área do Aluno</a>
         <button class="nav-toggle" id="navToggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="Abrir menu">
           <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -96,11 +126,12 @@
   </main>
 
   <footer class="footer">
+    <div class="watermark" aria-hidden="true"><img src="assets/images/logo-white.svg" alt=""></div>
     <div class="container">
       <div class="footer__grid">
         <div>
           <a class="footer__brand" href="index.html">
-            <img src="assets/images/logo.svg" alt="" width="56" height="56">
+            <img src="assets/images/logo-white.svg" alt="Brasão do CEIAS" width="72" height="84">
             <span><strong>CEIAS</strong><span>Colégio Estadual do Campo<br>Irmã Ambrósia Sabatovich</span></span>
           </a>
           <p class="footer__desc">Escola do Campo da rede estadual do Paraná, localizada na Colônia Marcelino, em São José dos Pinhais. Educação que transforma, comunidade que acolhe e história que permanece.</p>
@@ -153,6 +184,11 @@
 
   <button class="back-top" id="backTop" type="button" aria-label="Voltar ao topo"></button>
 
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer onload="new window.VLibras.Widget('https://vlibras.gov.br/app')"></script>
   <script src="assets/js/config.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/script.js"></script>

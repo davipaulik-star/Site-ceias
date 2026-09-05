@@ -74,9 +74,9 @@ window.CEIAS_CONFIG = {
     computers: 36,
     tablets: 30,
     distribution: [
-      { label: "Anos Finais (6º ao 9º ano)", value: 305, color: "#1b5e3f" },
-      { label: "Ensino Médio", value: 169, color: "#c9a227" },
-      { label: "EJA / Classe Especial", value: 31, color: "#1f4e79" },
+      { label: "Anos Finais (6º ao 9º ano)", value: 305, color: "#14477f" },
+      { label: "Ensino Médio", value: 169, color: "#d4a628" },
+      { label: "EJA / Classe Especial", value: 31, color: "#2aa3d0" },
     ],
   },
 };

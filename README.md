@@ -1,7 +1,31 @@
 # Site oficial — Colégio Estadual do Campo Irmã Ambrósia Sabatovich (CEIAS)
 
 Portal institucional estático (HTML5, CSS3 e JavaScript puro), sem frameworks, sem banco de dados e sem etapa de build.
+Identidade visual em **azul institucional** com detalhes dourados, a partir do brasão do colégio.
 Basta abrir `index.html` no navegador ou publicar a pasta em qualquer hospedagem estática (GitHub Pages, Netlify, Vercel, servidor da escola).
+
+## Logo / brasão
+
+O brasão aparece no cabeçalho, no banner inicial, na seção "Quem somos", na página "Sobre o colégio" (seção Nosso brasão),
+no rodapé, no loader de abertura, na página 404, como marca d'água nas seções azuis e no favicon.
+
+Os arquivos atuais (`assets/images/logo.svg` e `assets/images/logo-white.svg`) são um emblema provisório desenhado em azul.
+**Para usar o brasão oficial, substitua esses dois arquivos mantendo os mesmos nomes** (SVG ou PNG com fundo transparente, mínimo 512 px).
+Se usar PNG, troque a extensão `.svg` por `.png` nos arquivos HTML e em `assets/js/script.js` (marca d'água). Veja `assets/images/README.md`.
+
+## Funcionalidades
+
+- Cabeçalho com barra superior (endereço, horário, redes sociais) que recolhe ao rolar; menu com dropdowns; menu lateral no celular.
+- **Busca global** (botão de lupa ou `Ctrl+K`) em páginas, notícias, projetos, eventos, documentos, equipe e infraestrutura.
+- **Acessibilidade**: aumentar/diminuir fonte, alto contraste (preferências salvas no navegador), tradutor **VLibras**, navegação por teclado, foco visível, `prefers-reduced-motion`.
+- Banner com slider (setas, indicadores, swipe, pausa ao passar o mouse) e ticker de avisos e próximos eventos.
+- Números com contagem animada, gráficos de distribuição, avaliação da comunidade.
+- Notícias com destaque, filtros, busca e "carregar mais"; páginas de detalhe com compartilhamento.
+- Eventos com contagem regressiva, calendário mensal, modal com **Google Agenda**, **arquivo .ics** e compartilhamento por WhatsApp; link direto `eventos.html?evento=ID`.
+- Galeria com lightbox (teclado e toque), vídeos do YouTube em modal, infraestrutura com ampliação.
+- Documentos com filtros e busca; Área do Aluno com abas; formulário de contato com validação e máscara de telefone.
+- Loader de abertura com o brasão, barra de progresso de leitura, transição entre páginas, botão voltar ao topo, aviso de privacidade (LGPD), toasts.
+- SEO: metadados, Open Graph, schema.org, `sitemap.xml`, `robots.txt`, `manifest.json`, página `404.html`.
 
 ## Estrutura
 

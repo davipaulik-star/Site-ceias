@@ -145,7 +145,7 @@
     $$(".nav__item--has-dropdown").forEach(item => {
       const btn = $(".nav__link", item);
       btn.addEventListener("click", e => {
-        if (window.innerWidth <= 960 || e.detail === 0) {
+        if (window.innerWidth <= 1200 || e.detail === 0) {
           e.preventDefault();
           const open = item.classList.toggle("is-open");
           btn.setAttribute("aria-expanded", String(open));
@@ -201,6 +201,8 @@
       if (Math.abs(dx) > 50) { go(dx < 0 ? index + 1 : index - 1); restart(); }
       startX = null;
     });
+    hero.addEventListener("mouseenter", () => clearInterval(timer));
+    hero.addEventListener("mouseleave", restart);
     restart();
   }
 
@@ -277,7 +279,7 @@
     wrap.innerHTML = `
       <div class="donut-wrap">
         <svg class="donut" viewBox="0 0 200 200" role="img" aria-label="Distribuição de ${total} estudantes por etapa de ensino">
-          <circle cx="100" cy="100" r="${r}" fill="none" stroke="#e3f1e7" stroke-width="26"/>
+          <circle cx="100" cy="100" r="${r}" fill="none" stroke="#e3edf9" stroke-width="26"/>
           ${segs}
           <text x="100" y="96" text-anchor="middle" class="donut__center" data-count="${total}">0</text>
           <text x="100" y="118" text-anchor="middle" class="donut__center-label">estudantes</text>
@@ -447,9 +449,13 @@
           </div>
         </a>`;
     }
-    grid.innerHTML = list.map(newsCard).join("");
+    const PAGE = 6; let shown = PAGE;
+    const more = $("#newsMore");
+    const paint = () => { grid.innerHTML = list.slice(0, shown).map(newsCard).join(""); applyFilter(grid, filter, search); if (more) more.hidden = shown >= list.length; };
     let filter = "all", search = "";
-    buildFilters($("#newsFilters"), NEWS_CATS, f => { filter = f; applyFilter(grid, filter, search); }, "Todas");
+    paint();
+    more && more.addEventListener("click", () => { shown += PAGE; paint(); });
+    buildFilters($("#newsFilters"), NEWS_CATS, f => { filter = f; shown = list.length; paint(); }, "Todas");
     const input = $("#newsSearch");
     input && input.addEventListener("input", () => { search = input.value.trim().toLowerCase(); applyFilter(grid, filter, search); });
   }
@@ -474,7 +480,7 @@
         <button type="button" class="btn btn--outline btn--sm" id="copyLink">Copiar link</button>
       </div>`;
     $("#copyLink")?.addEventListener("click", e => {
-      navigator.clipboard?.writeText(location.href).then(() => { e.target.textContent = "Link copiado!"; });
+      navigator.clipboard?.writeText(location.href).then(() => toast("Link copiado!"));
     });
     const side = $("#articleSidebar");
     if (side) {
@@ -515,7 +521,7 @@
         <span>${ICONS.clock} ${escapeHtml(ev.time || "")}</span>
         <span>${ICONS.pin} ${escapeHtml(ev.location || "")}</span>
       </div>
-      <p class="mt-1">${escapeHtml(ev.description)}</p>`);
+      <p class="mt-1">${escapeHtml(ev.description)}</p>${eventActions(ev)}`);
   }
 
   function initEvents() {
@@ -566,6 +572,8 @@
       buildFilters($("#eventsFilters"), { future: "Próximos", past: "Realizados" }, f => applyFilter(list, f), "Todos");
     }
 
+    const wanted = getParam("evento");
+    if (wanted) { const ev = events.find(x => x.id === wanted); ev && setTimeout(() => openEventModal(ev), 400); }
     document.addEventListener("click", e => {
       const b = e.target.closest(".event-open");
       if (!b) return;
@@ -870,7 +878,11 @@
     const limit = parseInt(list.dataset.limit || "0", 10);
     const docs = [...DATA.documents].sort(sortByDateDesc);
     list.innerHTML = (limit ? docs.slice(0, limit) : docs).map(docItem).join("");
-    buildFilters($("#docsFilters"), DOC_CATS, f => applyFilter(list, f));
+    let df = "all", ds = "";
+    $$(".doc", list).forEach(d => d.dataset.search = norm(d.textContent));
+    buildFilters($("#docsFilters"), DOC_CATS, f => { df = f; applyFilter(list, df, ds); });
+    const di = $("#docsSearch");
+    di && di.addEventListener("input", () => { ds = norm(di.value.trim()); applyFilter(list, df, ds); });
   }
   function initNotices() {
     const wrap = $("#noticesList");
@@ -917,6 +929,8 @@
     const map = $("#mapFrame");
     if (map) map.src = `https://www.google.com/maps?q=${encodeURIComponent(a.mapsQuery || "")}&z=15&output=embed`;
 
+    const tb = $("#topbarInfo");
+    if (tb) tb.innerHTML = `<span>${ICONS.pin}${escapeHtml(a.district)} · ${escapeHtml(a.city)} – ${escapeHtml(a.state)}</span>${c.phone ? `<span>${ICONS.phone}${escapeHtml(c.phone)}</span>` : ""}${c.email ? `<span>${ICONS.mail}${escapeHtml(c.email)}</span>` : ""}<span>${ICONS.clock}${escapeHtml(c.hours || "")}</span>`;
     // Redes sociais
     const s = CONFIG.social || {};
     const nets = [["instagram", "Instagram"], ["facebook", "Facebook"], ["youtube", "YouTube"], ["tiktok", "TikTok"]];
@@ -990,6 +1004,7 @@
      Utilidades gerais: voltar ao topo, transição de página, ano
      ------------------------------------------------------------------ */
   function initMisc() {
+    $$(".page-hero, .ambrosia, .stats, .campo").forEach(sec => { if (!$(".watermark", sec)) { const w = document.createElement("div"); w.className = "watermark"; w.setAttribute("aria-hidden", "true"); w.innerHTML = '<img src="assets/images/logo-white.svg" alt="">'; sec.appendChild(w); } });
     const bt = $("#backTop");
     if (bt) {
       bt.innerHTML = ICONS.arrowUp;
@@ -1017,11 +1032,178 @@
     if (location.hash) setTimeout(() => { const t = $(location.hash); t && window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 90 }); }, 50);
   }
 
+
+  /* ------------------------------------------------------------------
+     Loader, barra de progresso e toast
+     ------------------------------------------------------------------ */
+  function initLoader() {
+    const l = $("#loader");
+    if (!l) return;
+    const done = () => { l.classList.add("is-done"); document.body.classList.add("is-loaded"); setTimeout(() => l.remove(), 600); };
+    if (document.readyState === "complete") done();
+    else { window.addEventListener("load", done); setTimeout(done, 1800); }
+  }
+  function initProgress() {
+    const bar = document.createElement("div"); bar.className = "progress"; bar.setAttribute("aria-hidden", "true"); document.body.appendChild(bar);
+    const upd = () => { const h = document.documentElement.scrollHeight - window.innerHeight; bar.style.width = (h > 0 ? window.scrollY / h * 100 : 0) + "%"; };
+    window.addEventListener("scroll", upd, { passive: true }); upd();
+  }
+  let toastEl, toastTimer;
+  function toast(msg) {
+    if (!toastEl) { toastEl = document.createElement("div"); toastEl.className = "toast"; toastEl.setAttribute("role", "status"); toastEl.setAttribute("aria-live", "polite"); document.body.appendChild(toastEl); }
+    toastEl.innerHTML = ICONS.check + escapeHtml(msg);
+    toastEl.classList.add("is-visible");
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove("is-visible"), 2800);
+  }
+  window.CEIAS_toast = toast;
+
+  /* ------------------------------------------------------------------
+     Acessibilidade: tamanho da fonte, alto contraste e Libras
+     ------------------------------------------------------------------ */
+  function initAccessibility() {
+    const store = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+    const read = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+    const sizes = ["", "font-lg", "font-xl"];
+    let idx = sizes.indexOf(read("ceias-font") || "");
+    if (idx < 0) idx = 0;
+    const applyFont = () => { document.documentElement.classList.remove("font-lg", "font-xl"); if (sizes[idx]) document.documentElement.classList.add(sizes[idx]); store("ceias-font", sizes[idx]); };
+    const contrastBtns = $$('[data-a11y="contrast"]');
+    const applyContrast = on => { document.body.classList.toggle("contrast", on); contrastBtns.forEach(b => b.setAttribute("aria-pressed", String(on))); store("ceias-contrast", on ? "1" : "0"); };
+    applyFont(); applyContrast(read("ceias-contrast") === "1");
+    $$("[data-a11y]").forEach(btn => btn.addEventListener("click", () => {
+      const a = btn.dataset.a11y;
+      if (a === "font-up") { idx = Math.min(2, idx + 1); applyFont(); toast(idx ? "Fonte aumentada" : "Fonte padrão"); }
+      if (a === "font-down") { idx = Math.max(0, idx - 1); applyFont(); toast(idx ? "Fonte reduzida" : "Fonte padrão"); }
+      if (a === "contrast") { applyContrast(!document.body.classList.contains("contrast")); }
+      if (a === "libras") { const b = $("[vw-access-button]"); if (b) b.click(); else toast("O plugin VLibras ainda está carregando. Tente novamente em instantes."); }
+    }));
+  }
+
+  /* ------------------------------------------------------------------
+     Busca global (Ctrl+K)
+     ------------------------------------------------------------------ */
+  const STATIC_PAGES = [
+    ["Início", "index.html", "Página inicial"], ["Sobre o colégio", "o-colegio.html", "Missão, valores e identidade"],
+    ["Irmã Ambrósia — Nossa história", "historia.html", "Biografia e linha do tempo da patrona"], ["Educação do Campo", "educacao-do-campo.html", "Identidade pedagógica"],
+    ["Infraestrutura", "infraestrutura.html", "Biblioteca, laboratórios, quadra, refeitório"], ["Nossa equipe", "equipe.html", "Professores e profissionais"],
+    ["Nossa cultura", "cultura.html", "Colônia Marcelino e herança ucraniana"], ["Ensino", "ensino.html", "Etapas e modalidades"],
+    ["Anos Finais", "ensino-anos-finais.html", "6º ao 9º ano"], ["Ensino Médio", "ensino-medio.html", "1º ao 3º ano"], ["EJA / Classe Especial", "ensino-eja.html", "Modalidades"],
+    ["Vida escolar", "vida-escolar.html", "Horários, transporte, alimentação, uniforme"], ["Documentos", "documentos.html", "Calendário, regimento, formulários"],
+    ["Área do aluno", "area-do-aluno.html", "Avisos, links e materiais"], ["Projetos", "projetos.html", "Projetos que transformam"], ["Notícias", "noticias.html", "Portal de notícias"],
+    ["Eventos e calendário", "eventos.html", "Programação do colégio"], ["Galeria", "galeria.html", "Fotos e vídeos"], ["Contato", "contato.html", "Fale conosco, mapa e redes"],
+  ];
+  function buildSearchIndex() {
+    const idx = STATIC_PAGES.map(([t, u, d]) => ({ type: "Página", icon: "school", title: t, url: u, desc: d }));
+    (DATA.news || []).forEach(n => idx.push({ type: "Notícia", icon: "news", title: n.title, url: `noticia.html?id=${n.id}`, desc: `${formatDate(n.date, "short")} · ${labelize(n.category, NEWS_CATS)}`, text: n.summary }));
+    (DATA.projects || []).forEach(p => idx.push({ type: "Projeto", icon: "lightbulb", title: p.title, url: `projeto.html?id=${p.id}`, desc: labelize(p.category, PROJECT_CATS), text: p.summary }));
+    (DATA.events || []).forEach(e => idx.push({ type: "Evento", icon: "calendar", title: e.title, url: `eventos.html?evento=${e.id}`, desc: `${formatDate(e.date, "short")} · ${e.location || ""}`, text: e.description }));
+    (DATA.documents || []).forEach(d => idx.push({ type: "Documento", icon: "file", title: d.title, url: `documentos.html?categoria=${d.category}`, desc: labelize(d.category, DOC_CATS), text: d.description }));
+    (DATA.teachers || []).forEach(t => idx.push({ type: "Equipe", icon: "users", title: t.name, url: "equipe.html", desc: t.subject }));
+    (DATA.infrastructure || []).forEach(i => idx.push({ type: "Infraestrutura", icon: i.icon, title: i.title, url: "infraestrutura.html", desc: i.description }));
+    return idx;
+  }
+  const norm = s => String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  function initSearch() {
+    const modal = document.createElement("div");
+    modal.className = "search-modal"; modal.id = "searchModal"; modal.setAttribute("role", "dialog"); modal.setAttribute("aria-modal", "true"); modal.setAttribute("aria-label", "Buscar no site");
+    modal.innerHTML = `
+      <div class="search-modal__box">
+        <div class="search-modal__input">${ICONS.search}<label class="sr-only" for="searchInput">Buscar no site</label><input id="searchInput" type="search" placeholder="Buscar notícias, projetos, eventos, documentos, páginas…" autocomplete="off"><kbd>Esc</kbd></div>
+        <div class="search-modal__results" id="searchResults" role="listbox"></div>
+        <div class="search-modal__hint"><span>Atalho: <kbd>Ctrl</kbd> + <kbd>K</kbd></span><span>Use ↑ ↓ para navegar e Enter para abrir</span></div>
+      </div>`;
+    document.body.appendChild(modal);
+    const input = $("#searchInput", modal), results = $("#searchResults", modal);
+    const index = buildSearchIndex();
+    let lastFocus = null;
+    const open = () => { lastFocus = document.activeElement; modal.classList.add("is-open"); document.body.classList.add("modal-open"); render(""); setTimeout(() => input.focus(), 50); };
+    const close = () => { modal.classList.remove("is-open"); document.body.classList.remove("modal-open"); input.value = ""; lastFocus && lastFocus.focus(); };
+    const highlight = (text, q) => { if (!q) return escapeHtml(text); const re = new RegExp("(" + q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "ig"); return escapeHtml(text).replace(re, "<mark>$1</mark>"); };
+    function render(q) {
+      const nq = norm(q.trim());
+      let list;
+      if (!nq) list = index.filter(i => i.type === "Página").slice(0, 8);
+      else list = index.map(i => { const h = norm(i.title), t = norm(i.text) + " " + norm(i.desc); let score = 0; if (h.includes(nq)) score += 10; if (h.startsWith(nq)) score += 5; if (t.includes(nq)) score += 3; nq.split(/\s+/).forEach(w => { if (w && (h.includes(w) || t.includes(w))) score += 1; }); return { i, score }; }).filter(x => x.score > 0).sort((a, b) => b.score - a.score).slice(0, 12).map(x => x.i);
+      results.innerHTML = list.length ? list.map(i => `<a class="search-result" href="${i.url}" role="option"><span class="search-result__icon">${ICONS[i.icon] || ICONS.file}</span><span><strong>${highlight(i.title, q.trim())}</strong><span>${escapeHtml(i.type)} · ${escapeHtml(i.desc)}</span></span></a>`).join("")
+        : `<div class="empty-state">Nenhum resultado para “${escapeHtml(q)}”.</div>`;
+    }
+    input.addEventListener("input", () => render(input.value));
+    modal.addEventListener("click", e => { if (e.target === modal) close(); });
+    document.addEventListener("keydown", e => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") { e.preventDefault(); modal.classList.contains("is-open") ? close() : open(); }
+      if (!modal.classList.contains("is-open")) return;
+      if (e.key === "Escape") close();
+      const items = $$(".search-result", results);
+      const pos = items.indexOf(document.activeElement);
+      if (e.key === "ArrowDown") { e.preventDefault(); (items[pos + 1] || items[0])?.focus(); }
+      if (e.key === "ArrowUp") { e.preventDefault(); (pos <= 0 ? input : items[pos - 1]).focus(); }
+      if (e.key === "Enter" && document.activeElement === input && items[0]) { items[0].click(); }
+    });
+    $$("[data-search-open]").forEach(b => b.addEventListener("click", open));
+  }
+
+  /* ------------------------------------------------------------------
+     Ticker de avisos (home)
+     ------------------------------------------------------------------ */
+  function initTicker() {
+    const list = $("#tickerList");
+    if (!list) return;
+    const today = todayMidnight();
+    const items = [
+      ...(DATA.notices || []).sort(sortByDateDesc).slice(0, 4).map(n => ({ text: n.title, url: "area-do-aluno.html" })),
+      ...(DATA.events || []).filter(e => parseDate(e.date) >= today).sort(sortByDateAsc).slice(0, 3).map(e => ({ text: `${formatDate(e.date, "short")} — ${e.title}`, url: `eventos.html?evento=${e.id}` })),
+    ];
+    if (!items.length) { list.closest(".ticker")?.remove(); return; }
+    const html = items.map(i => `<li><a href="${i.url}">${escapeHtml(i.text)}</a></li>`).join("");
+    list.innerHTML = html + html; // duplicado para o loop contínuo
+    list.style.animationDuration = Math.max(25, items.length * 9) + "s";
+  }
+
+  /* ------------------------------------------------------------------
+     Exportar evento: Google Agenda e arquivo .ics
+     ------------------------------------------------------------------ */
+  function eventActions(ev) {
+    const d = parseDate(ev.date); const y = d.getFullYear(), m = String(d.getMonth() + 1).padStart(2, "0"), dd = String(d.getDate()).padStart(2, "0");
+    const next = new Date(d); next.setDate(next.getDate() + 1);
+    const y2 = next.getFullYear(), m2 = String(next.getMonth() + 1).padStart(2, "0"), dd2 = String(next.getDate()).padStart(2, "0");
+    const details = `${ev.description || ""}\n${ev.time ? "Horário: " + ev.time : ""}`;
+    const g = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(ev.title)}&dates=${y}${m}${dd}/${y2}${m2}${dd2}&details=${encodeURIComponent(details)}&location=${encodeURIComponent((ev.location || "") + " — CEIAS, Colônia Marcelino, São José dos Pinhais - PR")}`;
+    const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//CEIAS//Site//PT", "BEGIN:VEVENT", `UID:${ev.id}@ceias`, `DTSTART;VALUE=DATE:${y}${m}${dd}`, `DTEND;VALUE=DATE:${y2}${m2}${dd2}`, `SUMMARY:${ev.title}`, `DESCRIPTION:${details.replace(/\n/g, "\\n")}`, `LOCATION:${ev.location || "CEIAS"}`, "END:VEVENT", "END:VCALENDAR"].join("\r\n");
+    const icsHref = "data:text/calendar;charset=utf-8," + encodeURIComponent(ics);
+    return `<div class="event-actions"><a class="btn btn--outline btn--sm" target="_blank" rel="noopener" href="${g}">${ICONS.calendar} Google Agenda</a><a class="btn btn--outline btn--sm" href="${icsHref}" download="${ev.id}.ics">${ICONS.download} Salvar (.ics)</a><a class="btn btn--outline btn--sm" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(ev.title + " — " + formatDate(ev.date) + " · " + location.origin + location.pathname.replace(/[^/]*$/, "") + "eventos.html?evento=" + ev.id)}">${ICONS.whatsapp} Compartilhar</a></div>`;
+  }
+
+  /* ------------------------------------------------------------------
+     Aviso LGPD e ações de copiar
+     ------------------------------------------------------------------ */
+  function initLgpd() {
+    let ok = null; try { ok = localStorage.getItem("ceias-lgpd"); } catch (e) {}
+    if (ok) return;
+    const bar = document.createElement("div"); bar.className = "lgpd is-visible"; bar.setAttribute("role", "region"); bar.setAttribute("aria-label", "Aviso de privacidade");
+    bar.innerHTML = `<p>Este site não utiliza cookies de rastreamento. Guardamos apenas suas preferências de acessibilidade no seu navegador. O mapa e os vídeos são carregados de serviços externos (Google e YouTube).</p><button type="button" class="btn btn--primary btn--sm" id="lgpdOk">Entendi</button>`;
+    document.body.appendChild(bar);
+    $("#lgpdOk").addEventListener("click", () => { bar.remove(); try { localStorage.setItem("ceias-lgpd", "1"); } catch (e) {} });
+  }
+  function initCopy() {
+    document.addEventListener("click", e => {
+      const b = e.target.closest("[data-copy]"); if (!b) return;
+      const txt = b.dataset.copy === "address" ? `${CONFIG.address.street}, ${CONFIG.address.district}, ${CONFIG.address.city} - ${CONFIG.address.state}, ${CONFIG.address.zip}` : b.dataset.copy === "url" ? location.href : b.dataset.copy;
+      navigator.clipboard?.writeText(txt).then(() => toast("Copiado para a área de transferência")).catch(() => toast("Não foi possível copiar"));
+    });
+  }
+
   /* ------------------------------------------------------------------
      Inicialização
      ------------------------------------------------------------------ */
   document.addEventListener("DOMContentLoaded", () => {
+    initLoader();
+    initAccessibility();
     initHeader();
+    initSearch();
+    initTicker();
+    initLgpd();
+    initCopy();
+    initProgress();
     initHeroSlider();
     initLightbox();
     initNewsHome();
