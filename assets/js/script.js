@@ -279,7 +279,7 @@
     wrap.innerHTML = `
       <div class="donut-wrap">
         <svg class="donut" viewBox="0 0 200 200" role="img" aria-label="Distribuição de ${total} estudantes por etapa de ensino">
-          <circle cx="100" cy="100" r="${r}" fill="none" stroke="#e3edf9" stroke-width="26"/>
+          <circle cx="100" cy="100" r="${r}" fill="none" stroke="#e6e7f7" stroke-width="26"/>
           ${segs}
           <text x="100" y="96" text-anchor="middle" class="donut__center" data-count="${total}">0</text>
           <text x="100" y="118" text-anchor="middle" class="donut__center-label">estudantes</text>
@@ -884,17 +884,103 @@
     const di = $("#docsSearch");
     di && di.addEventListener("input", () => { ds = norm(di.value.trim()); applyFilter(list, df, ds); });
   }
-  function initNotices() {
-    const wrap = $("#noticesList");
-    if (!wrap || !DATA.notices) return;
-    const limit = parseInt(wrap.dataset.limit || "0", 10);
-    const list = [...DATA.notices].sort(sortByDateDesc);
-    wrap.innerHTML = (limit ? list.slice(0, limit) : list).map(n => `
-      <article class="notice notice--${n.type || "default"}">
-        <span class="notice__date">${formatDate(n.date, "short")}</span>
-        <div><h3>${escapeHtml(n.title)}</h3><p>${escapeHtml(n.text)}</p></div>
-      </article>`).join("");
+  /* Avisos são lidos de assets/data/avisos.json (publicado pelo painel restrito).
+     Se o arquivo não puder ser carregado (ex.: abrindo o site via file://), usa DATA.notices. */
+  const AVISO_CATS = { geral: "Geral", secretaria: "Secretaria", jogos: "Jogos escolares", festa: "Festas e eventos", "data-importante": "Data importante", pedagogico: "Pedagógico" };
+  const AVISO_PRIO = { normal: "", importante: "Importante", urgente: "Urgente" };
+  let AVISOS = null;
+  async function loadAvisos() {
+    if (AVISOS) return AVISOS;
+    const t = todayMidnight();
+    const ok = a => a.published !== false && (!a.expires || parseDate(a.expires) >= t);
+    try {
+      const r = await fetch("assets/data/avisos.json", { cache: "no-store" });
+      if (!r.ok) throw new Error();
+      const j = await r.json();
+      AVISOS = (j.items || []).filter(ok);
+    } catch (e) {
+      AVISOS = (DATA.notices || []).map(n => ({ id: n.title, title: n.title, text: n.text, date: n.date, category: "geral", priority: n.type === "urgent" ? "urgente" : n.type === "info" ? "importante" : "normal", pinned: false, ticker: true, published: true, author: "" }));
+    }
+    AVISOS.sort((a, b) => ((b.pinned ? 1 : 0) - (a.pinned ? 1 : 0)) || b.date.localeCompare(a.date));
+    return AVISOS;
   }
+  function avisoCard(a) {
+    return `
+      <article class="mural-card mural-card--${a.priority || "normal"}${a.pinned ? " mural-card--pinned" : ""} filter-item" data-category="${a.category}" data-search="${escapeHtml(norm(a.title + " " + a.text))}">
+        <div class="mural-card__head"><span class="tag tag--${a.category}">${escapeHtml(labelize(a.category, AVISO_CATS))}</span>${AVISO_PRIO[a.priority] ? `<span class="tag ${a.priority === "urgente" ? "tag--red" : "tag--gold"}">${AVISO_PRIO[a.priority]}</span>` : ""}</div>
+        <h3>${escapeHtml(a.title)}</h3>
+        <p>${escapeHtml(a.text)}</p>
+        <div class="mural-card__foot"><span>${ICONS.calendar} Publicado em ${formatDate(a.date, "short")}</span>${a.eventDate ? `<span>${ICONS.bell} Data: ${formatDate(a.eventDate)}</span>` : ""}${a.author ? `<span>${ICONS.user} ${escapeHtml(a.author)}</span>` : ""}</div>
+      </article>`;
+  }
+  async function initNotices() {
+    const targets = $$("#noticesList, #muralMain, #muralAll");
+    const bar = $("#alertBarSlot") || document.body;
+    const list = await loadAvisos();
+
+    // Faixa de alerta (aviso urgente ou fixado), em todas as páginas
+    const urgent = list.find(a => a.priority === "urgente") || list.find(a => a.pinned);
+    let dismissed = []; try { dismissed = JSON.parse(localStorage.getItem("ceias-alerts") || "[]"); } catch (e) {}
+    if (urgent && !dismissed.includes(urgent.id) && !$(".alert-bar")) {
+      const el = document.createElement("div"); el.className = "alert-bar"; el.setAttribute("role", "region"); el.setAttribute("aria-label", "Aviso importante");
+      el.innerHTML = `<div class="container"><span class="alert-bar__icon">${ICONS.bell}</span><p><strong>${escapeHtml(urgent.title)}</strong> — ${escapeHtml(urgent.text).slice(0, 140)}${urgent.text.length > 140 ? "…" : ""} <a href="avisos.html">Ver mural</a></p><button type="button" class="alert-bar__close" aria-label="Fechar aviso">${ICONS.close}</button></div>`;
+      const anchor = $("#main"); anchor ? anchor.insertAdjacentElement("afterbegin", el) : bar.appendChild(el);
+      document.body.classList.add("has-alert");
+      $(".alert-bar__close", el).addEventListener("click", () => { el.remove(); document.body.classList.remove("has-alert"); try { localStorage.setItem("ceias-alerts", JSON.stringify([...dismissed, urgent.id])); } catch (e) {} });
+    }
+
+    targets.forEach(wrap => {
+      const limit = parseInt(wrap.dataset.limit || "0", 10);
+      const items = limit ? list.slice(0, limit) : list;
+      if (wrap.id === "noticesList") {
+        wrap.innerHTML = items.map(a => `
+          <article class="notice notice--${a.priority === "urgente" ? "urgent" : a.priority === "importante" ? "info" : "default"}">
+            <span class="notice__date">${formatDate(a.date, "short")}</span>
+            <div><span class="tag tag--${a.category}" style="margin-bottom:.4rem">${escapeHtml(labelize(a.category, AVISO_CATS))}</span><h3>${escapeHtml(a.title)}</h3><p>${escapeHtml(a.text)}</p>${a.eventDate ? `<p class="mt-1"><strong>Data:</strong> ${formatDate(a.eventDate)}</p>` : ""}</div>
+          </article>`).join("") || `<p class="muted">Nenhum aviso no momento.</p>`;
+      } else {
+        wrap.innerHTML = items.map(avisoCard).join("") || `<div class="empty-state">Nenhum aviso publicado no momento.</div>`;
+      }
+    });
+
+    // Datas importantes (avisos com data + próximos eventos)
+    const dl = $("#datesList");
+    if (dl) {
+      const t = todayMidnight();
+      const fromAvisos = list.filter(a => a.eventDate && parseDate(a.eventDate) >= t).map(a => ({ date: a.eventDate, title: a.title, cat: labelize(a.category, AVISO_CATS), url: "avisos.html" }));
+      const fromEvents = (DATA.events || []).filter(e => parseDate(e.date) >= t).map(e => ({ date: e.date, title: e.title, cat: e.category || "Evento", url: `eventos.html?evento=${e.id}` }));
+      const seen = new Set();
+      const all = [...fromAvisos, ...fromEvents].sort(sortByDateAsc).filter(x => { const k = x.date + x.title; if (seen.has(k)) return false; seen.add(k); return true; }).slice(0, parseInt(dl.dataset.limit || "6", 10));
+      dl.innerHTML = all.map(x => { const d = parseDate(x.date); return `<li><span class="d">${d.getDate()}<small>${MONTHS_SHORT[d.getMonth()]}</small></span><div><a href="${x.url}">${escapeHtml(x.title)}</a><span class="cat">${escapeHtml(x.cat)}</span></div></li>`; }).join("") || `<li><strong>Nenhuma data cadastrada.</strong></li>`;
+    }
+
+    // Página do mural: filtros e busca
+    const all = $("#muralAll");
+    if (all) {
+      let f = "all", q = "";
+      buildFilters($("#muralFilters"), AVISO_CATS, x => { f = x; applyFilter(all, f, q); });
+      const inp = $("#muralSearch");
+      inp && inp.addEventListener("input", () => { q = norm(inp.value.trim()); applyFilter(all, f, q); });
+    }
+    initReveal();
+  }
+
+  function initTicker() {
+    const list = $("#tickerList");
+    if (!list) return;
+    loadAvisos().then(avisos => {
+      const today = todayMidnight();
+      const items = [
+        ...avisos.filter(a => a.ticker !== false).slice(0, 5).map(a => ({ text: a.title, url: "avisos.html" })),
+        ...(DATA.events || []).filter(e => parseDate(e.date) >= today).sort(sortByDateAsc).slice(0, 3).map(e => ({ text: `${formatDate(e.date, "short")} — ${e.title}`, url: `eventos.html?evento=${e.id}` })),
+      ];
+      if (!items.length) { list.closest(".ticker")?.remove(); return; }
+      const html = items.map(i => `<li><a href="${i.url}">${escapeHtml(i.text)}</a></li>`).join("");
+      list.innerHTML = html + html;
+      list.style.animationDuration = Math.max(25, items.length * 9) + "s";
+    });
+  }
+
   function initStudentLinks() {
     const wrap = $("#studentLinks");
     if (!wrap || !CONFIG.studentLinks) return;
@@ -924,6 +1010,7 @@
       else if (key === "email") el.innerHTML = c.email ? `<a href="mailto:${c.email}">${escapeHtml(c.email)}</a>` : "<em>E-mail em atualização</em>";
       else if (key === "hours") el.textContent = c.hours || "";
       else if (key === "inep") el.textContent = CONFIG.school.inep;
+      else if (key === "motto") el.textContent = "“" + (CONFIG.school.motto || "") + "”";
     });
     $$("[data-maps-link]").forEach(el => { el.href = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(a.mapsQuery || "")}`; });
     const map = $("#mapFrame");
@@ -1090,7 +1177,7 @@
     ["Anos Finais", "ensino-anos-finais.html", "6º ao 9º ano"], ["Ensino Médio", "ensino-medio.html", "1º ao 3º ano"], ["EJA / Classe Especial", "ensino-eja.html", "Modalidades"],
     ["Vida escolar", "vida-escolar.html", "Horários, transporte, alimentação, uniforme"], ["Documentos", "documentos.html", "Calendário, regimento, formulários"],
     ["Área do aluno", "area-do-aluno.html", "Avisos, links e materiais"], ["Projetos", "projetos.html", "Projetos que transformam"], ["Notícias", "noticias.html", "Portal de notícias"],
-    ["Eventos e calendário", "eventos.html", "Programação do colégio"], ["Galeria", "galeria.html", "Fotos e vídeos"], ["Contato", "contato.html", "Fale conosco, mapa e redes"],
+    ["Eventos e calendário", "eventos.html", "Programação do colégio"], ["Galeria", "galeria.html", "Fotos e vídeos"], ["Contato", "contato.html", "Fale conosco, mapa e redes"], ["Mural de avisos", "avisos.html", "Avisos, recados e datas importantes"],
   ];
   function buildSearchIndex() {
     const idx = STATIC_PAGES.map(([t, u, d]) => ({ type: "Página", icon: "school", title: t, url: u, desc: d }));
@@ -1100,6 +1187,7 @@
     (DATA.documents || []).forEach(d => idx.push({ type: "Documento", icon: "file", title: d.title, url: `documentos.html?categoria=${d.category}`, desc: labelize(d.category, DOC_CATS), text: d.description }));
     (DATA.teachers || []).forEach(t => idx.push({ type: "Equipe", icon: "users", title: t.name, url: "equipe.html", desc: t.subject }));
     (DATA.infrastructure || []).forEach(i => idx.push({ type: "Infraestrutura", icon: i.icon, title: i.title, url: "infraestrutura.html", desc: i.description }));
+    loadAvisos().then(av => av.forEach(a => idx.push({ type: "Aviso", icon: "bell", title: a.title, url: "avisos.html", desc: labelize(a.category, AVISO_CATS), text: a.text })));
     return idx;
   }
   const norm = s => String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -1140,23 +1228,6 @@
       if (e.key === "Enter" && document.activeElement === input && items[0]) { items[0].click(); }
     });
     $$("[data-search-open]").forEach(b => b.addEventListener("click", open));
-  }
-
-  /* ------------------------------------------------------------------
-     Ticker de avisos (home)
-     ------------------------------------------------------------------ */
-  function initTicker() {
-    const list = $("#tickerList");
-    if (!list) return;
-    const today = todayMidnight();
-    const items = [
-      ...(DATA.notices || []).sort(sortByDateDesc).slice(0, 4).map(n => ({ text: n.title, url: "area-do-aluno.html" })),
-      ...(DATA.events || []).filter(e => parseDate(e.date) >= today).sort(sortByDateAsc).slice(0, 3).map(e => ({ text: `${formatDate(e.date, "short")} — ${e.title}`, url: `eventos.html?evento=${e.id}` })),
-    ];
-    if (!items.length) { list.closest(".ticker")?.remove(); return; }
-    const html = items.map(i => `<li><a href="${i.url}">${escapeHtml(i.text)}</a></li>`).join("");
-    list.innerHTML = html + html; // duplicado para o loop contínuo
-    list.style.animationDuration = Math.max(25, items.length * 9) + "s";
   }
 
   /* ------------------------------------------------------------------

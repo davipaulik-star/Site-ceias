@@ -4,8 +4,8 @@
   "description": "Site oficial do CEIAS — Colônia Marcelino, São José dos Pinhais – PR",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#0b2a4a",
-  "theme_color": "#0b2a4a",
+  "background_color": "#1b1c56",
+  "theme_color": "#1b1c56",
   "lang": "pt-BR",
   "icons": [{ "src": "assets/images/logo.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
 }

@@ -11,6 +11,7 @@ window.CEIAS_CONFIG = {
     acronym: "CEIAS",
     inep: "41369270",
     classification: "Escola do Campo",
+    motto: "Educando para a Comunidade",
     network: "Rede Estadual de Ensino do Paraná — SEED/PR",
     nre: "Núcleo Regional de Educação da Área Metropolitana Sul",
   },
@@ -38,6 +39,17 @@ window.CEIAS_CONFIG = {
     facebook: "",
     youtube: "",
     tiktok: "",
+  },
+
+  // Painel restrito de avisos (admin.html). Os avisos ficam em assets/data/avisos.json e são
+  // publicados diretamente no repositório do site via API do GitHub — só quem tem permissão
+  // de escrita no repositório (criador do projeto e secretaria) consegue publicar.
+  admin: {
+    owner: "davipaulik-star",       // usuário/organização do GitHub dono do repositório
+    repo: "Site-ceias",             // nome do repositório
+    branch: "main",                 // branch publicada (GitHub Pages)
+    file: "assets/data/avisos.json",
+    maxUrgent: 3,
   },
 
   // Endpoint para envio do formulário de contato (ex.: Formspree, Getform, Web3Forms).
@@ -74,9 +86,9 @@ window.CEIAS_CONFIG = {
     computers: 36,
     tablets: 30,
     distribution: [
-      { label: "Anos Finais (6º ao 9º ano)", value: 305, color: "#14477f" },
-      { label: "Ensino Médio", value: 169, color: "#d4a628" },
-      { label: "EJA / Classe Especial", value: 31, color: "#2aa3d0" },
+      { label: "Anos Finais (6º ao 9º ano)", value: 305, color: "#1b1c56" },
+      { label: "Ensino Médio", value: 169, color: "#f2c318" },
+      { label: "EJA / Classe Especial", value: 31, color: "#b3202b" },
     ],
   },
 };

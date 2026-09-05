@@ -1,10 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" width="120" height="140" role="img" aria-label="Brasão do CEIAS">
-  <path d="M60 4 L110 18 V66 C110 96 88 120 60 132 C32 120 10 96 10 66 V18 Z" fill="#ffffff" fill-opacity="0.12" stroke="#ffffff" stroke-width="2.5"/>
-  <g stroke="#ecd27c" stroke-width="2.4" stroke-linecap="round"><path d="M60 32 V24"/><path d="M45 38 L40 32"/><path d="M75 38 L80 32"/><path d="M38 52 H30"/><path d="M82 52 H90"/></g>
-  <circle cx="60" cy="54" r="13" fill="#ecd27c"/>
-  <path d="M28 76 C40 70 52 70 60 76 C68 70 80 70 92 76 V100 C80 94 68 94 60 100 C52 94 40 94 28 100 Z" fill="#ffffff"/>
-  <path d="M60 76 V100" stroke="#0b2a4a" stroke-width="1.6"/>
-  <g fill="#ecd27c"><path d="M27 70 C24 64 25 58 30 54 C33 59 32 65 27 70 Z"/><path d="M24 62 C20 57 20 51 24 46 C28 51 28 57 24 62 Z"/><path d="M31 61 C29 55 31 49 36 46 C37 52 35 58 31 61 Z"/><path d="M93 70 C96 64 95 58 90 54 C87 59 88 65 93 70 Z"/><path d="M96 62 C100 57 100 51 96 46 C92 51 92 57 96 62 Z"/><path d="M89 61 C91 55 89 49 84 46 C83 52 85 58 89 61 Z"/></g>
-  <path d="M30 104 H90 L94 111 L90 118 H30 L26 111 Z" fill="#ffffff"/>
-  <text x="60" y="115" text-anchor="middle" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="9.5" font-weight="800" letter-spacing="2" fill="#0b2a4a">CEIAS</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" width="420" height="360" role="img" aria-label="Logotipo do Colégio Estadual do Campo Irmã Ambrósia Sabatovich — C.E.I.A.S. — Educando para a Comunidade">
+  <defs>
+    <path id="arc" d="M12 196 Q 210 350 408 196"/>
+    <path id="swL" d="M12 226 Q 100 254 198 322"/>
+    <path id="swR" d="M222 322 Q 320 254 408 226"/>
+    <style>
+      .l { font-family: "Arial Black", "Arial Narrow", Impact, Arial, Helvetica, sans-serif; font-weight: 900; font-style: italic; fill: #ffffff; }
+      .s { font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-style: italic; fill: #ffffff; font-size: 11px; }
+      .m { font-family: "Arial Narrow", Arial, Helvetica, sans-serif; font-weight: 700; fill: #ffffff; font-size: 27px; letter-spacing: -0.5px; }
+    </style>
+  </defs>
+  <g fill="#f2c318">
+    <path transform="translate(66 78) scale(1.2)" d="M0-11 3.2-3.6 11.3-3.4 4.9 1.7 7.1 9.5 0 5.2-7.1 9.5-4.9 1.7-11.3-3.4-3.2-3.6Z"/>
+    <path transform="translate(124 60) scale(1.2)" d="M0-11 3.2-3.6 11.3-3.4 4.9 1.7 7.1 9.5 0 5.2-7.1 9.5-4.9 1.7-11.3-3.4-3.2-3.6Z"/>
+    <path transform="translate(182 50) scale(1.2)" d="M0-11 3.2-3.6 11.3-3.4 4.9 1.7 7.1 9.5 0 5.2-7.1 9.5-4.9 1.7-11.3-3.4-3.2-3.6Z"/>
+    <path transform="translate(238 50) scale(1.2)" d="M0-11 3.2-3.6 11.3-3.4 4.9 1.7 7.1 9.5 0 5.2-7.1 9.5-4.9 1.7-11.3-3.4-3.2-3.6Z"/>
+    <path transform="translate(296 60) scale(1.2)" d="M0-11 3.2-3.6 11.3-3.4 4.9 1.7 7.1 9.5 0 5.2-7.1 9.5-4.9 1.7-11.3-3.4-3.2-3.6Z"/>
+    <path transform="translate(354 78) scale(1.2)" d="M0-11 3.2-3.6 11.3-3.4 4.9 1.7 7.1 9.5 0 5.2-7.1 9.5-4.9 1.7-11.3-3.4-3.2-3.6Z"/>
+  </g>
+  <path fill="#b3202b" transform="translate(210 26) scale(1.7)" d="M0-11 3.2-3.6 11.3-3.4 4.9 1.7 7.1 9.5 0 5.2-7.1 9.5-4.9 1.7-11.3-3.4-3.2-3.6Z"/>
+  <text class="l" font-size="158" textLength="404" lengthAdjust="spacingAndGlyphs"><textPath href="#arc" startOffset="50%" text-anchor="middle">C.E.I.A.S.</textPath></text>
+  <path d="M8 236 Q 100 258 192 326 L 200 318 Q 110 248 12 224 Z" fill="#b3202b"/>
+  <path d="M412 236 Q 320 258 228 326 L 220 318 Q 310 248 408 224 Z" fill="#b3202b"/>
+  <text class="s" textLength="212" lengthAdjust="spacingAndGlyphs"><textPath href="#swL" startOffset="2%">Col. Est. do Campo Ir. Ambrósia Sabatovich</textPath></text>
+  <text class="s" textLength="170" lengthAdjust="spacingAndGlyphs"><textPath href="#swR" startOffset="12%">Ensino Fundamental e Médio</textPath></text>
+  <text class="m" x="210" y="352" text-anchor="middle">“Educando para a Comunidade”</text>
 </svg>

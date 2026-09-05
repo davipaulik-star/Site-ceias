@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-label="Apresentação cultural">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5a4a12"/><stop offset="1" stop-color="#d4a628"/></linearGradient></defs>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6b5408"/><stop offset="1" stop-color="#f2c318"/></linearGradient></defs>
 <rect width="1280" height="720" fill="url(#g)"/><circle cx="364" cy="277" r="279" fill="#ffffff" opacity="0.06"/><circle cx="37" cy="256" r="120" fill="#ffffff" opacity="0.06"/><circle cx="31" cy="18" r="199" fill="#ffffff" opacity="0.06"/><circle cx="1053" cy="486" r="227" fill="#ffffff" opacity="0.06"/><circle cx="915" cy="108" r="323" fill="#ffffff" opacity="0.06"/><circle cx="1013" cy="559" r="303" fill="#ffffff" opacity="0.06"/><path d="M0 561 C 256 446, 448 648, 704 532 S 1088 475, 1280 576 L 1280 720 L 0 720 Z" fill="#000" opacity="0.12"/>
 <g font-family="Montserrat, Arial, sans-serif" text-anchor="end" fill="#ffffff">
 <text x="1242" y="677" font-size="19" font-weight="700" opacity="0.55">Apresentação cultural</text>

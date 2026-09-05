@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Laboratório de Informática">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b5aa3"/><stop offset="1" stop-color="#5fb0f0"/></linearGradient></defs>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#24267a"/><stop offset="1" stop-color="#6fa3ec"/></linearGradient></defs>
 <rect width="1200" height="900" fill="url(#g)"/><circle cx="456" cy="627" r="303" fill="#ffffff" opacity="0.06"/><circle cx="399" cy="825" r="157" fill="#ffffff" opacity="0.06"/><circle cx="820" cy="757" r="301" fill="#ffffff" opacity="0.06"/><circle cx="464" cy="204" r="228" fill="#ffffff" opacity="0.06"/><circle cx="1009" cy="364" r="283" fill="#ffffff" opacity="0.06"/><circle cx="59" cy="28" r="298" fill="#ffffff" opacity="0.06"/><path d="M0 702 C 240 558, 420 810, 660 666 S 1020 594, 1200 720 L 1200 900 L 0 900 Z" fill="#000" opacity="0.12"/>
 <g font-family="Montserrat, Arial, sans-serif" text-anchor="end" fill="#ffffff">
 <text x="1164" y="846" font-size="24" font-weight="700" opacity="0.55">Laboratório de Informática</text>

@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calendário de Eventos | CEIAS</title>
-  <meta name="description" content="Calendário de eventos do CEIAS: festas, reuniões, mostras, feiras, formaturas e datas importantes do ano letivo.">
+  <title>Painel de Avisos — Acesso Restrito | CEIAS</title>
+  <meta name="description" content="Área restrita à direção e secretaria para publicar avisos e recados no site do CEIAS.">
   <meta name="keywords" content="CEIAS, Colégio Estadual do Campo Irmã Ambrósia Sabatovich, Colônia Marcelino, São José dos Pinhais, escola do campo, ensino fundamental, ensino médio, EJA, Irmã Ambrósia, educação do campo, Paraná">
   <meta name="author" content="Colégio Estadual do Campo Irmã Ambrósia Sabatovich">
   <meta name="theme-color" content="#1b1c56">
+  <meta name="robots" content="noindex, nofollow">
 
-  <link rel="canonical" href="eventos.html">
+  <link rel="canonical" href="admin.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CEIAS — Colégio Estadual do Campo Irmã Ambrósia Sabatovich">
-  <meta property="og:title" content="Calendário de Eventos | CEIAS">
-  <meta property="og:description" content="Calendário de eventos do CEIAS: festas, reuniões, mostras, feiras, formaturas e datas importantes do ano letivo.">
+  <meta property="og:title" content="Painel de Avisos — Acesso Restrito | CEIAS">
+  <meta property="og:description" content="Área restrita à direção e secretaria para publicar avisos e recados no site do CEIAS.">
   <meta property="og:image" content="assets/images/placeholders/hero-1.svg">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Calendário de Eventos | CEIAS">
-  <meta name="twitter:description" content="Calendário de eventos do CEIAS: festas, reuniões, mostras, feiras, formaturas e datas importantes do ano letivo.">
+  <meta name="twitter:title" content="Painel de Avisos — Acesso Restrito | CEIAS">
+  <meta name="twitter:description" content="Área restrita à direção e secretaria para publicar avisos e recados no site do CEIAS.">
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
   <link rel="apple-touch-icon" href="assets/images/logo.svg">
   <link rel="manifest" href="manifest.json">
@@ -33,7 +34,7 @@
     "@type": "School",
     "name": "Colégio Estadual do Campo Irmã Ambrósia Sabatovich",
     "alternateName": "CEIAS",
-    "url": "eventos.html",
+    "url": "admin.html",
     "identifier": "INEP 41369270",
     "address": {
       "@type": "PostalAddress",
@@ -111,26 +112,69 @@
   <div class="nav-backdrop" id="navBackdrop"></div>
 
   <main id="main">
-    <section class="page-hero page-hero--compact">
-      <div class="page-hero__bg"><img src="assets/images/placeholders/evento-1.svg" alt=""></div>
+    <section class="admin">
       <div class="container">
-        <ol class="breadcrumb"><li><a href="index.html">Início</a></li><li>Eventos</li></ol>
-        <h1>Calendário de eventos</h1>
-        <p>Programação, atividades e datas importantes do colégio.</p>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <div id="nextEvent"></div>
-        <div class="events-layout" id="calendario">
-          <div>
-            <div class="filters" id="eventsFilters" role="group" aria-label="Filtrar eventos" style="justify-content:flex-start"></div>
-            <div class="events-list" id="eventsList"></div>
+        <div id="adminLogin" class="admin__login">
+          <img src="assets/images/logo.svg" alt="Logotipo do CEIAS">
+          <span class="eyebrow" style="justify-content:center">Acesso restrito</span>
+          <h1 style="font-size:var(--fs-2xl)">Painel de avisos</h1>
+          <p class="muted">Área da direção e da secretaria para publicar avisos, recados e datas importantes no site. O acesso é feito com um token pessoal do GitHub de uma conta com permissão de escrita no repositório do site.</p>
+          <form id="loginForm" novalidate>
+            <div class="form-field"><label for="tokenInput">Token de acesso (GitHub)</label><input type="password" id="tokenInput" autocomplete="current-password" placeholder="github_pat_…" required></div>
+            <details class="mt-1" style="text-align:left;font-size:.85rem"><summary style="cursor:pointer;font-weight:600;color:var(--blue-700)">Opções avançadas</summary><div class="form-field mt-1"><label for="branchInput">Branch publicada</label><input type="text" id="branchInput"></div></details>
+            <label class="check mt-1" style="justify-content:center"><input type="checkbox" id="rememberInput">Manter conectado neste dispositivo</label>
+            <div class="form-status is-error" id="loginError" style="display:none"></div>
+            <button class="btn btn--primary btn--block mt-2" type="submit" id="loginBtn">Entrar no painel</button>
+          </form>
+          <div class="admin__help mt-2" style="text-align:left">
+            <strong>Como obter o token (uma única vez):</strong>
+            <ol>
+              <li>Entre no GitHub com a conta autorizada (o criador do projeto pode adicionar a secretaria como colaboradora do repositório).</li>
+              <li>Acesse <em>Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token</em>.</li>
+              <li>Selecione apenas o repositório do site e a permissão <em>Contents: Read and write</em>. Defina uma validade (ex.: 1 ano).</li>
+              <li>Copie o token e cole acima. Ele fica salvo apenas neste navegador.</li>
+            </ol>
           </div>
-          <aside>
-            <div class="calendar" id="calendar" aria-label="Calendário mensal de eventos"></div>
-            <div class="sidebar__box mt-1"><h3>Calendário escolar oficial</h3><p class="muted" style="font-size:.9rem">O calendário escolar completo (bimestres, recessos e feriados) está disponível em PDF na página de documentos.</p><a class="btn btn--outline btn--sm" href="documentos.html?categoria=calendario">Ver documento</a></div>
-          </aside>
+        </div>
+
+        <div id="adminPanel" hidden>
+          <div class="admin__bar">
+            <img src="assets/images/logo-white.svg" alt="CEIAS">
+            <div class="admin__user" id="adminUser"></div>
+            <div class="btn-group">
+              <button type="button" class="btn btn--outline-light btn--sm" id="reloadBtn">Recarregar</button>
+              <button type="button" class="btn btn--outline-light btn--sm" id="exportBtn">Backup (.json)</button>
+              <a class="btn btn--outline-light btn--sm" href="avisos.html" target="_blank" rel="noopener">Ver mural</a>
+              <button type="button" class="btn btn--gold btn--sm" id="logoutBtn">Sair</button>
+            </div>
+          </div>
+          <div class="admin__layout">
+            <div>
+              <div class="section-head" style="margin-bottom:1rem"><span class="eyebrow">Avisos cadastrados</span><h2 style="font-size:var(--fs-xl)">Mural do colégio</h2><p id="adminCount" style="font-size:.9rem"></p></div>
+              <div class="admin__list" id="adminList"></div>
+            </div>
+            <form class="admin__form" id="avisoForm" novalidate>
+              <h2 id="formTitle">Novo aviso</h2>
+              <div class="form-grid">
+                <div class="form-field form-field--full"><label for="fTitle">Título *</label><input type="text" id="fTitle" name="title" required maxlength="120"></div>
+                <div class="form-field form-field--full"><label for="fText">Mensagem *</label><textarea id="fText" name="text" required style="min-height:120px"></textarea></div>
+                <div class="form-field"><label for="fCat">Categoria</label><select id="fCat" name="category"><option value="geral">Geral</option><option value="secretaria">Secretaria</option><option value="jogos">Jogos escolares</option><option value="festa">Festas e eventos</option><option value="data-importante">Data importante</option><option value="pedagogico">Pedagógico</option></select></div>
+                <div class="form-field"><label for="fPrio">Prioridade</label><select id="fPrio" name="priority"><option value="normal">Normal</option><option value="importante">Importante</option><option value="urgente">Urgente (faixa no topo)</option></select></div>
+                <div class="form-field"><label for="fDate">Data de publicação</label><input type="date" id="fDate" name="date"></div>
+                <div class="form-field"><label for="fEvent">Data do evento/prazo</label><input type="date" id="fEvent" name="eventDate"></div>
+                <div class="form-field"><label for="fExp">Ocultar automaticamente em</label><input type="date" id="fExp" name="expires"></div>
+                <div class="form-field"><label for="fAuthor">Assinatura</label><input type="text" id="fAuthor" name="author" placeholder="Secretaria, Direção…"></div>
+                <div class="form-field form-field--full" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem">
+                  <label class="check"><input type="checkbox" name="pinned">Fixar no topo</label>
+                  <label class="check"><input type="checkbox" name="ticker" checked>Mostrar no ticker</label>
+                  <label class="check"><input type="checkbox" name="published" checked>Publicado</label>
+                </div>
+              </div>
+              <div class="btn-group mt-2"><button class="btn btn--primary" type="submit" id="saveBtn">Publicar no site</button><button class="btn btn--outline" type="button" id="cancelEdit" hidden>Cancelar edição</button></div>
+              <div class="form-status admin__status" id="adminStatus"></div>
+              <p class="admin__help mt-1">Cada publicação gera um commit no repositório do site. O GitHub Pages atualiza o mural em 1–2 minutos.</p>
+            </form>
+          </div>
         </div>
       </div>
     </section>
@@ -205,6 +249,7 @@
   <script src="assets/js/config.js"></script>
   <script src="assets/js/data.js"></script>
   <script src="assets/js/script.js"></script>
+  <script src="assets/js/admin.js"></script>
 
 </body>
 </html>

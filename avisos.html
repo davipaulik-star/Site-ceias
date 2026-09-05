@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calendário de Eventos | CEIAS</title>
-  <meta name="description" content="Calendário de eventos do CEIAS: festas, reuniões, mostras, feiras, formaturas e datas importantes do ano letivo.">
+  <title>Mural de Avisos e Recados | CEIAS</title>
+  <meta name="description" content="Avisos, recados, jogos escolares, festas, prazos e datas importantes do Colégio Estadual do Campo Irmã Ambrósia Sabatovich.">
   <meta name="keywords" content="CEIAS, Colégio Estadual do Campo Irmã Ambrósia Sabatovich, Colônia Marcelino, São José dos Pinhais, escola do campo, ensino fundamental, ensino médio, EJA, Irmã Ambrósia, educação do campo, Paraná">
   <meta name="author" content="Colégio Estadual do Campo Irmã Ambrósia Sabatovich">
   <meta name="theme-color" content="#1b1c56">
 
-  <link rel="canonical" href="eventos.html">
+  <link rel="canonical" href="avisos.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CEIAS — Colégio Estadual do Campo Irmã Ambrósia Sabatovich">
-  <meta property="og:title" content="Calendário de Eventos | CEIAS">
-  <meta property="og:description" content="Calendário de eventos do CEIAS: festas, reuniões, mostras, feiras, formaturas e datas importantes do ano letivo.">
+  <meta property="og:title" content="Mural de Avisos e Recados | CEIAS">
+  <meta property="og:description" content="Avisos, recados, jogos escolares, festas, prazos e datas importantes do Colégio Estadual do Campo Irmã Ambrósia Sabatovich.">
   <meta property="og:image" content="assets/images/placeholders/hero-1.svg">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Calendário de Eventos | CEIAS">
-  <meta name="twitter:description" content="Calendário de eventos do CEIAS: festas, reuniões, mostras, feiras, formaturas e datas importantes do ano letivo.">
+  <meta name="twitter:title" content="Mural de Avisos e Recados | CEIAS">
+  <meta name="twitter:description" content="Avisos, recados, jogos escolares, festas, prazos e datas importantes do Colégio Estadual do Campo Irmã Ambrósia Sabatovich.">
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
   <link rel="apple-touch-icon" href="assets/images/logo.svg">
   <link rel="manifest" href="manifest.json">
@@ -33,7 +33,7 @@
     "@type": "School",
     "name": "Colégio Estadual do Campo Irmã Ambrósia Sabatovich",
     "alternateName": "CEIAS",
-    "url": "eventos.html",
+    "url": "avisos.html",
     "identifier": "INEP 41369270",
     "address": {
       "@type": "PostalAddress",
@@ -112,24 +112,35 @@
 
   <main id="main">
     <section class="page-hero page-hero--compact">
-      <div class="page-hero__bg"><img src="assets/images/placeholders/evento-1.svg" alt=""></div>
+      <div class="page-hero__bg"><img src="assets/images/placeholders/comunidade.svg" alt=""></div>
       <div class="container">
-        <ol class="breadcrumb"><li><a href="index.html">Início</a></li><li>Eventos</li></ol>
-        <h1>Calendário de eventos</h1>
-        <p>Programação, atividades e datas importantes do colégio.</p>
+        <ol class="breadcrumb"><li><a href="index.html">Início</a></li><li><a href="vida-escolar.html">Vida Escolar</a></li><li>Mural de avisos</li></ol>
+        <h1>Mural de avisos e recados</h1>
+        <p>Comunicados oficiais da direção, da secretaria e da equipe pedagógica. Jogos escolares, festas, prazos e datas importantes.</p>
       </div>
     </section>
     <section class="section">
       <div class="container">
-        <div id="nextEvent"></div>
-        <div class="events-layout" id="calendario">
+        <div class="mural">
           <div>
-            <div class="filters" id="eventsFilters" role="group" aria-label="Filtrar eventos" style="justify-content:flex-start"></div>
-            <div class="events-list" id="eventsList"></div>
+            <div class="search-box" style="margin-inline:0;max-width:none"><span data-icon="search"></span><label class="sr-only" for="muralSearch">Buscar aviso</label><input type="search" id="muralSearch" placeholder="Buscar aviso ou recado"></div>
+            <div class="filters" id="muralFilters" role="group" aria-label="Filtrar avisos por categoria" style="justify-content:flex-start"></div>
+            <div class="mural__main" id="muralAll"></div>
           </div>
-          <aside>
-            <div class="calendar" id="calendar" aria-label="Calendário mensal de eventos"></div>
-            <div class="sidebar__box mt-1"><h3>Calendário escolar oficial</h3><p class="muted" style="font-size:.9rem">O calendário escolar completo (bimestres, recessos e feriados) está disponível em PDF na página de documentos.</p><a class="btn btn--outline btn--sm" href="documentos.html?categoria=calendario">Ver documento</a></div>
+          <aside class="mural__side">
+            <div class="dates-box"><h3>Datas importantes</h3><ul class="dates-list" id="datesList" data-limit="10"></ul></div>
+            <div class="secretaria-box">
+              <h3>Recados da secretaria</h3>
+              <ul>
+                <li>Atendimento: <span data-contact="hours"></span>.</li>
+                <li>Declarações, históricos e transferências: solicitar com 3 dias úteis de antecedência.</li>
+                <li>Matrículas e rematrículas: conforme calendário da SEED/PR, com documentos do estudante e do responsável.</li>
+                <li>Transporte escolar: cadastro e horários das linhas na secretaria.</li>
+                <li>Justificativas de falta: por escrito, assinadas pelo responsável, em até 3 dias.</li>
+                <li>Uniforme, materiais e alimentação: veja a página <a href="vida-escolar.html">Vida Escolar</a>.</li>
+              </ul>
+            </div>
+            <div class="sidebar__box"><h3>Como receber os avisos</h3><p class="muted" style="font-size:.9rem;margin:0">Acompanhe esta página, o ticker da página inicial e as redes sociais do colégio. Avisos urgentes aparecem em destaque no topo de todas as páginas.</p></div>
           </aside>
         </div>
       </div>

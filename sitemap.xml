@@ -2,6 +2,7 @@
 <!-- Substitua os caminhos relativos pela URL final do site (ex.: https://ceias.com.br/index.html) -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>area-do-aluno.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>avisos.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>contato.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>cultura.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>documentos.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

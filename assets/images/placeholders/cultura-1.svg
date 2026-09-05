@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Dança tradicional">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5a4a12"/><stop offset="1" stop-color="#d4a628"/></linearGradient></defs>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6b5408"/><stop offset="1" stop-color="#f2c318"/></linearGradient></defs>
 <rect width="1200" height="900" fill="url(#g)"/><circle cx="1071" cy="897" r="320" fill="#ffffff" opacity="0.06"/><circle cx="531" cy="572" r="324" fill="#ffffff" opacity="0.06"/><circle cx="414" cy="860" r="210" fill="#ffffff" opacity="0.06"/><circle cx="280" cy="426" r="127" fill="#ffffff" opacity="0.06"/><circle cx="803" cy="452" r="176" fill="#ffffff" opacity="0.06"/><circle cx="148" cy="687" r="157" fill="#ffffff" opacity="0.06"/><path d="M0 702 C 240 558, 420 810, 660 666 S 1020 594, 1200 720 L 1200 900 L 0 900 Z" fill="#000" opacity="0.12"/>
 <g font-family="Montserrat, Arial, sans-serif" text-anchor="end" fill="#ffffff">
 <text x="1164" y="846" font-size="24" font-weight="700" opacity="0.55">Dança tradicional</text>

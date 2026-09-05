@@ -1,0 +1,103 @@
+{
+  "updatedAt": "2026-09-05",
+  "items": [
+    {
+      "id": "jogos-escolares-fase-regional",
+      "title": "Jogos Escolares do Paraná — fase regional",
+      "text": "As equipes de futsal e vôlei do CEIAS disputam a fase regional nos dias 22 e 23 de setembro, em São José dos Pinhais. Atletas devem entregar a autorização assinada pelos responsáveis até 15/09 na secretaria. Saída do ônibus às 7h.",
+      "category": "jogos",
+      "priority": "importante",
+      "date": "2026-09-04",
+      "eventDate": "2026-09-22",
+      "expires": "2026-09-24",
+      "pinned": true,
+      "ticker": true,
+      "published": true,
+      "author": "Secretaria"
+    },
+    {
+      "id": "festa-da-familia-2026",
+      "title": "Festa da Família — 19 de setembro",
+      "text": "Toda a comunidade está convidada para a Festa da Família CEIAS, das 14h às 20h, na quadra coberta. Haverá apresentações das turmas, comidas típicas, brincadeiras e exposição de projetos. Traga sua família!",
+      "category": "festa",
+      "priority": "importante",
+      "date": "2026-09-03",
+      "eventDate": "2026-09-19",
+      "expires": "2026-09-20",
+      "pinned": true,
+      "ticker": true,
+      "published": true,
+      "author": "Direção"
+    },
+    {
+      "id": "entrega-atividades-3-bimestre",
+      "title": "Prazo final das atividades do 3º bimestre",
+      "text": "Estudantes com atividades avaliativas pendentes devem entregá-las até 12 de setembro. Procure o professor da disciplina em caso de dúvida. Após o prazo, as notas serão fechadas para o conselho de classe.",
+      "category": "pedagogico",
+      "priority": "urgente",
+      "date": "2026-09-01",
+      "eventDate": "2026-09-12",
+      "expires": "2026-09-13",
+      "pinned": false,
+      "ticker": true,
+      "published": true,
+      "author": "Equipe pedagógica"
+    },
+    {
+      "id": "matriculas-rematriculas-2027",
+      "title": "Rematrícula 2027 — documentos necessários",
+      "text": "A rematrícula para 2027 acontece de 5 a 30 de outubro na secretaria, das 8h às 17h. Trazer: RG ou certidão do estudante, comprovante de residência atualizado e documento do responsável. Estudantes novos devem apresentar também o histórico escolar.",
+      "category": "secretaria",
+      "priority": "normal",
+      "date": "2026-09-02",
+      "eventDate": "2026-10-05",
+      "expires": "2026-10-31",
+      "pinned": false,
+      "ticker": true,
+      "published": true,
+      "author": "Secretaria"
+    },
+    {
+      "id": "conselho-de-classe-outubro",
+      "title": "Conselho de classe — sem aula à tarde em 20/10",
+      "text": "No dia 20 de outubro haverá conselho de classe do 3º trimestre. Não haverá aula no período da tarde. O transporte escolar fará o retorno ao meio-dia.",
+      "category": "data-importante",
+      "priority": "importante",
+      "date": "2026-09-01",
+      "eventDate": "2026-10-20",
+      "expires": "2026-10-21",
+      "pinned": false,
+      "ticker": false,
+      "published": true,
+      "author": "Direção"
+    },
+    {
+      "id": "horario-transporte-escolar",
+      "title": "Horários atualizados do transporte escolar",
+      "text": "As linhas do transporte escolar rural têm novos horários a partir de 8 de setembro. A tabela completa está no mural da escola e pode ser solicitada na secretaria.",
+      "category": "geral",
+      "priority": "normal",
+      "date": "2026-08-29",
+      "eventDate": "",
+      "expires": "",
+      "pinned": false,
+      "ticker": false,
+      "published": true,
+      "author": "Secretaria"
+    },
+    {
+      "id": "uso-dos-tablets",
+      "title": "Uso dos tablets nas aulas",
+      "text": "Os tablets do laboratório estão disponíveis para uso pedagógico mediante agendamento do professor com a equipe do laboratório de informática.",
+      "category": "geral",
+      "priority": "normal",
+      "date": "2026-08-18",
+      "eventDate": "",
+      "expires": "",
+      "pinned": false,
+      "ticker": false,
+      "published": true,
+      "author": "Equipe pedagógica"
+    }
+  ]
+}
