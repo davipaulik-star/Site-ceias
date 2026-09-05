@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Foto 10">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a3b2a"/><stop offset="1" stop-color="#9c7a4a"/></linearGradient></defs>
+<rect width="1200" height="900" fill="url(#g)"/><circle cx="89" cy="268" r="287" fill="#ffffff" opacity="0.06"/><circle cx="648" cy="282" r="172" fill="#ffffff" opacity="0.06"/><circle cx="7" cy="738" r="289" fill="#ffffff" opacity="0.06"/><circle cx="133" cy="24" r="307" fill="#ffffff" opacity="0.06"/><circle cx="478" cy="109" r="217" fill="#ffffff" opacity="0.06"/><circle cx="953" cy="794" r="194" fill="#ffffff" opacity="0.06"/><path d="M0 702 C 240 558, 420 810, 660 666 S 1020 594, 1200 720 L 1200 900 L 0 900 Z" fill="#000" opacity="0.12"/>
+<g font-family="Montserrat, Arial, sans-serif" text-anchor="end" fill="#ffffff">
+<text x="1164" y="846" font-size="24" font-weight="700" opacity="0.55">Foto 10</text>
+<text x="1164" y="878" font-size="14" opacity="0.45">imagem ilustrativa</text>
+</g></svg>

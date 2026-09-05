@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Foto 9">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f3d2e"/><stop offset="1" stop-color="#2e8b57"/></linearGradient></defs>
+<rect width="1200" height="900" fill="url(#g)"/><circle cx="841" cy="253" r="303" fill="#ffffff" opacity="0.06"/><circle cx="828" cy="41" r="192" fill="#ffffff" opacity="0.06"/><circle cx="71" cy="475" r="112" fill="#ffffff" opacity="0.06"/><circle cx="126" cy="263" r="145" fill="#ffffff" opacity="0.06"/><circle cx="128" cy="620" r="182" fill="#ffffff" opacity="0.06"/><circle cx="743" cy="278" r="181" fill="#ffffff" opacity="0.06"/><path d="M0 702 C 240 558, 420 810, 660 666 S 1020 594, 1200 720 L 1200 900 L 0 900 Z" fill="#000" opacity="0.12"/>
+<g font-family="Montserrat, Arial, sans-serif" text-anchor="end" fill="#ffffff">
+<text x="1164" y="846" font-size="24" font-weight="700" opacity="0.55">Foto 9</text>
+<text x="1164" y="878" font-size="14" opacity="0.45">imagem ilustrativa</text>
+</g></svg>
