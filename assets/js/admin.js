@@ -189,11 +189,20 @@
     if (!ADMIN.owner || !ADMIN.repo) { $("#loginError").textContent = "Configure owner/repo em assets/js/config.js (bloco admin)."; $("#loginError").style.display = "block"; }
     $("#branchInput").value = state.branch;
     $("#loginForm").addEventListener("submit", e => { e.preventDefault(); state.branch = $("#branchInput").value.trim() || state.branch; login($("#tokenInput").value, $("#rememberInput").checked); });
-    const saved = store.get();
-    if (saved) { $("#tokenInput").value = saved; login(saved, !!localStorage.getItem("ceias-admin-token")); }
+    // Link de acesso: admin.html#chave=TOKEN (gerado pelo criador do projeto para outra pessoa)
+    const m = location.hash.match(/chave=([^&]+)/);
+    if (m) { history.replaceState(null, "", location.pathname); $("#tokenInput").value = decodeURIComponent(m[1]); $("#rememberInput").checked = true; login(decodeURIComponent(m[1]), true); }
+    else { const saved = store.get(); if (saved) { $("#tokenInput").value = saved; login(saved, !!localStorage.getItem("ceias-admin-token")); } }
     $("#logoutBtn").addEventListener("click", logout);
     $("#reloadBtn").addEventListener("click", async () => { await loadData(); renderList(); setStatus("Lista atualizada."); });
     $("#exportBtn").addEventListener("click", exportJson);
+    $("#shareBtn").addEventListener("click", () => {
+      const link = location.origin + location.pathname + "#chave=" + encodeURIComponent(state.token);
+      const box = $("#shareBox"); box.hidden = false;
+      $("#shareLink").value = link;
+      navigator.clipboard?.writeText(link).then(() => setStatus("Link de acesso copiado. Envie apenas para a pessoa autorizada (secretaria/direção)."));
+    });
+    $("#shareClose").addEventListener("click", () => { $("#shareBox").hidden = true; });
     $("#avisoForm").addEventListener("submit", submitForm);
     $("#cancelEdit").addEventListener("click", () => resetForm());
     $("#adminList").addEventListener("click", async e => {

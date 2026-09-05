@@ -34,6 +34,8 @@ Não existe senha guardada no site: só consegue publicar quem tiver **permissã
 3. Abra `admin.html`, cole o token e entre. Crie, edite, fixe, oculte ou exclua avisos; cada publicação vira um commit
    (`[avisos] Novo aviso: … (por usuário)`) e o GitHub Pages atualiza o site em 1–2 minutos.
 4. O botão "Backup (.json)" baixa uma cópia de todos os avisos.
+5. **Dar acesso a outra pessoa**: dentro do painel, o botão "Dar acesso a outra pessoa" gera um link (`admin.html#chave=…`) que abre o painel
+   direto. Envie só para a pessoa autorizada. Para cancelar, revogue o token no GitHub e gere outro. Quem não tem o link ou o token não entra.
 
 Configuração em `assets/js/config.js` → `admin` (`owner`, `repo`, `branch`, `file`). A branch padrão é `main`; ajuste se o site for
 publicado a partir de outra branch. O painel tem `noindex` e está bloqueado no `robots.txt`.

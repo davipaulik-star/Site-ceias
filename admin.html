@@ -128,8 +128,9 @@
           </form>
           <div class="admin__help mt-2" style="text-align:left">
             <strong>Como obter o token (uma única vez):</strong>
+            <p><strong>Recebeu um link de acesso?</strong> Basta abri-lo: o painel entra automaticamente. As instruções abaixo são para o criador do projeto.</p>
             <ol>
-              <li>Entre no GitHub com a conta autorizada (o criador do projeto pode adicionar a secretaria como colaboradora do repositório).</li>
+              <li>Entre no GitHub com a conta dona do site (ou de um colaborador com permissão de escrita).</li>
               <li>Acesse <em>Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token</em>.</li>
               <li>Selecione apenas o repositório do site e a permissão <em>Contents: Read and write</em>. Defina uma validade (ex.: 1 ano).</li>
               <li>Copie o token e cole acima. Ele fica salvo apenas neste navegador.</li>
@@ -144,9 +145,16 @@
             <div class="btn-group">
               <button type="button" class="btn btn--outline-light btn--sm" id="reloadBtn">Recarregar</button>
               <button type="button" class="btn btn--outline-light btn--sm" id="exportBtn">Backup (.json)</button>
+              <button type="button" class="btn btn--outline-light btn--sm" id="shareBtn">Dar acesso a outra pessoa</button>
               <a class="btn btn--outline-light btn--sm" href="avisos.html" target="_blank" rel="noopener">Ver mural</a>
               <button type="button" class="btn btn--gold btn--sm" id="logoutBtn">Sair</button>
             </div>
+          </div>
+          <div class="info-box info-box--gold" id="shareBox" hidden style="margin-top:0">
+            <h4>Link de acesso ao painel</h4>
+            <p style="font-size:.9rem">Envie este link <strong>apenas</strong> para a pessoa autorizada (por WhatsApp ou e-mail). Ao abrir, ela entra direto no painel neste dispositivo. Para cancelar o acesso, revogue o token no GitHub (<em>Settings → Developer settings → Personal access tokens</em>) e gere um novo.</p>
+            <div class="form-field"><label class="sr-only" for="shareLink">Link</label><input type="text" id="shareLink" readonly onclick="this.select()"></div>
+            <div class="btn-group mt-1"><button type="button" class="btn btn--outline btn--sm" id="shareClose">Fechar</button></div>
           </div>
           <div class="admin__layout">
             <div>
