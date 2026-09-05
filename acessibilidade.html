@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mapa do Site | CEIAS</title>
-  <meta name="description" content="Todas as páginas do site do Colégio Estadual do Campo Irmã Ambrósia Sabatovich em um só lugar.">
+  <title>Acessibilidade</title>
+  <meta name="description" content="Recursos de acessibilidade do site do CEIAS: modo fotossensível, alto contraste, ajuste de fonte, tradutor de Libras e navegação por teclado.">
   <meta name="keywords" content="CEIAS, Colégio Estadual do Campo Irmã Ambrósia Sabatovich, Colônia Marcelino, São José dos Pinhais, escola do campo, ensino fundamental, ensino médio, EJA, Irmã Ambrósia, educação do campo, Paraná">
   <meta name="author" content="Colégio Estadual do Campo Irmã Ambrósia Sabatovich">
   <meta name="theme-color" content="#1b1c56">
 
-  <link rel="canonical" href="mapa-do-site.html">
+  <link rel="canonical" href="acessibilidade.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CEIAS — Colégio Estadual do Campo Irmã Ambrósia Sabatovich">
-  <meta property="og:title" content="Mapa do Site | CEIAS">
-  <meta property="og:description" content="Todas as páginas do site do Colégio Estadual do Campo Irmã Ambrósia Sabatovich em um só lugar.">
+  <meta property="og:title" content="Acessibilidade">
+  <meta property="og:description" content="Recursos de acessibilidade do site do CEIAS: modo fotossensível, alto contraste, ajuste de fonte, tradutor de Libras e navegação por teclado.">
   <meta property="og:image" content="assets/images/placeholders/hero-1.svg">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mapa do Site | CEIAS">
-  <meta name="twitter:description" content="Todas as páginas do site do Colégio Estadual do Campo Irmã Ambrósia Sabatovich em um só lugar.">
+  <meta name="twitter:title" content="Acessibilidade">
+  <meta name="twitter:description" content="Recursos de acessibilidade do site do CEIAS: modo fotossensível, alto contraste, ajuste de fonte, tradutor de Libras e navegação por teclado.">
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
   <link rel="apple-touch-icon" href="assets/images/logo.svg">
   <link rel="manifest" href="manifest.json">
@@ -33,7 +33,7 @@
     "@type": "School",
     "name": "Colégio Estadual do Campo Irmã Ambrósia Sabatovich",
     "alternateName": "CEIAS",
-    "url": "mapa-do-site.html",
+    "url": "acessibilidade.html",
     "identifier": "INEP 41369270",
     "address": {
       "@type": "PostalAddress",
@@ -114,17 +114,66 @@
 
   <main id="main">
     <section class="page-hero page-hero--compact">
-      <div class="page-hero__bg"><img src="assets/images/placeholders/colegio-fachada.svg" alt=""></div>
+      <div class="page-hero__bg"><img src="assets/images/placeholders/colegio-patio.svg" alt=""></div>
       <div class="container">
-        <ol class="breadcrumb"><li><a href="index.html">Início</a></li><li><a href="contato.html">Contato</a></li><li>Mapa do site</li></ol>
-        <h1>Mapa do site</h1>
-        <p>Todas as páginas e seções do portal do CEIAS.</p>
+        <ol class="breadcrumb"><li><a href="index.html">Início</a></li><li>Acessibilidade</li></ol>
+        <h1>Acessibilidade</h1>
+        <p>Este site foi construído para ser usado por toda a comunidade escolar, com recursos que podem ser ligados a qualquer momento na barra superior.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <div class="sitemap reveal-stagger" id="siteMap"></div>
+        <div class="section-head"><span class="eyebrow">Recursos disponíveis</span><h2>O que você pode ajustar</h2><p>As preferências ficam salvas no seu navegador e continuam valendo nas próximas visitas.</p></div>
+        <div class="grid grid--2 reveal-stagger">
+          <div class="value-card value-card--gold">
+            <span data-icon="calm"></span>
+            <h3>Modo fotossensível</h3>
+            <p>Desliga todas as animações, o movimento automático do banner, a faixa de avisos em rolagem, os efeitos de aproximação e os gradientes de alto contraste. Pensado para pessoas com epilepsia fotossensível, enxaqueca com aura ou sensibilidade a movimento na tela.</p>
+            <p class="mt-1"><button type="button" class="btn btn--outline btn--sm" data-a11y="photosensitive" aria-pressed="false">Ligar ou desligar agora</button></p>
+          </div>
+          <div class="value-card">
+            <span data-icon="eye"></span>
+            <h3>Alto contraste</h3>
+            <p>Troca o site para fundo preto com texto branco e destaques em amarelo, aumentando a distinção entre os elementos. Útil para baixa visão e para leitura sob luz forte.</p>
+            <p class="mt-1"><button type="button" class="btn btn--outline btn--sm" data-a11y="contrast" aria-pressed="false">Ligar ou desligar agora</button></p>
+          </div>
+          <div class="value-card value-card--blue">
+            <span data-icon="search"></span>
+            <h3>Tamanho da fonte</h3>
+            <p>Os botões A- e A+ na barra superior aumentam ou reduzem o texto de todo o site em dois níveis, sem quebrar o layout.</p>
+            <p class="mt-1"><button type="button" class="btn btn--outline btn--sm" data-a11y="font-down">A-</button> <button type="button" class="btn btn--outline btn--sm" data-a11y="font-up">A+</button></p>
+          </div>
+          <div class="value-card">
+            <span data-icon="accessibility"></span>
+            <h3>Libras</h3>
+            <p>O site integra o VLibras, tradutor oficial do Governo Federal, que converte o conteúdo para a Língua Brasileira de Sinais por meio de um avatar.</p>
+            <p class="mt-1"><button type="button" class="btn btn--outline btn--sm" data-a11y="libras">Abrir tradutor</button></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container container--narrow">
+        <div class="section-head"><span class="eyebrow">Navegação</span><h2>Uso por teclado e leitores de tela</h2></div>
+        <ul class="feature-list reveal">
+          <li><span data-icon="check"></span><span>O primeiro atalho da página leva direto ao conteúdo principal, sem passar por todo o menu.</span></li>
+          <li><span data-icon="check"></span><span>Todos os botões, links e campos podem ser alcançados com a tecla Tab, com contorno visível indicando onde você está.</span></li>
+          <li><span data-icon="check"></span><span>A tecla Esc fecha menus, janelas de imagem e a busca. As setas navegam entre fotos e entre resultados da busca.</span></li>
+          <li><span data-icon="check"></span><span>A busca do site abre com Ctrl+K (ou Cmd+K) e cobre páginas, avisos, notícias, projetos, eventos e documentos.</span></li>
+          <li><span data-icon="check"></span><span>Imagens têm descrição alternativa, os títulos seguem hierarquia e as tabelas viram cartões legíveis no celular.</span></li>
+          <li><span data-icon="check"></span><span>Quando o sistema operacional está configurado para reduzir movimento, o site respeita essa escolha automaticamente.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="cta reveal">
+          <div><h2>Encontrou alguma barreira?</h2><p>Se alguma parte do site dificultou o seu acesso à informação, avise a escola. Sua observação ajuda a melhorar o portal para toda a comunidade.</p></div>
+          <div class="btn-group"><a class="btn btn--gold" href="contato.html">Enviar mensagem</a></div>
+        </div>
       </div>
     </section>
   </main>

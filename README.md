@@ -16,6 +16,25 @@ Se a escola tiver o arquivo original em alta resolução, basta substituir `logo
 O logotipo aparece no cabeçalho, no banner inicial, em "Quem somos", na seção "Nosso brasão", no rodapé, no loader, na página 404,
 no painel restrito e como marca d'água nas seções azuis.
 
+## Conteúdo: o que já é real e o que a escola precisa publicar
+
+O site é institucional e **não inventa dados**. Textos sobre a escola, a Educação do Campo, a história de Irmã Ambrósia,
+o uniforme, os serviços da secretaria e as perguntas frequentes já estão escritos e prontos para uso.
+
+As áreas que dependem de informação oficial da escola aparecem com um aviso elegante de "em divulgação" até serem preenchidas:
+
+| Área | Arquivo / painel | O que preencher |
+|---|---|---|
+| Avisos e recados | painel `admin.html` | comunicados, prazos, jogos, festas |
+| Fotos | painel `admin.html` (aba Fotos) | imagens das atividades |
+| Equipe | `data.js` → `teachers` | nome, função, área, disciplina, formação, foto (enquanto vazio, mostra a composição por área) |
+| Transporte | `data.js` → `transport` | linha, rota e horários |
+| Horários das turmas | `data.js` → `schedule.classes` | grade de cada turma |
+| Cardápio | `data.js` → `menu` | refeições da semana |
+| Jogos Escolares | `data.js` → `games.results` / `games.schedule` | resultados e agenda |
+| Depoimentos | `data.js` → `testimonials` | apenas depoimentos reais, com autorização |
+| Notícias, eventos, projetos, documentos | `data.js` | conteúdo do ano letivo |
+
 ## Mural de avisos e painel restrito
 
 Os avisos (jogos escolares, festas, prazos, datas importantes e recados da secretaria) ficam em `assets/data/avisos.json`
@@ -44,7 +63,7 @@ publicado a partir de outra branch. O painel tem `noindex` e está bloqueado no 
 
 - Cabeçalho com barra superior (endereço, horário, redes sociais) que recolhe ao rolar; menu com dropdowns; menu lateral no celular.
 - **Busca global** (botão de lupa ou `Ctrl+K`) em páginas, notícias, projetos, eventos, documentos, equipe e infraestrutura.
-- **Acessibilidade**: aumentar/diminuir fonte, alto contraste (preferências salvas no navegador), tradutor **VLibras**, navegação por teclado, foco visível, `prefers-reduced-motion`.
+- **Acessibilidade**: **modo fotossensível** (desliga animações, banner automático, ticker, parallax, zoom em hover e gradientes de alto contraste), alto contraste, aumentar/diminuir fonte, tradutor **VLibras**, navegação por teclado, foco visível e respeito automático a `prefers-reduced-motion`. Todas as preferências ficam salvas no navegador. Página dedicada: `acessibilidade.html`.
 - Banner com slider (setas, indicadores, swipe, pausa ao passar o mouse) e ticker de avisos e próximos eventos.
 - Números com contagem animada, gráficos de distribuição, avaliação da comunidade.
 - Notícias com destaque, filtros, busca e "carregar mais"; páginas de detalhe com compartilhamento.

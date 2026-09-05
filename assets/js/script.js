@@ -12,6 +12,10 @@
   const CONFIG = window.CEIAS_CONFIG || {};
   const DATA = window.CEIAS_DATA || {};
   const $ = (sel, ctx) => (ctx || document).querySelector(sel);
+  /* Modo fotossensível: desliga movimento, autoplay, parallax e transições.
+     Também é ativado automaticamente quando o sistema pede redução de movimento. */
+  const prefersReduced = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isCalm = () => document.body.classList.contains("photosensitive") || prefersReduced();
   const $$ = (sel, ctx) => Array.from((ctx || document).querySelectorAll(sel));
 
   /* ------------------------------------------------------------------
@@ -71,6 +75,7 @@
     tiktok: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.7c.3 0 .5 0 .8.1V9.6a5.8 5.8 0 1 0 5 5.8V9.2a7.4 7.4 0 0 0 4.3 1.4V7.5a4.3 4.3 0 0 1-3.4-1.7Z"/></svg>',
     share: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>',
     tag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.6 2.6 21.4 11.4a2 2 0 0 1 0 2.8l-7.2 7.2a2 2 0 0 1-2.8 0L2.6 12.6A2 2 0 0 1 2 11.2V4a2 2 0 0 1 2-2h7.2c.5 0 1 .2 1.4.6Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>',
+    calm: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h4l2-6 4 12 3-9 2 3h5"/></svg>',
     monitor: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',
   };
   window.CEIAS_ICONS = ICONS;
@@ -188,7 +193,7 @@
       slides[index].classList.add("is-active");
       dots[index].classList.add("is-active");
     }
-    function restart() { clearInterval(timer); timer = setInterval(() => go(index + 1), 7000); }
+    function restart() { clearInterval(timer); if (isCalm()) return; timer = setInterval(() => go(index + 1), 7000); }
     $(".hero__arrow--prev", hero)?.addEventListener("click", () => { go(index - 1); restart(); });
     $(".hero__arrow--next", hero)?.addEventListener("click", () => { go(index + 1); restart(); });
     hero.addEventListener("keydown", e => { if (e.key === "ArrowRight") { go(index + 1); restart(); } if (e.key === "ArrowLeft") { go(index - 1); restart(); } });
@@ -211,7 +216,7 @@
      ------------------------------------------------------------------ */
   function initReveal() {
     const items = $$(".reveal, .reveal-stagger");
-    if (!("IntersectionObserver" in window)) { items.forEach(i => i.classList.add("is-visible")); return; }
+    if (isCalm() || !("IntersectionObserver" in window)) { items.forEach(i => i.classList.add("is-visible")); return; }
     const io = new IntersectionObserver(entries => {
       entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("is-visible"); io.unobserve(en.target); } });
     }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
@@ -220,7 +225,7 @@
 
   function initParallax() {
     const els = $$("[data-parallax]");
-    if (!els.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!els.length || isCalm()) return;
     let ticking = false;
     const update = () => {
       els.forEach(el => {
@@ -237,6 +242,7 @@
 
   function animateNumber(el, target, opts = {}) {
     const duration = opts.duration || 1800;
+    if (isCalm()) { const d = opts.decimals || 0; el.textContent = (d ? target.toFixed(d).replace(".", ",") : Math.round(target).toLocaleString("pt-BR")) + (opts.suffix || ""); return; }
     const decimals = opts.decimals || 0;
     const start = performance.now();
     const format = v => decimals ? v.toFixed(decimals).replace(".", ",") : Math.round(v).toLocaleString("pt-BR");
@@ -297,13 +303,13 @@
           <div class="bar__track"><div class="bar__fill ${classes[i] || ""}" data-width="${(d.value / total * 100).toFixed(1)}"></div></div>
         </div>`).join("");
     }
+    const fill = root => {
+      $$(".donut__seg", root).forEach(x => x.setAttribute("stroke-dasharray", `${x.dataset.len} ${x.dataset.total}`));
+      $$(".bar__fill", root).forEach(b => { b.style.width = b.dataset.width + "%"; });
+    };
+    if (isCalm()) { fill(wrap); bars && fill(bars); return; }
     const io = new IntersectionObserver(entries => {
-      entries.forEach(en => {
-        if (!en.isIntersecting) return;
-        $$(".donut__seg", en.target).forEach(s => { s.setAttribute("stroke-dasharray", `${s.dataset.len} ${s.dataset.total}`); });
-        $$(".bar__fill", en.target).forEach(b => { b.style.width = b.dataset.width + "%"; });
-        io.unobserve(en.target);
-      });
+      entries.forEach(en => { if (!en.isIntersecting) return; fill(en.target); io.unobserve(en.target); });
     }, { threshold: 0.3 });
     io.observe(wrap);
     if (bars) io.observe(bars);
@@ -341,7 +347,8 @@
       io.observe(crit);
     }
     const t = $("#testimonials");
-    if (t && DATA.testimonials) {
+    if (t && DATA.testimonials && !DATA.testimonials.length) { t.remove(); }
+    else if (t && DATA.testimonials) {
       t.innerHTML = DATA.testimonials.map(x => `
         <blockquote class="testimonial"><p>${escapeHtml(x.text)}</p><footer>${escapeHtml(x.author)}<span>${escapeHtml(x.role)}</span></footer></blockquote>`).join("");
     }
@@ -626,17 +633,16 @@
           <span class="tag tag--on-image">${labelize(p.category, PROJECT_CATS)}</span>
         </a>
         <div class="card__body">
-          <div class="card__meta"><span>${ICONS.calendar}${formatDate(p.date, "short")}</span></div>
+          <div class="card__meta"><span>${ICONS.users}${escapeHtml(p.participants)}</span></div>
           <h3 class="card__title"><a href="projeto.html?id=${p.id}">${escapeHtml(p.title)}</a></h3>
           <p class="card__text">${escapeHtml(p.summary)}</p>
-          <p class="card__text"><strong>Participantes:</strong> ${escapeHtml(p.participants)}</p>
           <div class="card__foot"><a class="btn btn--outline btn--sm" href="projeto.html?id=${p.id}">Ver projeto</a></div>
         </div>
       </article>`;
   }
 
   function initProjects() {
-    const list = DATA.projects ? [...DATA.projects].sort(sortByDateDesc) : [];
+    const list = DATA.projects ? [...DATA.projects] : [];
     const home = $("#projectsHome");
     if (home) home.innerHTML = list.slice(0, 3).map(projectCard).join("");
     const grid = $("#projectsGrid");
@@ -652,7 +658,7 @@
       $("#articleCategory") && ($("#articleCategory").textContent = labelize(p.category, PROJECT_CATS));
       detail.innerHTML = `
         <img class="article__cover" src="${p.image}" alt="${escapeHtml(p.title)}">
-        <div class="article__meta"><span>${ICONS.calendar} ${formatDate(p.date)}</span><span>${ICONS.tag} ${labelize(p.category, PROJECT_CATS)}</span><span>${ICONS.users} ${escapeHtml(p.participants)}</span></div>
+        <div class="article__meta"><span>${ICONS.tag} ${labelize(p.category, PROJECT_CATS)}</span><span>${ICONS.users} ${escapeHtml(p.participants)}</span></div>
         <p class="lead">${escapeHtml(p.summary)}</p>
         ${(p.content || []).map(x => `<p>${escapeHtml(x)}</p>`).join("")}`;
       const side = $("#articleSidebar");
@@ -671,7 +677,20 @@
      ------------------------------------------------------------------ */
   function initTeam() {
     const grid = $("#teamGrid");
-    if (!grid || !DATA.teachers) return;
+    if (!grid) return;
+    if (!DATA.teachers || !DATA.teachers.length) {
+      const areas = DATA.teamAreas || [];
+      $("#teamFilters") && ($("#teamFilters").hidden = true);
+      const box = $(".search-box"); box && (box.hidden = true);
+      grid.classList.remove("team-grid"); grid.classList.add("grid", "grid--3");
+      grid.innerHTML = areas.map(a => `
+        <article class="value-card">
+          <h3>${escapeHtml(a.label)}</h3>
+          <p style="color:var(--blue-700);font-weight:600;font-size:var(--fs-sm);margin-bottom:.4rem">${escapeHtml(a.subjects)}</p>
+          <p>${escapeHtml(a.desc)}</p>
+        </article>`).join("");
+      return;
+    }
     const limit = parseInt(grid.dataset.limit || "0", 10);
     const list = limit ? DATA.teachers.slice(0, limit) : DATA.teachers;
     grid.innerHTML = list.map(t => `
@@ -920,7 +939,7 @@
     const list = await loadAvisos();
 
     // Faixa de alerta (aviso urgente ou fixado), em todas as páginas
-    const urgent = list.find(a => a.priority === "urgente") || list.find(a => a.pinned);
+    const urgent = list.find(a => a.priority === "urgente");
     let dismissed = []; try { dismissed = JSON.parse(localStorage.getItem("ceias-alerts") || "[]"); } catch (e) {}
     if (urgent && !dismissed.includes(urgent.id) && !$(".alert-bar")) {
       const el = document.createElement("div"); el.className = "alert-bar"; el.setAttribute("role", "region"); el.setAttribute("aria-label", "Aviso importante");
@@ -1113,7 +1132,7 @@
       if (!a || e.defaultPrevented || a.target === "_blank" || e.metaKey || e.ctrlKey || e.button !== 0) return;
       const href = a.getAttribute("href");
       if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:") || /^https?:/.test(href) || a.hasAttribute("download")) return;
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (isCalm()) return;
       e.preventDefault();
       document.body.classList.add("is-leaving");
       setTimeout(() => { window.location.href = href; }, 300);
@@ -1162,12 +1181,28 @@
     const applyFont = () => { document.documentElement.classList.remove("font-lg", "font-xl"); if (sizes[idx]) document.documentElement.classList.add(sizes[idx]); store("ceias-font", sizes[idx]); };
     const contrastBtns = $$('[data-a11y="contrast"]');
     const applyContrast = on => { document.body.classList.toggle("contrast", on); contrastBtns.forEach(b => b.setAttribute("aria-pressed", String(on))); store("ceias-contrast", on ? "1" : "0"); };
+    const photoBtns = $$('[data-a11y="photosensitive"]');
+    const applyPhoto = on => {
+      document.body.classList.toggle("photosensitive", on);
+      photoBtns.forEach(b => b.setAttribute("aria-pressed", String(on)));
+      store("ceias-photosensitive", on ? "1" : "0");
+      const hero = $("#hero");
+      if (hero) $$(".hero__slide", hero).forEach((sl, i) => sl.classList.toggle("is-active", on ? i === 0 : sl.classList.contains("is-active")));
+    };
     applyFont(); applyContrast(read("ceias-contrast") === "1");
+    applyPhoto(read("ceias-photosensitive") === "1");
+    document.documentElement.classList.remove("pre-photosensitive");
     $$("[data-a11y]").forEach(btn => btn.addEventListener("click", () => {
       const a = btn.dataset.a11y;
       if (a === "font-up") { idx = Math.min(2, idx + 1); applyFont(); toast(idx ? "Fonte aumentada" : "Fonte padrão"); }
       if (a === "font-down") { idx = Math.max(0, idx - 1); applyFont(); toast(idx ? "Fonte reduzida" : "Fonte padrão"); }
       if (a === "contrast") { applyContrast(!document.body.classList.contains("contrast")); }
+      if (a === "photosensitive") {
+        const on = !document.body.classList.contains("photosensitive");
+        applyPhoto(on);
+        toast(on ? "Modo fotossensível ativado: animações e movimentos desligados." : "Modo fotossensível desativado.");
+        if (on) { clearInterval(window.__ceiasHeroTimer); }
+      }
       if (a === "libras") { const b = $("[vw-access-button]"); if (b) b.click(); else toast("O plugin VLibras ainda está carregando. Tente novamente em instantes."); }
     }));
   }
@@ -1344,14 +1379,30 @@
   /* ------------------------------------------------------------------
      Transporte, horários, cardápio, comunidade, links, mapa do site
      ------------------------------------------------------------------ */
+  const emptyBox = (title, text, cta) => `<div class="empty-pro">${ICONS.bell}<h3>${title}</h3><p>${text}</p>${cta || ""}</div>`;
   function initTransport() {
-    const t = $("#transportTable"); if (!t || !DATA.transport) return;
+    const t = $("#transportTable"); if (!t) return;
+    if (!DATA.transport || !DATA.transport.length) {
+      const w = t.closest(".table-wrap") || t;
+      w.outerHTML = emptyBox("Linhas e horários em divulgação", "As rotas do transporte escolar rural são definidas pela Prefeitura de São José dos Pinhais e podem mudar a cada ano letivo. Consulte a secretaria do colégio para saber a linha que atende a sua localidade e os horários em vigor.", `<div class="btn-group" style="justify-content:center"><a class="btn btn--primary btn--sm" href="contato.html">Falar com a secretaria</a></div>`);
+      return;
+    }
     t.innerHTML = `<thead><tr><th>Linha</th><th>Rota</th><th>Manhã (ida / volta)</th><th>Tarde (ida / volta)</th><th>Noite (ida / volta)</th></tr></thead><tbody>` +
       DATA.transport.map(l => `<tr><td data-label="Linha"><strong>${escapeHtml(l.line)}</strong></td><td data-label="Rota">${escapeHtml(l.route)}</td><td data-label="Manhã">${escapeHtml(l.morning)}</td><td data-label="Tarde">${escapeHtml(l.afternoon)}</td><td data-label="Noite">${escapeHtml(l.night)}</td></tr>`).join("") + `</tbody>`;
   }
   function initSchedule() {
     const tabs = $("#scheduleTabs"), table = $("#scheduleTable"); if (!tabs || !table || !DATA.schedule) return;
     const cls = DATA.schedule.classes, periods = DATA.schedule.periods;
+    if (!cls.length) {
+      tabs.innerHTML = "";
+      const p = periods;
+      const rows = Math.max(p.manha.length, p.tarde.length, p.noite.length);
+      table.innerHTML = `<caption style="caption-side:top;text-align:left;padding:.6rem 1rem;font-weight:700;color:var(--blue-900)">Organização dos períodos</caption><thead><tr><th>Aula</th><th>Manhã</th><th>Tarde</th><th>Noite (EJA)</th></tr></thead><tbody>` +
+        Array.from({ length: rows }, (_, i) => `<tr><td data-label="Aula"><strong>${i + 1}ª aula</strong></td><td data-label="Manhã">${p.manha[i] || "—"}</td><td data-label="Tarde">${p.tarde[i] || "—"}</td><td data-label="Noite">${p.noite[i] || "—"}</td></tr>`).join("") + `</tbody>`;
+      const wrap = table.closest(".table-wrap");
+      wrap && wrap.insertAdjacentHTML("afterend", emptyBox("Grade por turma em divulgação", "A grade de aulas de cada turma é definida no início do ano letivo e divulgada pela secretaria. Assim que publicada, aparecerá aqui e poderá ser impressa.", `<div class="btn-group" style="justify-content:center"><a class="btn btn--outline btn--sm" href="documentos.html">Ver documentos</a><a class="btn btn--primary btn--sm" href="contato.html">Falar com a secretaria</a></div>`));
+      return;
+    }
     const SHIFT = { manha: "Manhã", tarde: "Tarde", noite: "Noite" };
     tabs.innerHTML = cls.map((c, i) => `<button type="button" class="filter-btn${i === 0 ? " is-active" : ""}" role="tab" aria-selected="${i === 0}" data-i="${i}">${escapeHtml(c.turma)}</button>`).join("");
     const render = i => {
@@ -1364,7 +1415,11 @@
     const want = getParam("turma"); const idx = cls.findIndex(c => norm(c.turma) === norm(want || "")); render(idx >= 0 ? idx : 0);
   }
   function initMenu() {
-    const w = $("#menuWeek"); if (!w || !DATA.menu) return;
+    const w = $("#menuWeek"); if (!w) return;
+    if (!DATA.menu || !DATA.menu.length) {
+      w.outerHTML = emptyBox("Cardápio da semana em divulgação", "O cardápio da alimentação escolar é elaborado por nutricionista da rede estadual e atualizado periodicamente. A versão em vigor fica afixada no refeitório e disponível na secretaria.", `<div class="btn-group" style="justify-content:center"><a class="btn btn--outline btn--sm" href="documentos.html?categoria=materiais">Ver documentos</a></div>`);
+      return;
+    }
     const todayName = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"][new Date().getDay()];
     w.innerHTML = DATA.menu.map(m => `<div class="menu-day"${m.day === todayName ? ' style="border-top-color:var(--red-500)"' : ""}><h3>${escapeHtml(m.day)}${m.day === todayName ? ' <span class="tag tag--red" style="font-size:.55rem">Hoje</span>' : ""}</h3><p>${escapeHtml(m.meal)}</p><small>${escapeHtml(m.extra || "")}</small></div>`).join("");
   }
@@ -1389,10 +1444,11 @@
     $("#gamesSeason") && ($("#gamesSeason").textContent = g.season);
     $("#gamesModalities").innerHTML = g.modalities.map(m => `<div class="modality"><span class="modality__icon">${ICONS[m.icon] || ICONS.trophy}</span><h3>${escapeHtml(m.name)}</h3><p>${escapeHtml(m.categories)}</p><p class="mt-1"><strong>${escapeHtml(m.coach)}</strong></p></div>`).join("");
     const res = [...g.results].sort(sortByDateDesc);
-    $("#gamesResults").innerHTML = res.map(r => `<div class="result result--${r.outcome || ""}"><span class="result__team">${escapeHtml(r.home)}</span><span class="result__score">${escapeHtml(r.score)}</span><span class="result__team">${escapeHtml(r.away)}</span><div class="result__meta"><span>${ICONS.trophy} ${escapeHtml(r.modality)}</span><span>${ICONS.calendar} ${formatDate(r.date, "short")}</span><span>${ICONS.pin} ${escapeHtml(r.place)}</span><span>${escapeHtml(r.phase)}</span></div></div>`).join("") || `<div class="empty-state">Nenhum resultado cadastrado.</div>`;
+    g.intro && $("#gamesIntro") && ($("#gamesIntro").textContent = g.intro);
+    $("#gamesResults").innerHTML = !res.length ? emptyBox("Resultados da temporada", "Os resultados das competições são publicados aqui durante a temporada, assim que confirmados pela organização dos Jogos Escolares.", `<div class="btn-group" style="justify-content:center"><a class="btn btn--outline btn--sm" href="${g.officialUrl || "#"}" target="_blank" rel="noopener">Resultados oficiais</a></div>`) : res.map(r => `<div class="result result--${r.outcome || ""}"><span class="result__team">${escapeHtml(r.home)}</span><span class="result__score">${escapeHtml(r.score)}</span><span class="result__team">${escapeHtml(r.away)}</span><div class="result__meta"><span>${ICONS.trophy} ${escapeHtml(r.modality)}</span><span>${ICONS.calendar} ${formatDate(r.date, "short")}</span><span>${ICONS.pin} ${escapeHtml(r.place)}</span><span>${escapeHtml(r.phase)}</span></div></div>`).join("") || `<div class="empty-state">Nenhum resultado cadastrado.</div>`;
     const t = todayMidnight();
     const sched = [...g.schedule].filter(x => parseDate(x.date) >= t).sort(sortByDateAsc);
-    $("#gamesSchedule").innerHTML = sched.map(x => { const d = parseDate(x.date); return `<article class="event-card"><div class="event-card__date"><strong>${d.getDate()}</strong><span>${MONTHS_SHORT[d.getMonth()]}/${String(d.getFullYear()).slice(2)}</span></div><div class="event-card__body"><span class="tag tag--gold">${escapeHtml(x.phase)}</span><h3>${escapeHtml(x.modality)} × ${escapeHtml(x.opponent)}</h3><div class="card__meta"><span>${ICONS.clock}${escapeHtml(x.time)}</span><span>${ICONS.pin}${escapeHtml(x.place)}</span></div></div></article>`; }).join("") || `<p class="muted">Nenhum jogo agendado. Acompanhe o mural de avisos.</p>`;
+    $("#gamesSchedule").innerHTML = !sched.length ? emptyBox("Agenda em definição", "Datas e locais das competições são divulgados no mural de avisos assim que confirmados.", `<div class="btn-group" style="justify-content:center"><a class="btn btn--outline btn--sm" href="avisos.html">Ver mural de avisos</a></div>`) : sched.map(x => { const d = parseDate(x.date); return `<article class="event-card"><div class="event-card__date"><strong>${d.getDate()}</strong><span>${MONTHS_SHORT[d.getMonth()]}/${String(d.getFullYear()).slice(2)}</span></div><div class="event-card__body"><span class="tag tag--gold">${escapeHtml(x.phase)}</span><h3>${escapeHtml(x.modality)} × ${escapeHtml(x.opponent)}</h3><div class="card__meta"><span>${ICONS.clock}${escapeHtml(x.time)}</span><span>${ICONS.pin}${escapeHtml(x.place)}</span></div></div></article>`; }).join("");
     $("#gamesRules").innerHTML = g.rules.map(r => `<li>${ICONS.check}<span>${escapeHtml(r)}</span></li>`).join("");
     const photos = (await loadGalleryAll()).filter(x => x.category === "esportes" && x.type !== "video").slice(0, 8);
     const gp = $("#gamesPhotos");

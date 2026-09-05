@@ -22,7 +22,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
   <link rel="apple-touch-icon" href="assets/images/logo.svg">
   <link rel="manifest" href="manifest.json">
-  <script>try{var f=localStorage.getItem("ceias-font");if(f)document.documentElement.classList.add(f);}catch(e){}</script>
+  <script>try{var f=localStorage.getItem("ceias-font");if(f)document.documentElement.classList.add(f);if(localStorage.getItem("ceias-photosensitive")==="1")document.documentElement.classList.add("pre-photosensitive");}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -63,6 +63,7 @@
           <button type="button" class="topbar__btn" data-a11y="font-down" aria-label="Diminuir tamanho da fonte" title="Diminuir fonte">A-</button>
           <button type="button" class="topbar__btn" data-a11y="font-up" aria-label="Aumentar tamanho da fonte" title="Aumentar fonte">A+</button>
           <button type="button" class="topbar__btn" data-a11y="contrast" aria-pressed="false" aria-label="Alternar alto contraste" title="Alto contraste"><span data-icon="eye"></span>Contraste</button>
+          <button type="button" class="topbar__btn" data-a11y="photosensitive" aria-pressed="false" aria-label="Alternar modo fotossensível: desliga animações e movimentos" title="Modo fotossensível — desliga animações e movimentos"><span data-icon="calm"></span>Fotossensível</button>
           <button type="button" class="topbar__btn" data-a11y="libras" aria-label="Acessar tradutor de Libras" title="Libras (VLibras)"><span data-icon="accessibility"></span>Libras</button>
           <span class="topbar__sep" aria-hidden="true"></span>
           <div class="social-links" data-social-links></div>
@@ -95,6 +96,7 @@
           <button type="button" class="topbar__btn" data-a11y="font-down" aria-label="Diminuir fonte">A-</button>
           <button type="button" class="topbar__btn" data-a11y="font-up" aria-label="Aumentar fonte">A+</button>
           <button type="button" class="topbar__btn" data-a11y="contrast" aria-pressed="false">Contraste</button>
+          <button type="button" class="topbar__btn" data-a11y="photosensitive" aria-pressed="false">Fotossensível</button>
           <button type="button" class="topbar__btn" data-a11y="libras">Libras</button>
         </div>
       </nav>
@@ -196,6 +198,7 @@
             <li><a href="documentos.html">Documentos</a></li>
             <li><a href="area-do-aluno.html">Área do aluno</a></li>
             <li><a href="links-uteis.html">Links úteis</a></li>
+            <li><a href="acessibilidade.html">Acessibilidade</a></li>
             <li><a href="mapa-do-site.html">Mapa do site</a></li>
           </ul>
         </div>

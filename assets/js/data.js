@@ -14,105 +14,44 @@ window.CEIAS_DATA = {
      ------------------------------------------------------------------ */
   news: [
     {
-      id: "boas-vindas-2026",
-      title: "Confira as novidades do Colégio Estadual do Campo Irmã Ambrósia Sabatovich",
-      date: "2026-08-28",
+      id: "portal-oficial-no-ar",
+      title: "Colégio Estadual do Campo Irmã Ambrósia Sabatovich lança seu portal oficial",
+      date: "2026-09-05",
       category: "escola",
       image: "assets/images/placeholders/noticia-1.svg",
-      summary: "O CEIAS lança seu novo portal institucional com informações sobre ensino, projetos, eventos, história e vida escolar para toda a comunidade.",
+      summary: "O CEIAS passa a contar com um site institucional que reúne informações sobre ensino, vida escolar, projetos, avisos, eventos e a história da comunidade.",
       featured: true,
       content: [
-        "O Colégio Estadual do Campo Irmã Ambrósia Sabatovich apresenta à comunidade da Colônia Marcelino seu novo site oficial. O portal reúne, em um único espaço, informações sobre as etapas de ensino, os projetos desenvolvidos por estudantes e professores, o calendário de eventos, a galeria de fotos e os documentos importantes para as famílias.",
-        "A iniciativa fortalece a comunicação entre escola, estudantes e famílias, além de valorizar a história da Irmã Ambrósia e a identidade de Escola do Campo que orienta o trabalho pedagógico do colégio.",
-        "Acompanhe as novidades por aqui e pelas redes sociais do CEIAS."
+        "O Colégio Estadual do Campo Irmã Ambrósia Sabatovich apresenta à comunidade da Colônia Marcelino seu portal institucional. O objetivo é reunir, em um único endereço, as informações que estudantes e famílias procuram no dia a dia: etapas de ensino, horários, transporte escolar, alimentação, documentos, calendário e avisos da secretaria.",
+        "O portal também abre espaço para a memória da comunidade. A história de Irmã Ambrósia Sabatovich, a trajetória da imigração ucraniana na Colônia Marcelino e a identidade de Escola do Campo ganham páginas próprias, com o objetivo de registrar e transmitir esse patrimônio às novas gerações.",
+        "As seções de notícias, eventos, projetos e galeria serão alimentadas pela equipe do colégio ao longo do ano letivo. Estudantes e famílias podem colaborar enviando fotos das atividades pela página Enviar fotos."
       ]
     },
     {
-      id: "feira-de-ciencias-2026",
-      title: "Feira de Ciências reúne experimentos e pesquisas dos estudantes",
-      date: "2026-08-20",
-      category: "projetos",
-      image: "assets/images/placeholders/noticia-2.svg",
-      summary: "Turmas dos Anos Finais e do Ensino Médio apresentaram projetos sobre energia, água, solo e biodiversidade da região.",
-      content: [
-        "A Feira de Ciências do CEIAS transformou a quadra coberta em um grande espaço de investigação. Estudantes do 6º ano ao 3º ano do Ensino Médio apresentaram experimentos e pesquisas desenvolvidos ao longo do semestre no Laboratório de Ciências.",
-        "Os temas dialogaram diretamente com a realidade do campo: qualidade da água, composição do solo, energia renovável e biodiversidade da Colônia Marcelino.",
-        "A comunidade foi convidada a visitar os estandes e a conversar com os jovens pesquisadores."
-      ]
-    },
-    {
-      id: "semana-cultura-ucraniana",
-      title: "Semana da Cultura Ucraniana celebra as raízes da Colônia Marcelino",
-      date: "2026-08-12",
-      category: "cultura",
-      image: "assets/images/placeholders/noticia-3.svg",
-      summary: "Danças, culinária, pêssankas e histórias das famílias da comunidade marcaram a programação cultural do colégio.",
-      content: [
-        "Durante uma semana, o CEIAS celebrou a herança ucraniana que faz parte da história da Colônia Marcelino. Estudantes pesquisaram a trajetória das famílias imigrantes, produziram pêssankas e apresentaram danças tradicionais.",
-        "A programação contou com a participação de moradores da comunidade, que compartilharam relatos, receitas e memórias com os estudantes.",
-        "A atividade integra o projeto Raízes da Colônia, que valoriza a memória e a identidade cultural da comunidade escolar."
-      ]
-    },
-    {
-      id: "jogos-escolares-2026",
-      title: "Equipes do CEIAS participam dos Jogos Escolares do Paraná",
-      date: "2026-07-30",
-      category: "esportes",
-      image: "assets/images/placeholders/noticia-4.svg",
-      summary: "Estudantes representaram o colégio nas modalidades de futsal, vôlei e atletismo na fase municipal.",
-      content: [
-        "As equipes do CEIAS participaram da fase municipal dos Jogos Escolares do Paraná, representando a Colônia Marcelino nas modalidades de futsal, voleibol e atletismo.",
-        "Além dos resultados, a participação reforça valores como disciplina, cooperação e respeito, trabalhados nas aulas de Educação Física.",
-        "Parabéns a todos os atletas e aos professores responsáveis pelo treinamento."
-      ]
-    },
-    {
-      id: "laboratorio-informatica-novos-equipamentos",
-      title: "Laboratório de Informática recebe novos equipamentos",
-      date: "2026-07-15",
+      id: "sobre-a-educacao-do-campo",
+      title: "O que significa ser uma Escola do Campo",
+      date: "2026-09-05",
       category: "educacao",
-      image: "assets/images/placeholders/noticia-5.svg",
-      summary: "O colégio conta com 36 computadores e 30 tablets para uso pedagógico em todas as etapas de ensino.",
+      image: "assets/images/placeholders/campo-1.svg",
+      summary: "A classificação de Escola do Campo orienta o projeto pedagógico do CEIAS e reconhece o direito das populações rurais a uma educação construída a partir da sua realidade.",
       content: [
-        "O Laboratório de Informática do CEIAS está equipado com 36 computadores e 30 tablets, disponíveis para atividades pedagógicas de todas as turmas.",
-        "Os equipamentos são utilizados em pesquisas, produção de textos, programação básica, apresentações e projetos interdisciplinares.",
-        "A tecnologia é uma aliada importante para conectar os estudantes do campo às oportunidades do futuro."
+        "O CEIAS é classificado pela Secretaria de Estado da Educação do Paraná como Escola do Campo. Essa não é apenas uma designação administrativa: ela define uma forma de pensar o currículo, o calendário e a relação da escola com a comunidade.",
+        "A Educação do Campo é uma política pública que reconhece que as populações rurais têm direito a uma educação pensada a partir da sua realidade, e não simplesmente transportada da cidade para o campo. Isso significa valorizar o trabalho das famílias agricultoras, os saberes transmitidos entre gerações e a cultura local como ponto de partida do conhecimento escolar.",
+        "Na prática, esse princípio aparece na horta escolar, nas pesquisas sobre a história da Colônia Marcelino, nas atividades que envolvem as famílias e na organização do calendário, que considera os ciclos e as necessidades da comunidade rural."
       ]
     },
     {
-      id: "reuniao-de-pais-3-bimestre",
-      title: "Reunião de pais e responsáveis do 3º bimestre",
-      date: "2026-07-05",
-      category: "eventos",
-      image: "assets/images/placeholders/noticia-6.svg",
-      summary: "Famílias foram recebidas pela equipe pedagógica para entrega de boletins e conversa sobre o acompanhamento escolar.",
+      id: "memoria-irma-ambrosia",
+      title: "Irmã Ambrósia Sabatovich: a história que dá nome ao colégio",
+      date: "2026-09-05",
+      category: "cultura",
+      image: "assets/images/placeholders/irma-ambrosia.svg",
+      summary: "Professora, catequista e enfermeira, a religiosa ucraniana dedicou a vida à comunidade da Colônia Marcelino e é lembrada por seu gesto de coragem em 1943.",
       content: [
-        "A reunião de pais e responsáveis reuniu famílias de todas as turmas para a entrega dos boletins e para o diálogo sobre o desempenho escolar dos estudantes.",
-        "A participação das famílias é fundamental para o sucesso do processo educativo e é um dos pilares da Educação do Campo praticada no CEIAS."
-      ]
-    },
-    {
-      id: "projeto-horta-escolar",
-      title: "Horta escolar une ciência, alimentação e sustentabilidade",
-      date: "2026-06-18",
-      category: "projetos",
-      image: "assets/images/placeholders/noticia-7.svg",
-      summary: "Estudantes cultivam hortaliças que complementam a alimentação escolar e aprendem sobre agroecologia.",
-      content: [
-        "A horta escolar do CEIAS é um espaço de aprendizagem viva. Estudantes cuidam do plantio, acompanham o crescimento das hortaliças e estudam conceitos de biologia, química, matemática e geografia na prática.",
-        "Parte da produção é destinada ao refeitório, complementando a alimentação escolar com produtos frescos e saudáveis."
-      ]
-    },
-    {
-      id: "homenagem-irma-ambrosia",
-      title: "Comunidade escolar homenageia Irmã Ambrósia",
-      date: "2026-02-28",
-      category: "escola",
-      image: "assets/images/placeholders/noticia-8.svg",
-      summary: "Na data que marca seu sacrifício, o colégio relembrou a história e o legado da patrona da escola.",
-      content: [
-        "No dia 28 de fevereiro, o CEIAS relembrou a história de Irmã Ambrósia Sabatovich, patrona do colégio, com uma cerimônia que reuniu estudantes, professores, famílias e membros da comunidade.",
-        "O momento incluiu a leitura de trechos da biografia da religiosa, apresentações dos estudantes e uma reflexão sobre coragem, cuidado e dedicação ao próximo — valores que inspiram o trabalho da escola."
+        "Ana Sabatovycz nasceu na Ucrânia em 1894 e chegou ao Brasil ainda bebê, com sua família, durante o movimento de imigração ucraniana para o Paraná. Em 1911 ingressou na congregação das Irmãs Servas de Maria Imaculada, passando a ser conhecida como Irmã Ambrósia.",
+        "Em 1931 chegou à Colônia Marcelino ao lado de outras duas irmãs. Atuou como professora, catequista, enfermeira e cuidadora da comunidade, em uma região que não contava com atendimento médico regular nem com escola organizada.",
+        "Em 28 de fevereiro de 1943 deu a própria vida para proteger uma jovem sob seus cuidados. Seu gesto é lembrado com respeito pela comunidade, e há um processo de beatificação relacionado à sua história. O colégio carrega seu nome e procura honrar, no trabalho pedagógico, o mesmo compromisso com o cuidado e com a educação.",
+        "A história completa está na página Nossa história."
       ]
     }
   ],
@@ -122,84 +61,14 @@ window.CEIAS_DATA = {
      ------------------------------------------------------------------ */
   events: [
     {
-      id: "festa-da-familia-2026",
-      title: "Festa da Família CEIAS",
-      date: "2026-09-19",
-      time: "14h às 20h",
-      location: "Quadra coberta do colégio",
-      image: "assets/images/placeholders/evento-1.svg",
-      category: "Comunidade",
-      description: "Tarde de integração entre escola e comunidade com apresentações dos estudantes, comidas típicas, brincadeiras e exposição de projetos."
-    },
-    {
-      id: "mostra-de-projetos-2026",
-      title: "Mostra de Projetos e Educação do Campo",
-      date: "2026-10-08",
-      time: "8h às 12h",
-      location: "Salas de aula e pátio",
-      image: "assets/images/placeholders/evento-2.svg",
-      category: "Educação",
-      description: "Exposição dos projetos interdisciplinares desenvolvidos pelas turmas ao longo do ano, com foco na realidade da comunidade rural."
-    },
-    {
-      id: "conselho-de-classe-3",
-      title: "Conselho de Classe — 3º trimestre",
-      date: "2026-10-20",
-      time: "13h30",
-      location: "Sala dos professores",
-      image: "assets/images/placeholders/evento-3.svg",
-      category: "Pedagógico",
-      description: "Reunião da equipe pedagógica para avaliação do desempenho das turmas. Não haverá aula no período da tarde."
-    },
-    {
-      id: "semana-consciencia-negra",
-      title: "Semana da Consciência Negra",
-      date: "2026-11-16",
-      time: "Durante as aulas",
-      location: "Todo o colégio",
-      image: "assets/images/placeholders/evento-4.svg",
-      category: "Cultura",
-      description: "Atividades, rodas de conversa e apresentações sobre a história e a cultura afro-brasileira."
-    },
-    {
-      id: "formatura-3-ano-2026",
-      title: "Formatura do 3º ano do Ensino Médio",
-      date: "2026-12-11",
-      time: "19h",
-      location: "Quadra coberta do colégio",
-      image: "assets/images/placeholders/evento-5.svg",
-      category: "Cerimônia",
-      description: "Cerimônia de encerramento e celebração da conclusão do Ensino Médio da turma de 2026."
-    },
-    {
-      id: "feira-de-ciencias-2026",
-      title: "Feira de Ciências 2026",
-      date: "2026-08-20",
-      time: "8h às 16h",
-      location: "Quadra coberta",
-      image: "assets/images/placeholders/evento-6.svg",
-      category: "Ciência",
-      description: "Apresentação de experimentos e pesquisas desenvolvidos pelos estudantes."
-    },
-    {
-      id: "festa-junina-2026",
-      title: "Festa Junina da Comunidade",
-      date: "2026-06-27",
-      time: "15h às 21h",
-      location: "Pátio e quadra",
-      image: "assets/images/placeholders/cultura-4.svg",
-      category: "Cultura",
-      description: "Danças, comidas típicas e apresentações das turmas em uma grande festa com a comunidade da Colônia Marcelino."
-    },
-    {
-      id: "inicio-ano-letivo-2026",
-      title: "Início do ano letivo",
-      date: "2026-02-09",
-      time: "7h30",
-      location: "Colégio",
+      id: "calendario-em-atualizacao",
+      title: "Calendário escolar 2026",
+      date: "2026-12-18",
+      time: "Conforme calendário oficial",
+      location: "Colégio Estadual do Campo Irmã Ambrósia Sabatovich",
       image: "assets/images/placeholders/colegio-patio.svg",
       category: "Calendário",
-      description: "Acolhida dos estudantes e início das aulas do ano letivo de 2026."
+      description: "As datas de conselhos de classe, reuniões de pais, recessos e eventos do ano letivo seguem o calendário oficial da SEED/PR. O calendário completo é divulgado pela secretaria e publicado na página de documentos."
     }
   ],
 
@@ -212,9 +81,8 @@ window.CEIAS_DATA = {
       id: "raizes-da-colonia",
       title: "Raízes da Colônia",
       category: "cultura",
-      date: "2026-08-01",
       image: "assets/images/placeholders/projeto-1.svg",
-      participants: "Turmas do 8º e 9º ano · Professores de História e Arte",
+      participants: "Anos Finais · área de Ciências Humanas e Arte",
       summary: "Pesquisa sobre a história das famílias imigrantes da Colônia Marcelino, com entrevistas, fotografias antigas e produção de um acervo digital.",
       content: [
         "O projeto Raízes da Colônia convida os estudantes a se tornarem pesquisadores da própria história. Em grupos, eles entrevistam moradores, coletam fotografias antigas, registram receitas e canções, e organizam esse material em um acervo digital que ficará disponível para a comunidade.",
@@ -225,9 +93,8 @@ window.CEIAS_DATA = {
       id: "horta-agroecologica",
       title: "Horta Agroecológica",
       category: "meio-ambiente",
-      date: "2026-05-10",
       image: "assets/images/placeholders/projeto-2.svg",
-      participants: "Turmas do 6º e 7º ano · Professores de Ciências e Geografia",
+      participants: "Anos Finais · área de Ciências da Natureza",
       summary: "Cultivo de hortaliças sem agrotóxicos, compostagem e estudo do solo, integrando ciência e alimentação saudável.",
       content: [
         "A horta é um laboratório a céu aberto. Os estudantes preparam os canteiros, fazem compostagem com resíduos do refeitório, acompanham o crescimento das plantas e registram dados em planilhas.",
@@ -238,9 +105,8 @@ window.CEIAS_DATA = {
       id: "robotica-e-programacao",
       title: "Robótica e Programação no Campo",
       category: "tecnologia",
-      date: "2026-04-15",
       image: "assets/images/placeholders/projeto-3.svg",
-      participants: "Ensino Médio · Professores de Matemática e Física",
+      participants: "Ensino Médio · área de Matemática e Ciências da Natureza",
       summary: "Oficinas de lógica, programação em blocos e automação com foco em soluções para a realidade rural.",
       content: [
         "Utilizando os computadores e tablets do laboratório, os estudantes aprendem lógica de programação e desenvolvem pequenos protótipos: sensores de umidade para a horta, sistemas de irrigação automatizados e aplicativos simples.",
@@ -251,9 +117,8 @@ window.CEIAS_DATA = {
       id: "jogos-e-movimento",
       title: "Jogos e Movimento",
       category: "esportes",
-      date: "2026-03-20",
       image: "assets/images/placeholders/projeto-4.svg",
-      participants: "Todas as turmas · Professores de Educação Física",
+      participants: "Todas as turmas · Educação Física",
       summary: "Treinamentos, torneios internos e preparação para os Jogos Escolares do Paraná.",
       content: [
         "O projeto organiza treinos no contraturno, torneios interclasses e a preparação das equipes que representam o colégio nas competições estudantis.",
@@ -264,9 +129,8 @@ window.CEIAS_DATA = {
       id: "feira-de-ciencias",
       title: "Feira de Ciências",
       category: "ciencia",
-      date: "2026-08-20",
       image: "assets/images/placeholders/projeto-5.svg",
-      participants: "Anos Finais e Ensino Médio · Área de Ciências da Natureza",
+      participants: "Anos Finais e Ensino Médio · Ciências da Natureza",
       summary: "Experimentos e pesquisas científicas apresentados à comunidade, com temas ligados à água, solo, energia e biodiversidade.",
       content: [
         "Ao longo do semestre, os estudantes escolhem um problema real da comunidade, formulam hipóteses, realizam experimentos no laboratório e apresentam os resultados em estandes abertos ao público."
@@ -276,9 +140,8 @@ window.CEIAS_DATA = {
       id: "arte-na-escola",
       title: "Arte na Escola: Pêssankas e Cores da Colônia",
       category: "arte",
-      date: "2026-04-02",
       image: "assets/images/placeholders/projeto-6.svg",
-      participants: "Anos Finais · Professora de Arte",
+      participants: "Anos Finais · Arte",
       summary: "Oficinas de pêssanka (ovo decorado ucraniano), pintura e bordado inspirados nas tradições locais.",
       content: [
         "As oficinas resgatam técnicas artísticas tradicionais da comunidade e as reinterpretam com a linguagem dos jovens. As obras produzidas decoram os corredores do colégio e participam de exposições."
@@ -288,9 +151,8 @@ window.CEIAS_DATA = {
       id: "escola-e-comunidade",
       title: "Escola e Comunidade",
       category: "comunidade",
-      date: "2026-03-01",
       image: "assets/images/placeholders/projeto-7.svg",
-      participants: "Toda a comunidade escolar · Equipe pedagógica",
+      participants: "Toda a comunidade escolar",
       summary: "Ações de integração com as famílias, mutirões, festas e encontros que fortalecem o vínculo entre escola e Colônia Marcelino.",
       content: [
         "O projeto organiza o calendário de ações comunitárias do colégio: Festa da Família, mutirões de conservação, encontros com produtores rurais e rodas de conversa com moradores."
@@ -300,9 +162,8 @@ window.CEIAS_DATA = {
       id: "leitura-em-rede",
       title: "Leitura em Rede",
       category: "educacao",
-      date: "2026-02-20",
       image: "assets/images/placeholders/projeto-8.svg",
-      participants: "Todas as turmas · Área de Linguagens e Biblioteca",
+      participants: "Todas as turmas · Linguagens e Biblioteca",
       summary: "Clube de leitura, saraus, produção de textos e circulação de livros entre estudantes e famílias.",
       content: [
         "O projeto incentiva a leitura como prática cotidiana, com encontros na biblioteca, saraus literários e uma biblioteca itinerante que leva livros às famílias da comunidade."
@@ -315,31 +176,18 @@ window.CEIAS_DATA = {
               educacao-fisica | outros
      Preencha nome, formação e foto quando disponíveis.
      ------------------------------------------------------------------ */
-  teachers: [
-    { name: "Direção", role: "Diretor(a)", area: "outros", subject: "Gestão escolar", education: "Informação em atualização", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Direção Auxiliar", role: "Diretor(a) auxiliar", area: "outros", subject: "Gestão escolar", education: "Informação em atualização", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Equipe Pedagógica", role: "Pedagogo(a)", area: "outros", subject: "Coordenação pedagógica", education: "Informação em atualização", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Secretaria", role: "Secretário(a) escolar", area: "outros", subject: "Secretaria e documentação", education: "Informação em atualização", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) de Língua Portuguesa", role: "Professor(a)", area: "linguagens", subject: "Língua Portuguesa", education: "Licenciatura em Letras", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) de Língua Inglesa", role: "Professor(a)", area: "linguagens", subject: "Língua Inglesa", education: "Licenciatura em Letras – Inglês", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) de Arte", role: "Professor(a)", area: "linguagens", subject: "Arte", education: "Licenciatura em Artes", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) de Matemática", role: "Professor(a)", area: "matematica", subject: "Matemática", education: "Licenciatura em Matemática", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) de Matemática", role: "Professor(a)", area: "matematica", subject: "Matemática — Ensino Médio", education: "Licenciatura em Matemática", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) de Ciências", role: "Professor(a)", area: "natureza", subject: "Ciências", education: "Licenciatura em Ciências Biológicas", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) de Biologia", role: "Professor(a)", area: "natureza", subject: "Biologia", education: "Licenciatura em Ciências Biológicas", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) de Física", role: "Professor(a)", area: "natureza", subject: "Física", education: "Licenciatura em Física", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) de Química", role: "Professor(a)", area: "natureza", subject: "Química", education: "Licenciatura em Química", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) de História", role: "Professor(a)", area: "humanas", subject: "História", education: "Licenciatura em História", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) de Geografia", role: "Professor(a)", area: "humanas", subject: "Geografia", education: "Licenciatura em Geografia", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) de Filosofia", role: "Professor(a)", area: "humanas", subject: "Filosofia", education: "Licenciatura em Filosofia", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) de Sociologia", role: "Professor(a)", area: "humanas", subject: "Sociologia", education: "Licenciatura em Ciências Sociais", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) de Ensino Religioso", role: "Professor(a)", area: "humanas", subject: "Ensino Religioso", education: "Informação em atualização", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) de Educação Física", role: "Professor(a)", area: "educacao-fisica", subject: "Educação Física", education: "Licenciatura em Educação Física", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) de Educação Física", role: "Professor(a)", area: "educacao-fisica", subject: "Educação Física — Ensino Médio", education: "Licenciatura em Educação Física", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) da Classe Especial", role: "Professor(a)", area: "outros", subject: "Educação Especial", education: "Especialização em Educação Especial", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Professor(a) da EJA", role: "Professor(a)", area: "outros", subject: "Educação de Jovens e Adultos", education: "Informação em atualização", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Bibliotecário(a)", role: "Agente educacional", area: "outros", subject: "Biblioteca", education: "Informação em atualização", photo: "assets/images/placeholders/avatar.svg" },
-    { name: "Agentes Educacionais", role: "Equipe de apoio", area: "outros", subject: "Alimentação, limpeza e apoio", education: "—", photo: "assets/images/placeholders/avatar.svg" }
+  teachers: [],
+
+  /* Enquanto os dados individuais da equipe não forem publicados, o site exibe a
+     composição do quadro por área do conhecimento. Para publicar os profissionais,
+     preencha a lista `teachers` acima (nome, função, área, disciplina, formação, foto). */
+  teamAreas: [
+    { area: "linguagens", label: "Linguagens", subjects: "Língua Portuguesa · Língua Inglesa · Arte · Educação Física", desc: "Leitura, produção textual, expressão artística e corporal." },
+    { area: "matematica", label: "Matemática", subjects: "Matemática", desc: "Raciocínio lógico, resolução de problemas e pensamento quantitativo." },
+    { area: "natureza", label: "Ciências da Natureza", subjects: "Ciências · Biologia · Física · Química", desc: "Investigação científica, laboratório e estudo do meio ambiente." },
+    { area: "humanas", label: "Ciências Humanas", subjects: "História · Geografia · Filosofia · Sociologia · Ensino Religioso", desc: "Território, memória, cidadania e pensamento crítico." },
+    { area: "gestao", label: "Equipe gestora e pedagógica", subjects: "Direção · Direção auxiliar · Pedagogos", desc: "Coordenação do projeto pedagógico e acompanhamento das turmas." },
+    { area: "apoio", label: "Agentes educacionais", subjects: "Secretaria · Biblioteca · Alimentação · Limpeza e manutenção", desc: "Estrutura e atendimento que sustentam o dia a dia da escola." }
   ],
 
   /* ------------------------------------------------------------------
@@ -416,131 +264,114 @@ window.CEIAS_DATA = {
      AVISOS (Área do Aluno / Vida Escolar) — type: info | urgent | default
      ------------------------------------------------------------------ */
   notices: [
-    { date: "2026-09-01", type: "urgent", title: "Entrega das atividades do 3º bimestre", text: "Prazo final para entrega das atividades avaliativas pendentes: 12 de setembro. Procure seu professor em caso de dúvidas." },
-    { date: "2026-08-29", type: "info", title: "Inscrições para a Festa da Família", text: "Turmas interessadas em apresentar na Festa da Família devem se inscrever com a equipe pedagógica até 10 de setembro." },
-    { date: "2026-08-25", type: "default", title: "Horário do transporte escolar", text: "Confira os horários atualizados das linhas do transporte escolar rural no mural da escola e na página Vida Escolar." },
-    { date: "2026-08-18", type: "default", title: "Uso dos tablets", text: "Os tablets estão disponíveis para uso pedagógico mediante agendamento do professor com a equipe do laboratório." }
+    { date: "2026-09-05", type: "info", title: "Canal oficial de avisos", text: "Comunicados da direção, da secretaria e da equipe pedagógica são publicados no mural de avisos do site. Avisos urgentes aparecem em destaque no topo das páginas." },
+    { date: "2026-09-05", type: "default", title: "Atendimento da secretaria", text: "Declarações, históricos e transferências devem ser solicitados com antecedência. Para assuntos pedagógicos, agende atendimento com a equipe." }
   ],
 
   /* ------------------------------------------------------------------
-     DEPOIMENTOS — o que a comunidade diz
+     DEPOIMENTOS — publique apenas depoimentos reais, com autorização
+     { text, author, role }
      ------------------------------------------------------------------ */
-  testimonials: [
-    { text: "O colégio é parte da vida da Colônia. Meus filhos estudam aqui e sinto que a escola conhece e respeita a nossa realidade.", author: "Família da comunidade", role: "Responsável por estudante do 7º ano" },
-    { text: "Aprender sobre a Irmã Ambrósia e sobre a história da nossa comunidade me fez ter mais orgulho de onde eu venho.", author: "Estudante", role: "3º ano do Ensino Médio" },
-    { text: "Trabalhar em uma Escola do Campo é ensinar a partir do que os estudantes vivem. Aqui o conhecimento tem raiz.", author: "Professor(a)", role: "Equipe docente" }
-  ],
+  testimonials: [],
 
   /* ------------------------------------------------------------------
-     TRANSPORTE ESCOLAR — linhas e horários (MODELO: substitua pelos dados oficiais)
+     TRANSPORTE ESCOLAR
+     As linhas são definidas pela Prefeitura de São José dos Pinhais e podem
+     mudar a cada ano letivo. Para publicá-las, acrescente itens aqui:
+     { line, route, morning, afternoon, night, contact }
      ------------------------------------------------------------------ */
-  transport: [
-    { line: "Linha 01 — Colônia Marcelino Centro", route: "Igreja → Capela São Josafat → Estrada Moletta → CEIAS", morning: "6h50 / 12h05", afternoon: "12h20 / 17h35", night: "18h05 / 22h10", contact: "Prefeitura de SJP — Transporte Escolar" },
-    { line: "Linha 02 — Contenda / Roseira", route: "Roseira → Contenda → Estrada Moletta → CEIAS", morning: "6h40 / 12h10", afternoon: "12h15 / 17h40", night: "—", contact: "Prefeitura de SJP — Transporte Escolar" },
-    { line: "Linha 03 — Marcelino Alto", route: "Marcelino Alto → Colônia Murici → CEIAS", morning: "6h45 / 12h00", afternoon: "12h25 / 17h30", night: "18h00 / 22h15", contact: "Prefeitura de SJP — Transporte Escolar" },
-    { line: "Linha 04 — Campo Largo da Roseira", route: "Campo Largo da Roseira → Estrada Moletta → CEIAS", morning: "6h35 / 12h15", afternoon: "12h10 / 17h45", night: "—", contact: "Prefeitura de SJP — Transporte Escolar" }
-  ],
+  transport: [],
 
   /* ------------------------------------------------------------------
-     HORÁRIOS DAS TURMAS (MODELO — edite conforme a grade oficial)
-     Cada turma tem 5 dias com as aulas na ordem dos períodos.
+     HORÁRIOS DAS TURMAS
+     Para publicar a grade de uma turma, acrescente um item em `classes`:
+     { turma: "6º ano A", shift: "manha", days: { Segunda: [5 aulas], ... } }
      ------------------------------------------------------------------ */
   schedule: {
-    periods: { manha: ["7h30–8h20", "8h20–9h10", "9h10–10h00", "10h20–11h10", "11h10–11h50"], tarde: ["13h00–13h50", "13h50–14h40", "14h40–15h30", "15h50–16h40", "16h40–17h20"], noite: ["18h30–19h15", "19h15–20h00", "20h00–20h45", "21h00–21h35", "21h35–22h00"] },
-    classes: [
-      { turma: "6º ano A", shift: "manha", days: { Segunda: ["Português", "Português", "Matemática", "Ciências", "Arte"], Terça: ["Matemática", "Matemática", "História", "Geografia", "Inglês"], Quarta: ["Ciências", "Ciências", "Português", "Ed. Física", "Ed. Física"], Quinta: ["Geografia", "História", "Matemática", "Português", "Ens. Religioso"], Sexta: ["Inglês", "Arte", "Matemática", "Ciências", "Português"] } },
-      { turma: "7º ano A", shift: "manha", days: { Segunda: ["Matemática", "Matemática", "Português", "História", "Inglês"], Terça: ["Português", "Português", "Ciências", "Arte", "Geografia"], Quarta: ["História", "Geografia", "Matemática", "Ed. Física", "Ed. Física"], Quinta: ["Ciências", "Ciências", "Português", "Matemática", "Ens. Religioso"], Sexta: ["Arte", "Inglês", "Ciências", "Português", "Matemática"] } },
-      { turma: "8º ano A", shift: "tarde", days: { Segunda: ["Português", "Matemática", "Matemática", "História", "Arte"], Terça: ["Ciências", "Ciências", "Português", "Geografia", "Inglês"], Quarta: ["Matemática", "Português", "História", "Ed. Física", "Ed. Física"], Quinta: ["Geografia", "Inglês", "Ciências", "Matemática", "Ens. Religioso"], Sexta: ["Português", "Português", "Arte", "Ciências", "Matemática"] } },
-      { turma: "9º ano A", shift: "tarde", days: { Segunda: ["Matemática", "Matemática", "Português", "Ciências", "História"], Terça: ["Português", "Português", "Geografia", "Inglês", "Arte"], Quarta: ["Ciências", "História", "Matemática", "Ed. Física", "Ed. Física"], Quinta: ["Inglês", "Geografia", "Português", "Ciências", "Ens. Religioso"], Sexta: ["Arte", "Matemática", "Português", "Ciências", "Geografia"] } },
-      { turma: "1º ano EM", shift: "manha", days: { Segunda: ["Matemática", "Matemática", "Português", "Física", "Projeto de Vida"], Terça: ["Química", "Biologia", "História", "Geografia", "Inglês"], Quarta: ["Português", "Português", "Sociologia", "Ed. Física", "Ed. Física"], Quinta: ["Física", "Química", "Matemática", "Filosofia", "Arte"], Sexta: ["Biologia", "Geografia", "História", "Português", "Itinerário formativo"] } },
-      { turma: "2º ano EM", shift: "manha", days: { Segunda: ["Português", "Português", "Matemática", "Química", "Inglês"], Terça: ["Física", "Biologia", "Geografia", "História", "Projeto de Vida"], Quarta: ["Matemática", "Matemática", "Filosofia", "Ed. Física", "Ed. Física"], Quinta: ["Química", "Física", "Português", "Sociologia", "Arte"], Sexta: ["Biologia", "História", "Geografia", "Matemática", "Itinerário formativo"] } },
-      { turma: "3º ano EM", shift: "manha", days: { Segunda: ["Matemática", "Física", "Português", "Português", "Projeto de Vida"], Terça: ["Química", "Química", "Biologia", "História", "Geografia"], Quarta: ["Português", "Matemática", "Inglês", "Ed. Física", "Ed. Física"], Quinta: ["Física", "Biologia", "Sociologia", "Filosofia", "Arte"], Sexta: ["Matemática", "Geografia", "História", "Português", "Itinerário formativo"] } },
-      { turma: "EJA — Fundamental", shift: "noite", days: { Segunda: ["Português", "Português", "Matemática", "Matemática", "Ciências"], Terça: ["História", "Geografia", "Português", "Arte", "Inglês"], Quarta: ["Matemática", "Ciências", "Português", "Geografia", "Ed. Física"], Quinta: ["Português", "Matemática", "História", "Ciências", "Inglês"], Sexta: ["Arte", "Matemática", "Português", "Geografia", "História"] } }
-    ]
+    periods: {
+      manha: ["7h30–8h20", "8h20–9h10", "9h10–10h00", "10h20–11h10", "11h10–11h50"],
+      tarde: ["13h00–13h50", "13h50–14h40", "14h40–15h30", "15h50–16h40", "16h40–17h20"],
+      noite: ["18h30–19h15", "19h15–20h00", "20h00–20h45", "21h00–21h35", "21h35–22h00"]
+    },
+    classes: []
   },
 
   /* ------------------------------------------------------------------
-     CARDÁPIO DA SEMANA (MODELO — atualize conforme o cardápio da nutricionista)
+     CARDÁPIO DA ALIMENTAÇÃO ESCOLAR
+     Elaborado pela nutricionista da rede estadual. { day, meal, extra }
      ------------------------------------------------------------------ */
-  menu: [
-    { day: "Segunda", meal: "Arroz, feijão, frango ensopado, salada de alface e tomate", extra: "Suco de fruta" },
-    { day: "Terça", meal: "Macarrão à bolonhesa, salada de repolho", extra: "Fruta da época" },
-    { day: "Quarta", meal: "Arroz, feijão, carne moída com legumes, salada de beterraba", extra: "Suco de fruta" },
-    { day: "Quinta", meal: "Sopa de legumes com carne e macarrão, pão", extra: "Fruta da época" },
-    { day: "Sexta", meal: "Arroz, feijão, omelete, salada de cenoura e pepino", extra: "Suco de fruta" }
-  ],
+  menu: [],
 
   /* ------------------------------------------------------------------
-     PERGUNTAS FREQUENTES — categorias: matricula | documentos | rotina | transporte | ensino | tecnologia
+     PERGUNTAS FREQUENTES
+     categorias: matricula | documentos | rotina | transporte | ensino | tecnologia
      ------------------------------------------------------------------ */
   faq: [
-    { cat: "matricula", q: "Como faço a matrícula ou rematrícula?", a: "A matrícula e a rematrícula são feitas na secretaria do colégio, no período definido pelo calendário da SEED/PR (normalmente entre outubro e dezembro para o ano seguinte). Traga RG ou certidão de nascimento do estudante, comprovante de residência atualizado, documento do responsável e, para estudantes novos, o histórico escolar ou declaração de transferência." },
-    { cat: "matricula", q: "Quais documentos são necessários para transferência?", a: "Solicite na escola de origem a declaração de transferência e o histórico escolar. Depois, procure a secretaria do CEIAS com esses documentos, RG ou certidão do estudante, comprovante de residência e documento do responsável." },
-    { cat: "documentos", q: "Como solicitar uma declaração de matrícula ou histórico escolar?", a: "Faça o pedido na secretaria, pessoalmente ou pelo telefone do colégio, informando o nome completo do estudante e a turma. As declarações ficam prontas em até 3 dias úteis; históricos podem levar mais tempo." },
-    { cat: "documentos", q: "Como justificar uma falta?", a: "Entregue a justificativa por escrito, assinada pelo responsável (ou o atestado médico), na secretaria ou ao professor regente, em até 3 dias após o retorno às aulas." },
-    { cat: "rotina", q: "Quais são os horários de aula?", a: "Manhã: 7h30 às 11h50. Tarde: 13h às 17h20. Noite (EJA): 18h30 às 22h. Confira a grade completa da sua turma na página Horários das turmas." },
-    { cat: "rotina", q: "O uso do uniforme é obrigatório?", a: "O uniforme (camiseta azul-claro com o logotipo do colégio e calça azul-marinho) é recomendado para a identificação e a segurança dos estudantes. Veja a página Vida Escolar para detalhes e onde adquirir." },
-    { cat: "rotina", q: "A escola oferece alimentação?", a: "Sim. O refeitório serve refeições diárias com cardápio elaborado por nutricionista, com produtos da agricultura familiar (PNAE). Veja o cardápio da semana na página Alimentação escolar." },
-    { cat: "transporte", q: "Como funciona o transporte escolar?", a: "O transporte escolar rural é oferecido em parceria com a Prefeitura de São José dos Pinhais. Faça o cadastro na secretaria e consulte as linhas e horários na página Transporte escolar." },
-    { cat: "ensino", q: "Quais etapas de ensino o colégio oferece?", a: "Anos Finais do Ensino Fundamental (6º ao 9º ano), Ensino Médio (1º ao 3º ano), Educação de Jovens e Adultos (EJA) e Classe Especial." },
-    { cat: "ensino", q: "O que significa ser uma Escola do Campo?", a: "Significa que o projeto pedagógico parte da realidade rural da Colônia Marcelino, valorizando a cultura, o trabalho e os saberes das famílias agricultoras. Saiba mais na página Educação do Campo." },
-    { cat: "tecnologia", q: "Como acesso o boletim e a frequência do estudante?", a: "Pelo aplicativo/portal Escola Digital Paraná ou pela Área do Aluno da SEED/PR. Os links estão na Área do Aluno deste site. Em caso de dúvida, a secretaria ajuda com o primeiro acesso." },
-    { cat: "tecnologia", q: "Como envio fotos dos Jogos Escolares para o site?", a: "Use a página Enviar fotos: você pode mandar pelo formulário, por WhatsApp ou por e-mail. A equipe do colégio revisa e publica na galeria." }
+    { cat: "matricula", q: "Como faço a matrícula ou a rematrícula?", a: "A matrícula e a rematrícula são feitas na secretaria do colégio, no período definido pelo calendário da Secretaria de Estado da Educação do Paraná. Leve RG ou certidão de nascimento do estudante, CPF, comprovante de residência atualizado e documento com foto do responsável. Estudantes vindos de outra escola devem apresentar também o histórico escolar ou a declaração de transferência." },
+    { cat: "matricula", q: "Meu filho estuda em outra escola. Como faço a transferência?", a: "Solicite na escola de origem a declaração de transferência e o histórico escolar. Com esses documentos, procure a secretaria do CEIAS junto com os documentos do estudante e do responsável. A vaga fica condicionada à disponibilidade na turma correspondente." },
+    { cat: "matricula", q: "Quem pode estudar no colégio?", a: "O colégio atende estudantes dos Anos Finais do Ensino Fundamental (6º ao 9º ano), do Ensino Médio (1º ao 3º ano), da Educação de Jovens e Adultos e da Classe Especial. Como Escola do Campo, atende prioritariamente a comunidade da Colônia Marcelino e região." },
+    { cat: "documentos", q: "Como solicito uma declaração de matrícula ou o histórico escolar?", a: "O pedido é feito na secretaria, pessoalmente ou por telefone, informando o nome completo do estudante e a turma. Declarações costumam ficar prontas em poucos dias úteis; o histórico escolar pode levar mais tempo por exigir conferência de registros." },
+    { cat: "documentos", q: "Como justifico uma falta?", a: "Entregue a justificativa por escrito, assinada pelo responsável, ou o atestado médico, na secretaria ou ao professor regente, assim que o estudante retornar às aulas." },
+    { cat: "rotina", q: "Quais são os horários de aula?", a: "As aulas acontecem nos períodos da manhã, da tarde e da noite, conforme a etapa de ensino e a turma. A grade de cada turma é divulgada pela secretaria no início do ano letivo e fica disponível na página Horários das turmas." },
+    { cat: "rotina", q: "O uso do uniforme é obrigatório?", a: "O uniforme, composto pela camiseta azul-claro com o logotipo do colégio e pela calça azul-marinho, é recomendado para a identificação e a segurança dos estudantes. Informações sobre aquisição estão com a secretaria. Famílias em situação de vulnerabilidade podem procurar a direção." },
+    { cat: "rotina", q: "A escola oferece alimentação?", a: "Sim. O colégio serve alimentação escolar diariamente, com cardápio elaborado por nutricionista da rede estadual e produtos da agricultura familiar, conforme o Programa Nacional de Alimentação Escolar. Estudantes com restrições alimentares devem apresentar laudo médico na secretaria." },
+    { cat: "transporte", q: "Como funciona o transporte escolar?", a: "O transporte escolar rural é oferecido em parceria com a Prefeitura de São José dos Pinhais. O cadastro é feito na secretaria, com comprovante de residência, e renovado a cada ano letivo. As linhas e os horários são divulgados pela secretaria." },
+    { cat: "ensino", q: "Quais etapas de ensino o colégio oferece?", a: "Anos Finais do Ensino Fundamental (6º ao 9º ano), Ensino Médio (1º ao 3º ano), Educação de Jovens e Adultos e Classe Especial, com atendimento educacional especializado." },
+    { cat: "ensino", q: "O que significa ser uma Escola do Campo?", a: "Significa que o projeto pedagógico parte da realidade rural da comunidade, valorizando o trabalho, a cultura e os saberes das famílias. A Educação do Campo é uma política pública que reconhece o direito das populações rurais a uma educação construída a partir do seu contexto." },
+    { cat: "tecnologia", q: "Como acesso o boletim e a frequência do estudante?", a: "Pelos sistemas oficiais da rede estadual: o portal e o aplicativo Escola Digital Paraná e a Área do Aluno da SEED/PR. Os endereços estão reunidos na página Área do Aluno. Em caso de dúvida no primeiro acesso, a secretaria orienta." },
+    { cat: "tecnologia", q: "Como envio fotos das atividades para o site?", a: "Pela página Enviar fotos. Você pode mandar as imagens por e-mail, WhatsApp ou formulário, conforme os canais disponíveis. A equipe do colégio revisa o material antes de publicar na galeria." }
   ],
 
   /* ------------------------------------------------------------------
-     JOGOS ESCOLARES — modalidades, equipes e resultados (edite livremente)
+     JOGOS ESCOLARES
+     Resultados e agenda são publicados pela escola durante a temporada:
+     results: { date, modality, home, away, score, place, phase, outcome: "win"|"loss" }
+     schedule: { date, time, modality, opponent, place, phase }
      ------------------------------------------------------------------ */
   games: {
-    season: "Jogos Escolares do Paraná 2026",
+    season: "Jogos Escolares do Paraná",
+    intro: "O CEIAS participa dos Jogos Escolares do Paraná, promovidos pelo Governo do Estado. As equipes são formadas entre os estudantes matriculados e treinam no contraturno com os professores de Educação Física.",
     modalities: [
-      { name: "Futsal", icon: "trophy", categories: "Masculino e feminino · 12 a 14 e 15 a 17 anos", coach: "Prof. de Educação Física" },
-      { name: "Voleibol", icon: "trophy", categories: "Masculino e feminino · 15 a 17 anos", coach: "Prof. de Educação Física" },
-      { name: "Handebol", icon: "trophy", categories: "Misto · 12 a 14 anos", coach: "Prof. de Educação Física" },
-      { name: "Atletismo", icon: "sun", categories: "Provas de pista e campo · todas as idades", coach: "Prof. de Educação Física" },
-      { name: "Xadrez", icon: "lightbulb", categories: "Individual · todas as idades", coach: "Prof. de Matemática" },
-      { name: "Tênis de mesa", icon: "star", categories: "Individual e duplas", coach: "Prof. de Educação Física" }
+      { name: "Futsal", icon: "trophy", categories: "Categorias A e B · masculino e feminino", coach: "Professores de Educação Física" },
+      { name: "Voleibol", icon: "trophy", categories: "Categorias A e B · masculino e feminino", coach: "Professores de Educação Física" },
+      { name: "Handebol", icon: "trophy", categories: "Categorias A e B", coach: "Professores de Educação Física" },
+      { name: "Atletismo", icon: "sun", categories: "Provas de pista e de campo", coach: "Professores de Educação Física" },
+      { name: "Xadrez", icon: "lightbulb", categories: "Individual", coach: "Professores de Educação Física" },
+      { name: "Tênis de mesa", icon: "star", categories: "Individual e duplas", coach: "Professores de Educação Física" }
     ],
-    results: [
-      { date: "2026-08-14", modality: "Futsal masculino", home: "CEIAS", away: "C.E. Costa Viana", score: "4 × 2", place: "Ginásio Municipal — SJP", phase: "Fase municipal", outcome: "win" },
-      { date: "2026-08-14", modality: "Vôlei feminino", home: "CEIAS", away: "C.E. Silveira da Motta", score: "2 × 1", place: "Ginásio Municipal — SJP", phase: "Fase municipal", outcome: "win" },
-      { date: "2026-08-15", modality: "Futsal feminino", home: "CEIAS", away: "C.E. Eunice Borges", score: "1 × 3", place: "Ginásio Municipal — SJP", phase: "Fase municipal", outcome: "loss" },
-      { date: "2026-08-15", modality: "Atletismo — 100 m", home: "CEIAS", away: "Final municipal", score: "2º lugar", place: "Pista de atletismo — SJP", phase: "Fase municipal", outcome: "win" }
-    ],
-    schedule: [
-      { date: "2026-09-22", time: "8h", modality: "Futsal masculino", opponent: "A definir", place: "Ginásio Municipal — SJP", phase: "Fase regional" },
-      { date: "2026-09-22", time: "10h", modality: "Vôlei feminino", opponent: "A definir", place: "Ginásio Municipal — SJP", phase: "Fase regional" },
-      { date: "2026-09-23", time: "9h", modality: "Atletismo", opponent: "Provas finais", place: "Pista de atletismo — SJP", phase: "Fase regional" }
-    ],
+    results: [],
+    schedule: [],
     rules: [
-      "Para participar, o estudante deve estar matriculado, com frequência regular e autorização assinada pelo responsável.",
-      "Os treinos acontecem no contraturno, na quadra coberta, conforme cronograma do professor de Educação Física.",
-      "Nos dias de competição, o transporte é organizado pela escola; a saída é do pátio do colégio no horário informado no mural.",
-      "Uniforme de jogo: camiseta oficial do colégio e calção/legging azul-marinho. Leve garrafa de água e documento com foto."
-    ]
+      "Podem participar estudantes regularmente matriculados, dentro das faixas etárias definidas pelo regulamento oficial dos Jogos Escolares do Paraná.",
+      "É obrigatória a autorização assinada pelo responsável para estudantes menores de 18 anos, entregue na secretaria antes da primeira competição.",
+      "Os treinos acontecem no contraturno, na quadra coberta, conforme cronograma divulgado pelos professores de Educação Física.",
+      "Nos dias de competição, a saída e o retorno são organizados pela escola. Leve documento com foto, garrafa de água e o uniforme do colégio.",
+      "Datas, locais e resultados são divulgados no mural de avisos assim que confirmados pela organização."
+    ],
+    officialUrl: "https://www.jogosescolares.pr.gov.br/"
   },
 
   /* ------------------------------------------------------------------
      COMUNIDADE ESCOLAR — órgãos colegiados e representação
      ------------------------------------------------------------------ */
   community: [
-    { name: "APMF", full: "Associação de Pais, Mestres e Funcionários", desc: "Entidade que reúne famílias, professores e funcionários para apoiar a escola, administrar recursos de programas e organizar festas e melhorias. CNPJ 03.233.821/0001-66.", icon: "users", how: "Reuniões abertas à comunidade. Participe: procure a direção para saber as datas." },
-    { name: "Conselho Escolar", full: "Órgão colegiado de gestão democrática", desc: "Composto por direção, professores, funcionários, estudantes e famílias. Delibera sobre o projeto pedagógico, o calendário e a aplicação de recursos.", icon: "handshake", how: "Eleições periódicas conforme regulamento da SEED/PR." },
-    { name: "Grêmio Estudantil", full: "Representação dos estudantes", desc: "Organiza a voz dos estudantes: campeonatos, eventos culturais, campanhas e diálogo com a direção.", icon: "star", how: "Chapas formadas pelos próprios estudantes, com eleição anual." },
-    { name: "Vereadores Mirins", full: "Programa da Câmara Municipal de SJP", desc: "Estudantes do colégio já foram eleitos vereadores mirins, participando de sessões na Câmara Municipal e aprendendo sobre cidadania e política.", icon: "school", how: "Seleção por meio de projeto pedagógico com as turmas dos Anos Finais." }
+    { name: "APMF", full: "Associação de Pais, Mestres e Funcionários", desc: "Entidade que reúne famílias, professores e funcionários para apoiar a escola, acompanhar a aplicação de recursos e organizar ações e melhorias. A APMF do colégio está registrada sob o CNPJ 03.233.821/0001-66.", icon: "users", how: "As reuniões são abertas à comunidade escolar. Procure a direção para saber as datas." },
+    { name: "Conselho Escolar", full: "Órgão colegiado de gestão democrática", desc: "Composto por representantes da direção, dos professores, dos funcionários, dos estudantes e das famílias. Delibera sobre o projeto pedagógico, o calendário escolar e a aplicação de recursos.", icon: "handshake", how: "A composição é definida por eleição, conforme as normas da SEED/PR." },
+    { name: "Grêmio Estudantil", full: "Representação dos estudantes", desc: "Espaço de organização dos próprios estudantes para propor atividades culturais e esportivas, encaminhar demandas e dialogar com a direção.", icon: "star", how: "As chapas são formadas pelos estudantes, com eleição entre os matriculados." },
+    { name: "Conselho de Classe", full: "Avaliação coletiva do processo de ensino", desc: "Reúne a equipe pedagógica e os professores de cada turma para avaliar o desempenho dos estudantes e planejar intervenções ao longo do ano letivo.", icon: "school", how: "Acontece ao final de cada período avaliativo, conforme o calendário escolar." }
   ],
 
   /* ------------------------------------------------------------------
      LINKS ÚTEIS — portais oficiais
      ------------------------------------------------------------------ */
   usefulLinks: [
-    { title: "Secretaria de Estado da Educação (SEED/PR)", url: "https://www.educacao.pr.gov.br/", desc: "Portal oficial da rede estadual" },
+    { title: "Secretaria de Estado da Educação (SEED/PR)", url: "https://www.educacao.pr.gov.br/", desc: "Portal oficial da rede estadual de ensino" },
     { title: "Escola Digital Paraná", url: "https://www.escoladigital.pr.gov.br/", desc: "Portal e aplicativo do estudante" },
-    { title: "Área do Aluno SEED", url: "https://www.areadoaluno.seed.pr.gov.br/", desc: "Boletim e frequência" },
-    { title: "NRE Área Metropolitana Sul", url: "https://nreams.educacao.pr.gov.br/", desc: "Núcleo Regional de Educação" },
+    { title: "Área do Aluno — SEED/PR", url: "https://www.areadoaluno.seed.pr.gov.br/", desc: "Boletim, frequência e informações acadêmicas" },
+    { title: "NRE Área Metropolitana Sul", url: "https://nreams.educacao.pr.gov.br/", desc: "Núcleo Regional de Educação ao qual o colégio pertence" },
+    { title: "Consulta Escolas — SEED/PR", url: "https://www.consultaescolas.pr.gov.br/", desc: "Dados oficiais e cadastrais da escola" },
     { title: "Prefeitura de São José dos Pinhais", url: "https://www.sjp.pr.gov.br/", desc: "Transporte escolar e serviços municipais" },
-    { title: "Jogos Escolares do Paraná", url: "https://www.jogosescolares.pr.gov.br/", desc: "Regulamentos e resultados oficiais" },
-    { title: "ENEM — INEP", url: "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem", desc: "Inscrições e provas" },
-    { title: "Consulta Escolas — SEED", url: "https://www.consultaescolas.pr.gov.br/", desc: "Dados oficiais da escola" }
+    { title: "Jogos Escolares do Paraná", url: "https://www.jogosescolares.pr.gov.br/", desc: "Regulamentos, calendário e resultados oficiais" },
+    { title: "ENEM — INEP", url: "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem", desc: "Inscrições, provas e resultados" }
   ]
 };
