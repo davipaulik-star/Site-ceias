@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Fachada do colégio">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b2a4a"/><stop offset="1" stop-color="#2470c8"/></linearGradient></defs>
+<rect width="1600" height="900" fill="url(#g)"/><circle cx="1107" cy="120" r="420" fill="#ffffff" opacity="0.06"/><circle cx="631" cy="573" r="220" fill="#ffffff" opacity="0.06"/><circle cx="211" cy="595" r="420" fill="#ffffff" opacity="0.06"/><circle cx="1308" cy="192" r="318" fill="#ffffff" opacity="0.06"/><circle cx="199" cy="560" r="160" fill="#ffffff" opacity="0.06"/><circle cx="1155" cy="61" r="444" fill="#ffffff" opacity="0.06"/><path d="M0 702 C 320 558, 560 810, 880 666 S 1360 594, 1600 720 L 1600 900 L 0 900 Z" fill="#000" opacity="0.12"/>
+<g font-family="Montserrat, Arial, sans-serif" text-anchor="end" fill="#ffffff">
+<text x="1552" y="846" font-size="24" font-weight="700" opacity="0.55">Fachada do colégio</text>
+<text x="1552" y="878" font-size="14" opacity="0.45">imagem ilustrativa</text>
+</g></svg>

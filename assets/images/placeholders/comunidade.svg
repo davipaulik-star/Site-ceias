@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Comunidade escolar">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6b2d1f"/><stop offset="1" stop-color="#d98e4a"/></linearGradient></defs>
+<rect width="1200" height="900" fill="url(#g)"/><circle cx="209" cy="767" r="183" fill="#ffffff" opacity="0.06"/><circle cx="542" cy="490" r="308" fill="#ffffff" opacity="0.06"/><circle cx="330" cy="528" r="101" fill="#ffffff" opacity="0.06"/><circle cx="420" cy="540" r="188" fill="#ffffff" opacity="0.06"/><circle cx="300" cy="706" r="235" fill="#ffffff" opacity="0.06"/><circle cx="55" cy="776" r="231" fill="#ffffff" opacity="0.06"/><path d="M0 702 C 240 558, 420 810, 660 666 S 1020 594, 1200 720 L 1200 900 L 0 900 Z" fill="#000" opacity="0.12"/>
+<g font-family="Montserrat, Arial, sans-serif" text-anchor="end" fill="#ffffff">
+<text x="1164" y="846" font-size="24" font-weight="700" opacity="0.55">Comunidade escolar</text>
+<text x="1164" y="878" font-size="14" opacity="0.45">imagem ilustrativa</text>
+</g></svg>

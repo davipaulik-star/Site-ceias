@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Pêssanka — arte ucraniana">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a3b2a"/><stop offset="1" stop-color="#9c7a4a"/></linearGradient></defs>
+<rect width="1200" height="900" fill="url(#g)"/><circle cx="997" cy="166" r="266" fill="#ffffff" opacity="0.06"/><circle cx="458" cy="165" r="276" fill="#ffffff" opacity="0.06"/><circle cx="883" cy="527" r="199" fill="#ffffff" opacity="0.06"/><circle cx="694" cy="431" r="146" fill="#ffffff" opacity="0.06"/><circle cx="730" cy="326" r="119" fill="#ffffff" opacity="0.06"/><circle cx="749" cy="19" r="182" fill="#ffffff" opacity="0.06"/><path d="M0 702 C 240 558, 420 810, 660 666 S 1020 594, 1200 720 L 1200 900 L 0 900 Z" fill="#000" opacity="0.12"/>
+<g font-family="Montserrat, Arial, sans-serif" text-anchor="end" fill="#ffffff">
+<text x="1164" y="846" font-size="24" font-weight="700" opacity="0.55">Pêssanka — arte ucraniana</text>
+<text x="1164" y="878" font-size="14" opacity="0.45">imagem ilustrativa</text>
+</g></svg>

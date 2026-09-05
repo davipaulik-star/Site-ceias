@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" width="120" height="140" role="img" aria-label="Brasão do CEIAS">
+  <path d="M60 4 L110 18 V66 C110 96 88 120 60 132 C32 120 10 96 10 66 V18 Z" fill="#ffffff" fill-opacity="0.12" stroke="#ffffff" stroke-width="2.5"/>
+  <g stroke="#ecd27c" stroke-width="2.4" stroke-linecap="round"><path d="M60 32 V24"/><path d="M45 38 L40 32"/><path d="M75 38 L80 32"/><path d="M38 52 H30"/><path d="M82 52 H90"/></g>
+  <circle cx="60" cy="54" r="13" fill="#ecd27c"/>
+  <path d="M28 76 C40 70 52 70 60 76 C68 70 80 70 92 76 V100 C80 94 68 94 60 100 C52 94 40 94 28 100 Z" fill="#ffffff"/>
+  <path d="M60 76 V100" stroke="#0b2a4a" stroke-width="1.6"/>
+  <g fill="#ecd27c"><path d="M27 70 C24 64 25 58 30 54 C33 59 32 65 27 70 Z"/><path d="M24 62 C20 57 20 51 24 46 C28 51 28 57 24 62 Z"/><path d="M31 61 C29 55 31 49 36 46 C37 52 35 58 31 61 Z"/><path d="M93 70 C96 64 95 58 90 54 C87 59 88 65 93 70 Z"/><path d="M96 62 C100 57 100 51 96 46 C92 51 92 57 96 62 Z"/><path d="M89 61 C91 55 89 49 84 46 C83 52 85 58 89 61 Z"/></g>
+  <path d="M30 104 H90 L94 111 L90 118 H30 L26 111 Z" fill="#ffffff"/>
+  <text x="60" y="115" text-anchor="middle" font-family="Montserrat, Arial, Helvetica, sans-serif" font-size="9.5" font-weight="800" letter-spacing="2" fill="#0b2a4a">CEIAS</text>
+</svg>
